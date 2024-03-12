@@ -6,7 +6,9 @@ import home from  '@/components/Home'
 import listClientes from '../components/cliente/List.vue'
 import editCliente   from  '@/components/cliente/Edit'
 import novoCliente from  '@/components/cliente/Add'
-
+import listFuncionario from '@/components/funcionario/List'
+import editFuncionario from '@/components/funcionario/Edit'
+import novoFuncionario from '@/components/funcionario/Add'
 
 Vue.use(Router)
 
@@ -38,6 +40,22 @@ const router = new Router({
       name: "cliente-add",
       component: novoCliente
     },
+    {
+      path: '/funcionario',
+      name: 'funcionario-list',
+      component: listFuncionario  
+    },
+    {
+      path: '/funcionario/:id',
+      name: 'funcionario-edit',
+      component: editFuncionario  
+    },
+    {
+      path: '/addfuncionario',
+      name: 'funcionario-add',
+      component: novoFuncionario  
+    }
+
    /* {
       path: '/patentes',
       name: 'patentes-list',
