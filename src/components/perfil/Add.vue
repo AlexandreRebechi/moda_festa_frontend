@@ -1,15 +1,7 @@
 <template>
     <div class="submit-form">
       <div v-if="!submitted">       
-
-        <div class="form-group">
-            <label for="inputNickname">Nickname:</label>
-            <input type="text" v-model="jogador.nickname" class="form-control" id="inputNickname">
-        </div>
-        <div class="form-group">
-            <label for="inputSenha">Senha:</label>
-            <input type="password" v-model="jogador.senha" class="form-control" id="inputSenha">
-        </div>            
+            
         <div class="form-group">
                 <label for="inputDescricao">descricao</label>
                 <input type="number" v-model="jogador.descricao" class="form-control" id="inputDescricao">

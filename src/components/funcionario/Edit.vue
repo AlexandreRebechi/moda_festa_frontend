@@ -4,14 +4,7 @@
         <div v-if="currentJogador" class="edit-form">
             <h3>Cliente</h3>
             <form>
-                <div class="form-group">
-                    <label for="inputNickname">Nickname:</label>
-                    <input type="text" v-model="pessoa.nickname" class="form-control" id="inputNickname">
-                </div>
-                <div class="form-group">
-                    <label for="inputSenha">Senha:</label>
-                    <input type="password" v-model="pessoa.senha" class="form-control" id="inputSenha">
-                </div>
+                
                 <div class="form-group">
                     <label for="inputID">ID:</label>
                     <input type="number" v-model="pessoa.id" class="form-control" id="inputID">

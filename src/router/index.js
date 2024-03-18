@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import login from  '@/components/Login'
+import login from  '../components/Login'
 import home from  '@/components/Home'
 import listClientes from '../components/cliente/List.vue'
 import editCliente   from  '@/components/cliente/Edit'
