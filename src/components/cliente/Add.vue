@@ -4,12 +4,17 @@
 
             <div class="form-group">
                 <label for="inputID">ID:</label>
-                <input type="number" v-model="pessoa.id" class="form-control" id="inputID">
+                <input type="number" v-model="pessoa.id" class="form-control" id="inputID" disabled>
             </div>
             <div class="form-group">
                 <label for="inputNome">Nome:</label>
                 <input type="text" v-model="pessoa.nome" class="form-control" id="inputNome">
             </div>
+            <div class="form-group">
+                <label for="inputEmail">Email:</label>
+                <input type="text" v-model="pessoa.email" class="form-control" id="inputEmail">
+            </div>
+
             <div class="form-group">
                 <label for="inputTelefone">Telefone:</label>
                 <input type="text" v-model="pessoa.telefone" class="form-control" id="inputTelefone">
@@ -27,18 +32,23 @@
                 <label for="inputBairro">bairro:</label>
                 <input type="text" v-model="pessoa.bairro" class="form-control" id="inputBairro">
             </div>
+            
             <div class="form-group">
-                <label for="inputCom">Complemento:</label>
+                <label for="inputNumero">Numero:</label>
+                <input type="text" v-model="pessoa.numero" class="form-control" id="inputNumero">
+            </div>
+            <div class="form-group">
+                <label for="inputComplemento">Complemento:</label>
                 <input type="text" v-model="pessoa.complemento" class="form-control" id="inputComplemento">
             </div>
             <div class="form-group">
                 <label for="inputObservacoes">Observacoes:</label>
                 <input type="text" v-model="pessoa.observacoes" class="form-control" id="inputObservacoes">
             </div>
-
+            
             <div class="form-group">
                 <label for="inputDataCadastro">Data Cadastro:</label>
-                <input type="date" v-model="cliente.endereco.DataCadastro" class="form-control" id="inputDataCadastro">
+                <input type="date" v-model="pessoa.DataCadastro" class="form-control" id="inputDataCadastro">
             </div>
             <div class="form-group">
                 <label for="inputUsername">Username:</label>
@@ -90,7 +100,7 @@
 
 <script>
 
-import clienteDataService from '../../services/ClienteDataService'
+import ClienteDataService from '../../services/ClienteDataService';
 //import PatenteDataService from '../../services/PatenteDataService'
 
 export default {
@@ -98,20 +108,21 @@ export default {
     data() {
         return {
             pessoa: {
-                indice: '',
-                id: '',
+                id: 0,
                 nome: '',
+                email: '',
                 telefone: '',
                 cep: '',
                 logradouro: '',
                 bairro: '',
+                numero: '',
                 complemento: '',
                 observacoes: '',
                 DataCadastro: '',
                 username: '',
                 password: '',
                 DataUltimoLogin: '',
-                cliente: { cpf: '', rg: '', cnpj: '', ie: '' },
+                cliente: { cpf: '', rg: '', cnpj: '', ie: '' }
             },
             submitted: false,
 
@@ -126,10 +137,10 @@ export default {
             jgd.cliente = end;
 
             if (jgd.username.trim().length > 0 && jgd.password.trim().length > 0) {
-
-                clienteDataService.create(jgd)
+                console.log('teste savecliente')
+                ClienteDataService.create(jgd)
                     .then(response => {
-
+                      
                         this.submitted = true;
                     })
                     .catch(e => {
@@ -147,28 +158,11 @@ export default {
             this.submitted = false;
             this.cliente = {};
         },
-        listPatentes() {
-
-            PatenteDataService.list().then(response => {
-
-                console.log("Retorno do seviço PatenteDataService.list", response.status);
-
-                for (let j of response.data) {
-
-                    this.patentes.push(j);
-                }
-
-            }).catch(response => {
-
-                // error callback
-                alert('Não conectou no serviço PatenteDataService.list');
-                console.log(response);
-            });
-        }
+    
 
     },
     mounted() {
-        this.listPatentes();
+      
 
     }
 
