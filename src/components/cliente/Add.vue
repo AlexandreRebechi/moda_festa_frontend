@@ -86,14 +86,14 @@
 
 
             <button @click="savecliente" class="btn btn-success">Salvar</button>
-            <router-link to="/clientees" class="btn btn-success">Voltar</router-link>
+            <router-link to="/pessoas" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
             <button class="btn btn-success" @click="newcliente">Novo</button>
-            <router-link to="/clientees" class="btn btn-success">Voltar</router-link>
+            <router-link to="/pessoas" class="btn btn-success">Voltar</router-link>
         </div>
     </div>
 </template>
@@ -122,7 +122,7 @@ export default {
                 username: '',
                 password: '',
                 DataUltimoLogin: '',
-                cliente: { cpf: '', rg: '', cnpj: '', ie: '' }
+                cliente: {codigo: 0, cpf: '', rg: '', cnpj: '', ie: '' }
             },
             submitted: false,
 
