@@ -1,44 +1,44 @@
 <template>
  <div class="submit-form">
         <div v-if="!submitted">
-
-            <div class="form-group">
+    <form class="was-validated">
+            <div class="mb-3">
                 <label for="inputID">ID:</label>
-                <input type="number" v-model="parcelamento.id" class="form-control" id="inputID" disabled>
+                <input type="number" v-model="parcelamento.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputNumeroParcela">Numero Parcela:</label>
-                <input type="number" v-model="parcelamento.numero_parcela" class="form-control" id="inputNumeroParcela">
+                <input type="number" v-model="parcelamento.numero_parcela" class="form-control is-invalid" id="inputNumeroParcela" placeholder="Numero Parcela" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDataPrevisaoPagamento">Data de Previsão de Pagamento:</label>
-                <input type="date" v-model="parcelamento.data_previsao_pagamento" class="form-control" id="inputDataPrevisaoPagamento">
+                <input type="date" v-model="parcelamento.data_previsao_pagamento" class="form-control is-invalid" id="inputDataPrevisaoPagamento" placeholder="Data de Previsão de Pagamento" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDataPagamento">Data Pagamento:</label>
-                <input type="date" v-model="parcelamento.data_pagamento" class="form-control" id="inputDataPagamento">
+                <input type="date" v-model="parcelamento.data_pagamento" class="form-control is-invalid" id="inputDataPagamento" placeholder="Data Pagamento" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorTotal">Valor Total:</label>
-                <input type="number" v-model="parcelamento.valor_total" class="form-control" id="inputValorTotal">
+                <input type="number" v-model="parcelamento.valor_total" class="form-control is-invalid" id="inputValorTotal" placeholder="Valor Total" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorPago">Valor Pago:</label>
-                <input type="number" v-model="parcelamento.valor_pago" class="form-control" id="inputValorPago">
+                <input type="number" v-model="parcelamento.valor_pago" class="form-control is-invalid" id="inputValorPago" placeholder="Valor Pago" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputLocacaoID">Locacao ID:</label>
-                <input type="number" v-model="parcelamento.locacao_id" class="form-control" id="inputLocacaoID" disabled>
+                <input type="number" v-model="parcelamento.locacao_id" class="form-control is-invalid" id="inputLocacaoID" placeholder="Locacao ID" required>
             </div>
-
-            <button @click="saveParcelamento" class="btn btn-success">Salvar</button>
+        </form>
+            <b-button @click="saveParcelamento" class="btn btn-success">Salvar</b-button>
             <router-link to="/parcelamentos" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
-            <button class="btn btn-success" @click="newParcelamento">Novo</button>
+            <b-button class="btn btn-success" @click="newParcelamento">Novo</b-button>
             <router-link to="/parcelamentos" class="btn btn-success">Voltar</router-link>
         </div>
     </div>

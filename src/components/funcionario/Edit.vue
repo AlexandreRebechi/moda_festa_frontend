@@ -3,95 +3,118 @@
 
         <div v-if="currentJogador" class="edit-form">
             <h3>Cliente</h3>
-            <form>
-                
-                <div class="form-group">
-                <label for="inputcpf">CPF:</label>
-                <input type="text" v-model="currentFuncionario.cpf" class="form-control" id="inputcpf" >
-            </div>
-                <div class="form-group">
+            <form class="was-validated">
+                <div class="mb-3">
+                    <label for="inputCPF">CPF:</label>
+                    <input type="text" v-model="currentFuncionario.cpf" class="form-control is-invalid" id="inputCPF"
+                        placeholder="CPF" required>
+
+                </div>
+                <div class="mb-3">
                     <label for="inputNome">Nome:</label>
-                    <input type="text" v-model="currentFuncionario.nome" class="form-control" id="inputNome">
+                    <input type="text" v-model="currentFuncionario.nome" class="form-control is-invalid" id="inputNome"
+                        placeholder="Nome" required>
+
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputEmail">Email:</label>
-                    <input type="text" v-model="currentFuncionario.email" class="form-control" id="inputEmail">
+                    <input type="text" v-model="currentFuncionario.email" class="form-control is-invalid" id="inputEmail"
+                        placeholder="Email" required>
+
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputTelefone">Telefone:</label>
-                    <input type="text" v-model="currentFuncionario.telefone" class="form-control" id="inputTelefone">
+                    <input type="text" v-model="currentFuncionario.telefone" class="form-control is-invalid" id="inputTelefone"
+                        placeholder="Telefone" required>
+
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputCEP">CEP:</label>
-                    <input type="text" v-model="currentFuncionario.cep" class="form-control" id="inputCEP">
-                </div>
+                    <input type="text" v-model="currentFuncionario.cep" class="form-control is-invalid" id="inputCEP"
+                        placeholder="CEP" required>
 
-                <div class="form-group">
+                </div>
+                <div class="mb-3">
                     <label for="inputLogradouro">Logradouro:</label>
-                    <input type="text" v-model="currentFuncionario.logradouro" class="form-control" id="inputLogradouro">
+                    <input type="text" v-model="currentFuncionario.logradouro" class="form-control is-invalid" id="inputLogradouro"
+                        placeholder="Logradouro" required>
+
                 </div>
-                <div class="form-group">
-                    <label for="inputBairro">bairro:</label>
-                    <input type="text" v-model="currentFuncionario.bairro" class="form-control" id="inputBairro">
+                <div class="mb-3">
+                    <label for="inputBairro">Bairro:</label>
+                    <input type="text" v-model="currentFuncionario.bairro" class="form-control is-invalid" id="inputBairro"
+                        placeholder="Bairro" required>
+
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputNumero">Numero:</label>
-                    <input type="text" v-model="currentFuncionario.numero" class="form-control" id="inputNumero">
+                    <input type="text" v-model="currentFuncionario.numero" class="form-control is-invalid" id="inputNumero"
+                        placeholder="Numero" required>
+
                 </div>
-                <div class="form-group">
-                    <label for="inputCom">Complemento:</label>
-                    <input type="text" v-model="currentFuncionario.complemento" class="form-control" id="inputComplemento">
+                <div class="mb-3">
+                    <label for="inputComplemento">Complemento:</label>
+                    <input type="text" v-model="currentFuncionario.complemento" class="form-control is-invalid"
+                        id="inputComplemento" placeholder="Complemento" required>
+
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputObservacoes">Observacoes:</label>
-                    <input type="text" v-model="currentFuncionario.observacoes" class="form-control" id="inputObservacoes">
-                </div>
+                    <input type="text" v-model="currentFuncionario.observacoes" class="form-control is-invalid"
+                        id="inputObservacoes" placeholder="Observacoes" required>
 
-                <div class="form-group">
-                    <label for="inputDataCadastro">Data Cadastro:</label>
-                    <input type="date" v-model="currentFuncionario.data_cadastro" class="form-control" id="inputDataCadastro">
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
+                    <label for="inputdatacadastro">Data Cadastro:</label>
+                    <input type="date" v-model="currentFuncionario.data_cadastro" class="form-control is-invalid"
+                        id="inputdatacadastro" placeholder="Data Cadastro" required>
+
+                </div>
+                <div class="mb-3">
                     <label for="inputUsername">Username:</label>
-                    <input type="text" v-model="currentFuncionario.username" class="form-control" id="inputUsername">
+                    <input type="text" v-model="currentFuncionario.username" class="form-control is-invalid" id="inputUsername"
+                        placeholder="Username" required>
+
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputPassword">Password:</label>
-                    <input type="password" v-model="currentFuncionario.password" class="form-control" id="inputPassword">
-                </div>
+                    <input type="password" v-model="currentFuncionario.password" class="form-control is-invalid" id="inputPassword"
+                        placeholder="Password" required>
 
-                <div class="form-group">
+                </div>
+                <div class="mb-3">
                     <label for="inputDataUltimoLogin">Data Ultimo Login:</label>
-                    <input type="date" v-model="currentFuncionario.data_ultimo_login" class="form-control"
-                        id="inputDataUltimoLogin">
+                    <input type="date" v-model="currentFuncionario.data_ultimo_login" class="form-control is-invalid"
+                        id="inputDataUltimoLogin" placeholder="Data Ultimo Login" required>
+
                 </div>
-                <div class="form-group">
-                    <label for="inputTipo">Tipo:</label>
-                    <input type="text" v-model="currentFuncionario.tipo" class="form-control" id="inputTipo">
-                </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputNumeroCtps">Numero CTPS:</label>
-                    <input type="text" v-model="currentFuncionario.funcionario.numero_ctps" class="form-control" id="inputNumeroCtps">
+                    <input type="text" v-model="currentFuncionario.funcionario.numero_ctps" class="form-control is-invalid"
+                        id="inputNumeroCtps" placeholder="Numero CTPS" required>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputDataContratacao">Data Contratacao:</label>
-                    <input type="text" v-model="currentFuncionario.funcionario.dataContratacao" class="form-control" id="inputDataContratacao">
+                    <input type="text" v-model="currentFuncionario.funcionario.data_contratacao" class="form-control is-invalid"
+                        id="inputDataContratacao" placeholder="Data Contratacao" required>
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputDataDemissao">Data Demissao:</label>
-                    <input type="text" v-model="currentFuncionario.funcionario.dataDemissao" class="form-control" id="inputDataDemissao">
+                    <input type="text" v-model="currentFuncionario.funcionario.data_demissao" class="form-control is-invalid"
+                        id="inputDataDemissao" placeholder="Data Demissao" required>
                 </div>
 
                 <div class="form-group">
                     <label for="inputPerfil">Perfil:</label>
-                    <input type="text" v-model="currentFuncionario.funcionario.perfil" class="form-control" id="inputPerfil">
+                    <input type="text" v-model="currentFuncionario.funcionario.perfil" class="form-control is-invalid"
+                        id="inputPerfil" placeholder="Perfil" required>
                 </div>
 
             </form>
-            <button class="badge badge-success" @click="updateFuncionario">Salvar</button>
-            <button class="badge badge-danger mr-2" @click="deleteFuncionario">Delete</button>
-            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
+            <b-button class="badge badge-success" @click="updateFuncionario">Salvar</b-button>
+            <b-button class="badge badge-danger mr-2" @click="deleteFuncionario">Delete</b-button>
+            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
 
 
             <p>{{ message }}</p>

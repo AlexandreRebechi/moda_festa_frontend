@@ -3,20 +3,22 @@
      
        <div v-if="currentFuncionalidade" class="edit-form">
             <h3>Funcionalidade</h3>
-            <form>
-                <div class="form-group">
-                    <label for="inputId">ID:</label>
-                    <input type="number" v-model="currentFuncionalidade.id" class="form-control" id="inputId" disabled>
+            <form class="was-validated">
+                <div class="mb-3">
+                    <label for="inputID">ID:</label>
+                    <input type="text" v-model="currentFuncionalidade.id" class="form-control is-invalid" id="inputID"
+                        placeholder="ID" disabled required>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="inputDescricao">Descricao:</label>
-                    <input type="text" v-model="currentFuncionalidade.descricao" class="form-control" id="inputDescricao">
+                    <input type="text" v-model="currentFuncionalidade.descricao" class="form-control is-invalid"
+                        id="inputDescricao" placeholder="Descricao" required>
                 </div>
                            
             </form>
-            <button class="badge badge-success" @click="updateFuncionalidade">Salvar</button>
-            <button class="badge badge-danger mr-2" @click="deleteFuncionalidade">Delete</button>
-            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
+            <b-button class="badge badge-success" @click="updateFuncionalidade">Salvar</b-button>
+            <b-button class="badge badge-danger mr-2" @click="deleteFuncionalidade">Delete</b-button>
+            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
 
             
             <p>{{ message }}</p>

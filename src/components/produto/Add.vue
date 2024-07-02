@@ -1,46 +1,47 @@
 <template>
     <div class="submit-form">
         <div v-if="!submitted">
-            <div class="form-group">
+            <form class="was-validated">
+            <div class="mb-3">
                 <label for="inputID">ID:</label>
-                <input type="number" v-model="produto.id" class="form-control" id="inputID" disabled>
+                <input type="number" v-model="produto.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDescricao">Descrição:</label>
-                <input type="text" v-model="produto.descricao" class="form-control" id="inputDescricao">
+                <input type="text" v-model="produto.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descrição" required>
             </div>
             
-            <div class="form-group">
-                <label for="inputObservacoes">Observações</label>
-                <input type="text" v-model="produto.observacoes" class="form-control" id="inputObservacoes">
+            <div class="mb-3">
+                <label for="inputObservacoes">Observações:</label>
+                <input type="text" v-model="produto.observacoes" class="form-control is-invalid" id="inputObservacoes" placeholder="Observações" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorCusto">Valor Custo:</label>
-                <input type="number" v-model="produto.valor_custo" class="form-control" id="inputValorCusto">
+                <input type="number" v-model="produto.valor_custo" class="form-control is-invalid" id="inputValorCusto" placeholder="Valor Custo" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorAluguel">Valor Aluguel:</label>
-                <input type="number" v-model="produto.valor_aluguel" class="form-control" id="inputValorAluguel">
+                <input type="number" v-model="produto.valor_aluguel" class="form-control is-invalid" id="inputValorAluguel" placeholder="Valor Aluguel" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorVenda">Valor Venda:</label>
-                <input type="number" v-model="produto.valor_venda" class="form-control" id="inputValorVenda">
+                <input type="number" v-model="produto.valor_venda" class="form-control is-invalid" id="inputValorVenda" placeholder="Valor Venda" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputTiposProduto">Tipos Produto:</label>
-                <input type="number" v-model="produto.tipo_produto" class="form-control" id="inputTiposProduto" >
+                <input type="number" v-model="produto.tipo_produto" class="form-control is-invalid" id="inputTiposProduto" placeholder="Tipos Produto" required>
             </div>
           
-
-            <button @click="saveProduto" class="btn btn-success">Salvar</button>
+        </form>
+            <b-button @click="saveProduto" class="btn btn-success">Salvar</b-button>
             <router-link to="/produtos" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
-            <button class="btn btn-success" @click="newProduto">Novo</button>
+            <b-button class="btn btn-success" @click="newProduto">Novo</b-button>
             <router-link to="/produtos" class="btn btn-success">Voltar</router-link>
         </div>
     </div>

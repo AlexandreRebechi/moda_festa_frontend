@@ -1,92 +1,94 @@
 <template>
     <div id="tab_aut">
-     
+
 
         <div class="col-md-6">
             <h4>Listagem de Funcionalidades</h4>
-            <table class="table table-striped" >
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Descricao</th>
-                    
-                </tr>                     
+            <table class="table table-striped table-inverse table-responsive-sm table-danger text-align">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Descricao</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    <tr v-for="(f, indice) in funcinalidades" :key ="f.id" :class="{ active: indice == currentIndex }">
-                            <td>{{f.id}}</td>
-                            <td>{{f.descricao}}</td>
-                            <td><button v-on:click="setCurrentFuncionalidade(f, indice)" class="btn" type="button">Alterar</button></td>
-                            <td><button v-on:click="remFuncionalidade(f, indice)" class="btn" type="button">Remover</button></td>
+                    <tr v-for="(f, indice) in funcinalidades" :key="f.id" :class="{ active: indice == currentIndex }">
+                        <td>{{ f.id }}</td>
+                        <td>{{ f.descricao }}</td>
+                        <td><button v-on:click="setCurrentFuncionalidade(f, indice)" class="btn"
+                                type="button">Alterar</button></td>
+                        <td><button v-on:click="remFuncionalidade(f, indice)" class="btn" type="button">Remover</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-     
+
+
         </div>
 
         <div class="col-md-6">
             <div v-if="currentFuncionalidade">
-                    <h4>Funcionalidade</h4>
-                    <div>
+                <h4>Funcionalidade</h4>
+                <div>
                     <label><strong>ID:</strong></label> {{ currentFuncionalidade.id }}
-                    </div>
-                    <div>
+                </div>
+                <div>
                     <label><strong>Descricao:</strong></label> {{ currentFuncionalidade.descricao }}
-                    </div>
+                </div>
 
-                    <a class="badge badge-warning"
-                    :href="'/funcionalidade/' + currentFuncionalidade.id"
-                    >
+                <a class="badge badge-warning" :href="'/funcionalidade/' + currentFuncionalidade.id">
                     Edit
-                    </a>
+                </a>
             </div>
             <div v-else>
                 <br />
                 <p>Please click on a Player...</p>
-                <router-link to="/addfuncionalidade" class="badge badge-success">Novo</router-link>                
+                <router-link to="/addfuncionalidade" class="badge badge-success">Novo</router-link>
 
             </div>
         </div>
 
-                                          
+
     </div>
- </template>
- 
- <script>
- 
-      
-     import FuncionalidadeDataService from '../../services/FuncionalidadeDataService';
-     export default{
-        name:'listFuncionalidades',
-      data() {
-             return {
-                 funcinalidades: [],
-                 currentFuncionalidade: null,
-                 currentIndex: -1
-             }
-         },
-         methods: {
-            listarFuncionalidades(){
+</template>
 
-                FuncionalidadeDataService.list().then(response =>{
+<script>
 
-                    console.log("Retorno do seviço authenticateFuncionalidade", response.status);
 
-                   this.funcinalidades = response.data;
-                    
-                }).catch(response => {
+import FuncionalidadeDataService from '../../services/FuncionalidadeDataService';
+export default {
+    name: 'listFuncionalidades',
+    data() {
+        return {
+            funcinalidades: [],
+            currentFuncionalidade: null,
+            currentIndex: -1
+        }
+    },
+    methods: {
+        listarFuncionalidades() {
 
-                    // error callback
-                    alert('Não conectou no serviço listarFuncionalidades');
-                    console.log(response);
-                });
-            },
-            setCurrentFuncionalidade(funcionalidade, index){
+            FuncionalidadeDataService.list().then(response => {
 
-                this.currentFuncionalidade = funcionalidade;
-                this.currentIndex = index;
-            },
-            remFuncionalidade(funcionalidade, index){
+                console.log("Retorno do seviço authenticateFuncionalidade", response.status);
 
-                FuncionalidadeDataService.delete(funcionalidade.id)
+                this.funcinalidades = response.data;
+
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço listarFuncionalidades');
+                console.log(response);
+            });
+        },
+        setCurrentFuncionalidade(funcionalidade, index) {
+
+            this.currentFuncionalidade = funcionalidade;
+            this.currentIndex = index;
+        },
+        remFuncionalidade(funcionalidade, index) {
+
+            FuncionalidadeDataService.delete(funcionalidade.id)
                 .then(response => {
                     console.log(response.data);
                     this.refreshList();
@@ -95,28 +97,25 @@
                     console.log(e);
                 });
 
-            },
-            refreshList() {
-                this.listarFuncionalidades();
-                this.currentTutorial = null;
-                this.currentIndex = -1;
-            }
-
-         },
-         mounted() {
+        },
+        refreshList() {
             this.listarFuncionalidades();
-         }
- 
-     }
- </script>
-    
- <style scoped>
+            this.currentTutorial = null;
+            this.currentIndex = -1;
+        }
 
-    .list {
+    },
+    mounted() {
+        this.listarFuncionalidades();
+    }
+
+}
+</script>
+
+<style scoped>
+.list {
     text-align: left;
     max-width: 750px;
     margin: auto;
-    }
-
-     
- </style>
+}
+</style>

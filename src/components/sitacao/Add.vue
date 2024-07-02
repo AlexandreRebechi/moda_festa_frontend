@@ -2,24 +2,24 @@
     <div class="submit-form">
       <div v-if="!submitted">       
 
-       
-        <div class="form-group">
+       <form class="was-validated">
+        <div class="mb-3">
             <label for="inputID">ID:</label>
-            <input type="text" v-model="sitacao.id" class="form-control" id="inputID">
+            <input type="text" v-model="sitacao.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
         </div>            
-        <div class="form-group">
+        <div class="mb-3">
                 <label for="inputDescricao">Descricao:</label>
-                <input type="text" v-model="sitacao.descricao" class="form-control" id="inputDescricao">
+                <input type="text" v-model="sitacao.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
         </div>    
-  
-        <button @click="saveSitacao" class="btn btn-success">Salvar</button>
+    </form>
+        <b-button @click="saveSitacao" class="btn btn-success">Salvar</b-button>
         <router-link to="/sitacoes" class="btn btn-success">Voltar</router-link>                
 
       </div>
   
       <div v-else>
         <h4>Dados enviados com sucesso !</h4>
-        <button class="btn btn-success" @click="newSitacao">Novo</button>
+        <b-button class="btn btn-success" @click="newSitacao">Novo</b-button>
         <router-link to="/sitacoes" class="btn btn-success">Voltar</router-link>
       </div>
     </div>

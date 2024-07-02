@@ -1,55 +1,55 @@
 <template>
     <div id="tab_aut">
 
-        <div v-if="currentLocacao" class="edit-form">
+        <div v-if="currentcurrentLocacao" class="edit-form">
             <h3>Locação</h3>
-            <form>
-                <div class="form-group">
+            <form class="was-validated">
+                <div class="mb-3">
                 <label for="inputID">ID:</label>
-                <input type="number" v-model="currentLocacao.id" class="form-control" id="inputID" disabled>
+                <input type="number" v-model="currentLocacao.id" class="form-control is-invalid is-invalid" id="inputID" placeholder="ID" disabled required>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDataRetirada">Data Retirada:</label>
-                <input type="date" v-model="currentLocacao.data_retirada" class="form-control" id="inputDataRetirada">
+                <input type="date" v-model="currentLocacao.data_retirada" class="form-control is-invalid is-invalid" id="inputDataRetirada" placeholder="Data Retirada" required>
             </div>
             
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDataPrevisaoEntrega">Data Previsao Entrega:</label>
-                <input type="date" v-model="currentLocacao.data_previsao_entrega" class="form-control" id="inputDataPrevisaoEntrega">
+                <input type="date" v-model="currentLocacao.data_previsao_entrega" class="form-control is-invalid" id="inputDataPrevisaoEntrega" placeholder="Data Previsao Entrega" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDataEntrega">Data Entrega:</label>
-                <input type="date" v-model="currentLocacao.data_entrega" class="form-control" id="inputDataEntrega">
+                <input type="date" v-model="currentLocacao.data_entrega" class="form-control is-invalid" id="inputDataEntrega" placeholder="Data Entrega" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDataPrevisaoPagamento">Data Previsao Pagamento:</label>
-                <input type="date" v-model="currentLocacao.data_previsao_pagamento" class="form-control" id="inputDataPrevisaoPagamento">
+                <input type="date" v-model="currentLocacao.data_previsao_pagamento" class="form-control is-invalid" id="inputDataPrevisaoPagamento" placeholder="Data Previsao Pagamento" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorTotal">Valor Total:</label>
-                <input type="number" v-model="currentLocacao.valor_total" class="form-control" id="inputValorTotal">
+                <input type="number" v-model="currentLocacao.valor_total" class="form-control is-invalid" id="inputValorTotal" placeholder="Valor Total" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorPago">Valor Pago:</label>
-                <input type="number" v-model="currentLocacao.valor_pago" class="form-control" id="inputValorPago">
+                <input type="number" v-model="currentLocacao.valor_pago" class="form-control is-invalid" id="inputValorPago" placeholder="Valor Pago" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorObservacoes">Observações:</label>
-                <input type="text" v-model="currentLocacao.observacoes" class="form-control" id="inputValorObservacoes">
+                <input type="text" v-model="currentLocacao.observacoes" class="form-control is-invalid" id="inputValorObservacoes" placeholder="Observacoes" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputFuncionario">Funcionario:</label>
-                <input type="number" v-model="currentLocacao.funcionario" class="form-control" id="inputFuncionario">
+                <input type="number" v-model="currentLocacao.funcionario" class="form-control is-invalid" id="inputFuncionario" placeholder="Funcionario" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputTiposPagamento">Tipos Pagamento:</label>
-                <input type="number" v-model="currentLocacao.tipos_pagamento" class="form-control" id="inputTiposPagamento">
+                <input type="number" v-model="currentLocacao.tipos_pagamento" class="form-control is-invalid" id="inputTiposPagamento" placeholder="Tipos Pagamento" required>
             </div>
            
-            <div class="form-group">
-                <label for="selectLocacao">Reserva:</label>
-                <select v-model="locacao.reservas" class="form-control" id="selectLocacao" multiple>
+            <div class="mb-3">
+                <label for="selectReserva">Reserva:</label>
+                <select v-model="currentLocacao.reservas" class="form-control is-invalid" id="selectReserva" multiple required>
                     <option v-for="r in reservas" :key="r.id" v-bind:value="r">
                         {{ r.observacoes }}
                     </option>
@@ -77,26 +77,26 @@
 <script>
 
 
-import LocacaoDateService from '../../services/LocacaoDateService';
+import currentLocacaoDateService from '../../services/LocacaoDateService';
 import ReservaDataService from '../../services/ReservaDataService'
 
 export default {
     name: 'editLoacacao',
     data() {
         return {
-            currentLocacao: null,
+            currentcurrentLocacao: null,
             message: '',
             reservas: []
         }
     },
     methods: {
 
-        getLocacao(id) {
+        getcurrentLocacao(id) {
 
-            LocacaoDateServiceeService.get(id)
+            currentLocacaoDateServiceeService.get(id)
                 .then(response => {
                     console.log(response.data);
-                    this.currentLocacao = response.data;
+                    this.currentcurrentLocacao = response.data;
 
                 })
                 .catch(e => {
@@ -118,20 +118,20 @@ export default {
                 console.log(response);
             });
         },
-        updateLocacao() {
-            alert(this.currentLocacao.reservas);
-            LocacaoDateService.update(this.currentLocacao)
+        updatecurrentLocacao() {
+            alert(this.currentcurrentLocacao.reservas);
+            currentLocacaoDateService.update(this.currentcurrentLocacao)
                 .then(response => {
-                    console.log('LocacaoDateService.update');
+                    console.log('currentLocacaoDateService.update');
                     this.message = 'Locacão alterado com sucesso !';
                 })
                 .catch(e => {
                     console.log(e);
                 })
         },
-        deleteLocacao() {
+        deletecurrentLocacao() {
 
-            LocacaoDateService.delete(this.currentLocacao.id)
+            currentLocacaoDateService.delete(this.currentcurrentLocacao.id)
                 .then(response => {
                     console.log(response.data);
                     this.$router.push({ name: "locacoes-list" });
@@ -148,7 +148,7 @@ export default {
 
         this.message = '';
         this.listReserva();
-        this.getLocacao(this.$route.params.id);
+        this.getcurrentLocacao(this.$route.params.id);
     }
 }
 </script>

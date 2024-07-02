@@ -1,25 +1,27 @@
 x<template>
     <div id="tab_aut">
-     
-
         <div class="col-md-6">
             <h4>Listagem de Fotos</h4>
-            <table class="table table-striped" >
-                <tr>
+            <table class="table table-striped table-inverse table-responsive-sm table-danger">
+                <thead class="thead-inverse">
+                    <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Descricao</th>
                     <th scope="col">B64</th>
-                </tr>                     
-                <tbody>
-                    <tr v-for="(f, indice) in fotos" :key ="f.id" :class="{ active: indice == currentIndex }">
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr  v-for="(f, indice) in fotos" :key ="f.id" :class="{ active: indice == currentIndex }">
+              
                             <td>{{f.id}}</td>
                             <td>{{f.descricao}}</td>
                             <td>{{f.b64}}</td>
-                            <td><button v-on:click="setCurrentFoto(f, indice)" class="btn" type="button">Alterar</button></td>
-                            <td><button v-on:click="remFoto(f, indice)" class="btn" type="button">Remover</button></td>
-                    </tr>
-                </tbody>
+                            <td><b-button v-on:click="setCurrentFoto(f, indice)" class="btn" type="button">Alterar</b-button></td>
+                            <td><b-button v-on:click="remFoto(f, indice)" class="btn" type="button">Remover</b-button></td>
+                        </tr>
+                    </tbody>
             </table>
+            
      
         </div>
 

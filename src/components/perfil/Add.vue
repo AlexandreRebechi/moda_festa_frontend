@@ -1,34 +1,35 @@
 <template>
     <div class="submit-form">
         <div v-if="!submitted">
-            <div class="form-group">
+            <form class="was-validated">
+            <div class="mb-3">
                 <label for="inputID">ID:</label>
-                <input type="number" v-model="perfil.id" class="form-control" id="inputID" disabled>
+                <input type="number" v-model="perfil.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
             </div>
 
-            <div class="form-group">
-                <label for="inputDescricao">descricao</label>
-                <input type="text" v-model="perfil.descricao" class="form-control" id="inputDescricao">
+            <div class="mb-3">
+                <label for="inputDescricao">Descricao</label>
+                <input type="text" v-model="perfil.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="selectFuncinalidade">Funcinalidade:</label>
-                <select v-model="perfil.funcinalidades" class="form-control" id="selectFuncinalidade" multiple>
+                <select v-model="perfil.funcinalidades" class="form-control is-invalid" id="selectFuncinalidade" multiple required>
                     <option v-for="f in funcinalidades" :key="f.id" v-bind:value="f">
                         {{ f.descricao }}
                     </option>
                 </select>
 
             </div>
-
-            <button @click="savePerfil" class="btn btn-success">Salvar</button>
+        </form>
+            <b-button @click="savePerfil" class="btn btn-success">Salvar</b-button>
             <router-link to="/perfis" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
-            <button class="btn btn-success" @click="newPerfil">Novo</button>
+            <b-button class="btn btn-success" @click="newPerfil">Novo</b-button>
             <router-link to="/perfis" class="btn btn-success">Voltar</router-link>
         </div>
     </div>
@@ -87,9 +88,9 @@ export default {
 
                 console.log("Retorno do seviço FuncionalidadeDataService.list", response.status);
 
-                for (let f of response.data) {
+                for (let p of response.data) {
 
-                    this.funcinalidades.push(f);
+                    this.funcinalidades.push(p);
                 }
 
             }).catch(response => {

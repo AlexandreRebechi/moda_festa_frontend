@@ -4,8 +4,9 @@
 
         <div class="col-md-6">
             <h4>Listagem de Produtos</h4>
-            <table class="table table-striped" >
-                <tr>
+            <table class="table table-striped table-inverse table-responsive-sm table-danger">
+                <thead class="thead-inverse">
+                    <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Descricao</th>
                     <th scope="col">Observacoes</th>
@@ -13,20 +14,23 @@
                     <th scope="col">Valor Aluguel</th>
                     <th scope="col">Valor Venda</th>
                     <th scope="col">Tipo Produto</th>
-                </tr>                     
-                <tbody>
-                    <tr v-for="(p, indice) in produtos" :key ="p.id" :class="{ active: indice == currentIndex }">
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(p, indice) in produtos" :key ="p.id" :class="{ active: indice == currentIndex }">      
                             <td>{{p.id}}</td>
                             <td>{{p.descricao}}</td>
                             <td>{{p.observacoes}}</td>
                             <td>{{p.valor_custo}}</td>
                             <td>{{p.valor_aluguel}}</td>
                             <td>{{p.valor_venda}}</td>
-                            <td><button v-on:click="setCurrentProduto(p, indice)" class="btn" type="button">Alterar</button></td>
-                            <td><button v-on:click="remProduto(p, indice)" class="btn" type="button">Remover</button></td>
+                            <td>{{p.tipo_produto}}</td>
+                            <td><b-button v-on:click="setCurrentProduto(p, indice)" class="btn" type="button">Alterar</b-button></td>
+                            <td><b-button v-on:click="remProduto(p, indice)" class="btn" type="button">Remover</b-button></td>
                     </tr>
-                </tbody>
+                    </tbody>
             </table>
+          
      
         </div>
 

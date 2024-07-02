@@ -1,25 +1,25 @@
 <template>
     <div class="submit-form">
       <div v-if="!submitted">       
-
+        <form class="was-validated">
        
-        <div class="form-group">
+        <div class="mb-3">
             <label for="inputID">ID:</label>
-            <input type="text" v-model="tiposproduto.id" class="form-control" id="inputID">
+            <input type="text" v-model="tiposproduto.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
         </div>            
-        <div class="form-group">
+        <div class="mb-3">
                 <label for="inputNome">Nome:</label>
-                <input type="text" v-model="tiposproduto.nome" class="form-control" id="inputNome">
+                <input type="text" v-model="tiposproduto.nome" class="form-control is-invalid" id="inputNome" placeholder="Nome" required>
         </div>    
-  
-        <button @click="saveTiposProduto" class="btn btn-success">Salvar</button>
+    </form>
+        <b-button @click="saveTiposProduto" class="btn btn-success">Salvar</b-button>
         <router-link to="/tiposprodutos" class="btn btn-success">Voltar</router-link>                
 
       </div>
   
       <div v-else>
         <h4>Dados enviados com sucesso !</h4>
-        <button class="btn btn-success" @click="newTiposProduto">Novo</button>
+        <b-button class="btn btn-success" @click="newTiposProduto">Novo</b-button>
         <router-link to="/tiposprodutos" class="btn btn-success">Voltar</router-link>
       </div>
     </div>

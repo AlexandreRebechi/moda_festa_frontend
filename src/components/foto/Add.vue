@@ -1,36 +1,37 @@
 <template>
     <div class="submit-form">
       <div v-if="!submitted">       
+        <form class="was-validated">
 
-       
-        <div class="form-group">
+        <div class="md-3">
             <label for="inputID">ID:</label>
-            <input type="text" v-model="foto.id" class="form-control" id="inputID">
+            <input type="text" v-model="foto.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
         </div>            
-        <div class="form-group">
+        <div class="md-3">
                 <label for="inputDescricao">Descricao:</label>
-                <input type="text" v-model="foto.descricao" class="form-control" id="inputDescricao">
+                <input type="text" v-model="foto.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
         </div>    
 
-        <div class="form-group">
+        <div class="md-3">
                 <label for="inputB64">B64:</label>
-                <input type="text" v-model="foto.b64" class="form-control" id="inputB64">
+                <input type="text" v-model="foto.b64" class="form-control is-invalid"  id="inputB64" placeholder="B64" required>
         </div>
 
-        <div class="form-group">
+        <div class="md-3">
             <label for="inputProdutoID">Produto ID:</label>
-            <input type="text" v-model="foto.produto_id" class="form-control" id="inputProdutoID">
-        </div>      
+            <input type="text" v-model="foto.produto_id" class="form-control is-invalid" id="inputProdutoID" placeholder="Produto ID"  required>
+        </div>   
 
-  
-        <button @click="saveFoto" class="btn btn-success">Salvar</button>
+    </form>
+       
+        <b-button @click="saveFoto" class="btn btn-success">Salvar</b-button>
         <router-link to="/funcinalidades" class="btn btn-success">Voltar</router-link>                
 
       </div>
   
       <div v-else>
         <h4>Dados enviados com sucesso !</h4>
-        <button class="btn btn-success" @click="newFoto">Novo</button>
+        <b-button class="btn btn-success" @click="newFoto">Novo</b-button>
         <router-link to="/fotos" class="btn btn-success">Voltar</router-link>
       </div>
     </div>

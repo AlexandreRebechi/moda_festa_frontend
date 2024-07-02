@@ -4,8 +4,9 @@
 
         <div class="col-md-6">
             <h4>Listagem de Parcelamento</h4>
-            <table class="table table-striped" >
-                <tr>
+            <table class="table table-striped table-inverse table-responsive-sm table-danger">
+                <thead class="thead-inverse">
+                    <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Numero Parcela</th>
                     <th scope="col">Data de Previsão de Pagamento</th>
@@ -13,23 +14,26 @@
                     <th scope="col">Valor Total</th>
                     <th cope="col">Valor Pago</th> 
                     <th scope="col">Locacao ID</th>
-               
-
-                </tr>                     
-                <tbody>
-                    <tr v-for="(p, indice) in parcelamentos" :key ="p.id" :class="{ active: indice == currentIndex }">
+                    </tr>
+                    </thead>
+                    <tbody>
+                  
+                            <tr v-for="(p, indice) in parcelamentos" :key ="p.id" :class="{ active: indice == currentIndex }">
                             <td>{{p.id}}</td>
                             <td>{{p.numero_parcela}}</td>
                             <td>{{p.data_previsao_pagamento}}</td>
                             <td>{{p.data_pagamento}}</td>
                             <td>{{p.valor_total}}</td>
-                            <th>{{p.valor_pago}}</th>
+                            <th >{{p.valor_pago}}</th>
                             <td>{{p.id_locacao}}</td>
-                            <td><button v-on:click="setCurrentParcelamento(a, indice)" class="btn" type="button">Alterar</button></td>
-                            <td><button v-on:click="remParcelamento(a, indice)" class="btn" type="button">Remover</button></td>
-                    </tr>
-                </tbody>
+                            <td><b-button v-on:click="setCurrentParcelamento(a, indice)" class="btn" type="button">Alterar</b-button></td>
+                            <td><b-button v-on:click="remParcelamento(a, indice)" class="btn" type="button">Remover</b-button></td>
+                    
+                        </tr>
+                        
+                    </tbody>
             </table>
+           
      
         </div>
 

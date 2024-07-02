@@ -3,36 +3,45 @@
 
         <div v-if="currentAcompanhamento" class="edit-form">
             <h3>Acompanhamento</h3>
-            <form>
-                <div class="form-group">
-                <label for="inputID">ID:</label>
-                <input type="number" v-model="currentAcompanhamento.id" class="form-control" id="inputID" disabled>
-            </div>
-            <div class="form-group">
-                <label for="inputSequenciaPasso">Sequencia Passo:</label>
-                <input type="number" v-model="currentAcompanhamento.sequencia_passo" class="form-control" id="inputSequenciaPasso">
-            </div>
-            <div class="form-group">
-                <label for="inputData">Data:</label>
-                <input type="date" v-model="currentAcompanhamento.data" class="form-control" id="inputData">
-            </div>
-            <div class="form-group">
-                <label for="inputObservacoes">Observacoes:</label>
-                <input type="text" v-model="currentAcompanhamento.observacoes" class="form-control" id="inputObservacoes">
-            </div>
-            <div class="form-group">
-                <label for="inputLocacaoID">Locacao ID:</label>
-                <input type="number" v-model="currentAcompanhamento.locacao_id" class="form-control" id="inputLocacaoID" disabled>
-            </div>
+            <form class="was-validated">
+                <div class="mb-3">
+                    <label for="inputID">ID:</label>
+                    <input type="number" v-model="currentAcompanhamento.id" class="form-control is-invalid" id="inputID" placeholder="ID"
+                        disabled required>
+                </div>
+                <div class="mb-3">
+                    <label for="inputSequenciaPasso">Sequencia Passo:</label>
+                    <input type="number" v-model="currentAcompanhamento.sequencia_passo" class="form-control is-invalid" id="inputSequenciaPasso" placeholder="Sequencia Passo" required>
+                          
+                </div>
+                <div class="mb-3">
+                    <label for="inputData">Data:</label>
+                    <input type="date" v-model="currentAcompanhamento.data" class="form-control is-invalid" id="inputData" placeholder="Data" required>
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="inputObservacoes">Observacoes:</label>
+                    <input type="text" v-model="currentAcompanhamento.observacoes" class="form-control is-invalid" id="inputObservacoes" placeholder="Observacoes" required>
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="inputLocacaoID">Locacao ID:</label>
+                    <input type="number" v-model="currentAcompanhamento.locacao_id" class="form-control is-invalid" id="inputLocacaoID" placeholder="Locacao ID"
+                        disabled required>
+                      
+                </div>
 
-            <div class="form-group">
-                <label for="inputSitacaoID">Sitacao ID:</label>
-                <input type="number" v-model="currentAcompanhamento.sitacao_id" class="form-control" id="inputSitacaoID" disabled>
-            </div>
+                <div class="mb-3">
+                    <label for="inputSitacaoID">Sitacao ID:</label>
+                    <input type="number" v-model="currentAcompanhamento.sitacao_id" class="form-control is-invalid" id="inputSitacaoID" placeholder="Sitacao ID"
+                        disabled required>
+                       
+
+                </div>
             </form>
-            <button class="badge badge-success" @click="updateAcompanhamento">Salvar</button>
-            <button class="badge badge-danger mr-2" @click="deleteAcompanhamento">Delete</button>
-            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
+            <b-button class="badge badge-success" @click="updateAcompanhamento">Salvar</b-button>
+            <b-button class="badge badge-danger mr-2" @click="deleteAcompanhamento">Delete</b-button>
+            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
 
 
             <p>{{ message }}</p>

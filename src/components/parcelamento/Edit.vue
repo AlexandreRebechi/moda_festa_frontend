@@ -3,39 +3,39 @@
 
         <div v-if="currentParcelamento" class="edit-form">
             <h3>Parcelamento</h3>
-            <form>
-                <div class="form-group">
+            <form class="was-validated">
+            <div class="mb-3">
                 <label for="inputID">ID:</label>
-                <input type="number" v-model="parcelamento.id" class="form-control" id="inputID" disabled>
+                <input type="number" v-model="currentParcelamento.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputNumeroParcela">Numero Parcela:</label>
-                <input type="number" v-model="parcelamento.numero_parcela" class="form-control" id="inputNumeroParcela">
+                <input type="number" v-model="currentParcelamento.numero_parcela" class="form-control is-invalid" id="inputNumeroParcela" placeholder="Numero Parcela" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDataPrevisaoPagamento">Data de Previsão de Pagamento:</label>
-                <input type="date" v-model="parcelamento.data_previsao_pagamento" class="form-control" id="inputDataPrevisaoPagamento">
+                <input type="date" v-model="currentParcelamento.data_previsao_pagamento" class="form-control is-invalid" id="inputDataPrevisaoPagamento" placeholder="Data de Previsão de Pagamento" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputDataPagamento">Data Pagamento:</label>
-                <input type="date" v-model="parcelamento.data_pagamento" class="form-control" id="inputDataPagamento">
+                <input type="date" v-model="currentParcelamento.data_pagamento" class="form-control is-invalid" id="inputDataPagamento" placeholder="Data Pagamento" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorTotal">Valor Total:</label>
-                <input type="number" v-model="parcelamento.valor_total" class="form-control" id="inputValorTotal">
+                <input type="number" v-model="currentParcelamento.valor_total" class="form-control is-invalid" id="inputValorTotal" placeholder="Valor Total" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputValorPago">Valor Pago:</label>
-                <input type="number" v-model="parcelamento.valor_pago" class="form-control" id="inputValorPago">
+                <input type="number" v-model="currentParcelamento.valor_pago" class="form-control is-invalid" id="inputValorPago" placeholder="Valor Pago" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="inputLocacaoID">Locacao ID:</label>
-                <input type="number" v-model="acompanhamento.locacao_id" class="form-control" id="inputLocacaoID" disabled>
+                <input type="number" v-model="currentParcelamento.locacao_id" class="form-control is-invalid" id="inputLocacaoID" placeholder="Locacao ID" required>
             </div>
-            </form>
-            <button class="badge badge-success" @click="updateParcelamento">Salvar</button>
-            <button class="badge badge-danger mr-2" @click="deleteParcelamento">Delete</button>
-            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
+        </form>
+            <b-button class="badge badge-success" @click="updateParcelamento">Salvar</b-button>
+            <b-button class="badge badge-danger mr-2" @click="deleteParcelamento">Delete</b-button>
+            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
 
 
             <p>{{ message }}</p>

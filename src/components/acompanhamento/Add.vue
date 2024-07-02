@@ -1,44 +1,55 @@
 <template>
     <div class="submit-form">
         <div v-if="!submitted">
+            <form class="was-validated">
+                <div class="mb-3">
+                    <label for="inputID">ID:</label>
+                    <input type="number" v-model="acompanhamento.id" class="form-control is-invalid" id="inputID" placeholder="ID"
+                        disabled required>
+                </div>
+                <div class="mb-3">
+                    <label for="inputSequenciaPasso">Sequencia Passo:</label>
+                    <input type="number" v-model="acompanhamento.sequencia_passo" class="form-control is-invalid" id="inputSequenciaPasso" placeholder="Sequencia Passo" required>
+                          
+                </div>
+                <div class="mb-3">
+                    <label for="inputData">Data:</label>
+                    <input type="date" v-model="acompanhamento.data" class="form-control is-invalid" id="inputData" placeholder="Data" required>
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="inputObservacoes">Observacoes:</label>
+                    <input type="text" v-model="acompanhamento.observacoes" class="form-control is-invalid" id="inputObservacoes" placeholder="Observacoes" required>
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="inputLocacaoID">Locacao ID:</label>
+                    <input type="number" v-model="acompanhamento.locacao_id" class="form-control is-invalid" id="inputLocacaoID" placeholder="Locacao ID"
+                        disabled required>
+                      
+                </div>
 
-            <div class="form-group">
-                <label for="inputID">ID:</label>
-                <input type="number" v-model="acompanhamento.id" class="form-control" id="inputID" disabled>
-            </div>
-            <div class="form-group">
-                <label for="inputSequenciaPasso">Sequencia Passo:</label>
-                <input type="number" v-model="acompanhamento.sequencia_passo" class="form-control" id="inputSequenciaPasso">
-            </div>
-            <div class="form-group">
-                <label for="inputData">Data:</label>
-                <input type="date" v-model="acompanhamento.data" class="form-control" id="inputData">
-            </div>
-            <div class="form-group">
-                <label for="inputObservacoes">Observacoes:</label>
-                <input type="text" v-model="acompanhamento.observacoes" class="form-control" id="inputObservacoes">
-            </div>
-            <div class="form-group">
-                <label for="inputLocacaoID">Locacao ID:</label>
-                <input type="number" v-model="acompanhamento.locacao_id" class="form-control" id="inputLocacaoID" disabled>
-            </div>
+                <div class="mb-3">
+                    <label for="inputSitacaoID">Sitacao ID:</label>
+                    <input type="number" v-model="acompanhamento.sitacao_id" class="form-control is-invalid" id="inputSitacaoID"  placeholder="Sitacao ID"
+                        disabled required>
+                       
 
-            <div class="form-group">
-                <label for="inputSitacaoID">Sitacao ID:</label>
-                <input type="number" v-model="acompanhamento.sitacao_id" class="form-control" id="inputSitacaoID" disabled>
-            </div>
-            
+                </div>
 
-            <button @click="saveAcompanhamento" class="btn btn-success">Salvar</button>
-            <router-link to="/acompanhamentos" class="btn btn-success">Voltar</router-link>
+                
+                <b-button @click="saveAcompanhamento" class="btn btn-success">Salvar</b-button>
+                <router-link to="/acompanhamentos" class="btn btn-success">Voltar</router-link>
 
+            </form>
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
-            <button class="btn btn-success" @click="newAcompanhamento">Novo</button>
+            <b-button class="btn btn-success" @click="newAcompanhamento">Novo</b-button>
             <router-link to="/acompanhamentos" class="btn btn-success">Voltar</router-link>
         </div>
+
     </div>
 </template>
 
@@ -50,14 +61,15 @@ export default {
     name: "addacompanhamento",
     data() {
         return {
-            acompanhamento: {indice: '',
-                                id: 0,
-                                sequencia_passo: '',
-                                data: '',
-                                observacoes: '',
-                                locacao_id: '',
-                                sitacao_id: '',
-                               
+            acompanhamento: {
+                indice: '',
+                id: 0,
+                sequencia_passo: '',
+                data: '',
+                observacoes: '',
+                locacao_id: '',
+                sitacao_id: '',
+
             },
             submitted: false,
 
@@ -72,7 +84,7 @@ export default {
             if (agd.username.trim().length > 0 && agd.password.trim().length > 0) {
                 AcompanhamentoDataService.create(agd)
                     .then(response => {
-                      
+
                         this.submitted = true;
                     })
                     .catch(e => {
@@ -90,11 +102,11 @@ export default {
             this.submitted = false;
             this.acompanhamento = {};
         },
-    
+
 
     },
     mounted() {
-      
+
 
     }
 

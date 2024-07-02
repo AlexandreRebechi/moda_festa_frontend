@@ -3,24 +3,30 @@
 
         <div v-if="currentFoto" class="edit-form">
             <h3>Foto</h3>
-            <form>
-                <div class="form-group">
-                    <label for="inputId">ID:</label>
-                    <input type="number" v-model="currentFoto.id" class="form-control" id="inputId" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="inputDescricao">Descricao:</label>
-                    <input type="text" v-model="currentFoto.descricao" class="form-control" id="inputDescricao">
-                </div>
-                <div class="form-group">
-                    <label for="inputB64">B64:</label>
-                    <input type="text" v-model="currentFoto.b64" class="form-control" id="inputB64">
-                </div>
+            <form class="was-validated">
+                <div class="md-3">
+            <label for="inputID">ID:</label>
+            <input type="text" v-model="currentFoto.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
+        </div>            
+        <div class="md-3">
+                <label for="inputDescricao">Descricao:</label>
+                <input type="text" v-model="currentFoto.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
+        </div>    
+
+        <div class="md-3">
+                <label for="inputB64">B64:</label>
+                <input type="text" v-model="currentFoto.b64" class="form-control is-invalid"  id="inputB64" placeholder="B64" required>
+        </div>
+
+        <div class="md-3">
+            <label for="inputProdutoID">Produto ID:</label>
+            <input type="text" v-model="currentFoto.produto_id" class="form-control is-invalid" id="inputProdutoID" placeholder="Produto ID"  required>
+        </div>  
 
             </form>
-            <button class="badge badge-success" @click="updateFoto">Salvar</button>
-            <button class="badge badge-danger mr-2" @click="deleteFoto">Delete</button>
-            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
+            <b-button class="badge badge-success" @click="updateFoto">Salvar</b-button>
+            <b-button class="badge badge-danger mr-2" @click="deleteFoto">Delete</b-button>
+            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
 
 
             <p>{{ message }}</p>

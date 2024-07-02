@@ -3,29 +3,30 @@
 
         <div v-if="currentPerfil" class="edit-form">
             <h3>Perfil</h3>
-            <form>
-                <div class="form-group">
-                    <label for="inputID">ID:</label>
-                    <input type="text" v-model="currentPerfil.id" class="form-control" id="inputNickname">
-                </div>
-                <div class="form-group">
-                    <label for="inputDescricao">descricao</label>
-                    <input type="text" v-model="currentPerfil.descricao" class="form-control" id="inputDescricao">
-                </div>
+            <form class="was-validated">
+                <div class="mb-3">
+                <label for="inputID">ID:</label>
+                <input type="number" v-model="currentPerfil.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
+            </div>
 
-                <div class="form-group">
-                    <label for="selectFuncinalidade">Funcinalidade:</label>
-                    <select v-model="currentPerfil.funcinalidades" class="form-control" id="selectFuncinalidade" multiple>
-                        <option v-for="f in funcinalidades" :key="f.id" v-bind:value="f">
-                            {{ f.descricao }}
-                        </option>
-                    </select>
+            <div class="mb-3">
+                <label for="inputDescricao">Descricao</label>
+                <input type="text" v-model="currentPerfil.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
+            </div>
 
-                </div>
+            <div class="mb-3">
+                <label for="selectFuncinalidade">Funcinalidade:</label>
+                <select v-model="currentPerfil.funcinalidades" class="form-control is-invalid" id="selectFuncinalidade" multiple required>
+                    <option v-for="f in funcinalidades" :key="f.id" v-bind:value="f">
+                        {{ f.descricao }}
+                    </option>
+                </select>
+
+            </div>
             </form>
-            <button class="badge badge-success" @click="updatePerfil">Salvar</button>
-            <button class="badge badge-danger mr-2" @click="deletePerfil">Delete</button>
-            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
+            <b-button class="badge badge-success" @click="updatePerfil">Salvar</b-button>
+            <b-button class="badge badge-danger mr-2" @click="deletePerfil">Delete</b-button>
+            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
 
 
             <p>{{ message }}</p>
