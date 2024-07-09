@@ -55,7 +55,6 @@
 <script>
 
 
-import FuncionalidadeDataService from '../../services/FuncionalidadeDataService';
 export default {
     name: 'listFuncionalidades',
     data() {
@@ -69,7 +68,7 @@ export default {
         listarFuncionalidades() {
 
             FuncionalidadeDataService.list().then(response => {
-
+                console.log('oi')
                 console.log("Retorno do seviço authenticateFuncionalidade", response.status);
 
                 this.funcinalidades = response.data;

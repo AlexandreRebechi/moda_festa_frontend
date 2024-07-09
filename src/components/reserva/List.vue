@@ -31,9 +31,9 @@
                         <td>{{ r.cliente }}</td>
                         <td>{{ r.funcionario }}</td>
                         <td>{{ r.status_reserva }}</td>
-                        <td><b-button v-on:click="setCurrentReserva(r, indice)" class="btn"
-                                type="button">Alterar</b-button></td>
-                        <td><b-button v-on:click="remReserva(r, indice)" class="btn" type="button">Remover</b-button>
+                        <td><button v-on:click="setCurrentReserva(r, indice)" class="btn"
+                                type="button">Alterar</button></td>
+                        <td><button v-on:click="remReserva(r, indice)" class="btn" type="button">Remover</button>
                         </td>
                     </tr>
 

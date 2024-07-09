@@ -12,7 +12,7 @@ import novoFuncionario from '@/components/funcionario/Add'
 import listperfil from '@/components/perfil/List'
 import editPerfil from '@/components/perfil/Edit'
 import novoPerfil from '@/components/perfil/Add'
-import listFuncionalidades from '@/components/funcionalidade/List'
+import listPerfil from '@/components/funcionalidade/List'
 import editFuncionalidade from '@/components/funcionalidade/Edit'
 import novoFuncionalidade from '@/components/funcionalidade/Add'
 import listReservas from '@/components/reserva/List'
@@ -105,7 +105,7 @@ const router = new Router({
     {
       path: '/funcinalidades',
       name: 'funcionalidades-list',
-      component: listFuncionalidades
+      component: listPerfil
     },
     {
       path: '/funcinalidade/:id',

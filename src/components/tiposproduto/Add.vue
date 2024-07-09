@@ -12,14 +12,14 @@
                 <input type="text" v-model="tiposproduto.nome" class="form-control is-invalid" id="inputNome" placeholder="Nome" required>
         </div>    
     </form>
-        <b-button @click="saveTiposProduto" class="btn btn-success">Salvar</b-button>
+        <button @click="saveTiposProduto" class="btn btn-success">Salvar</button>
         <router-link to="/tiposprodutos" class="btn btn-success">Voltar</router-link>                
 
       </div>
   
       <div v-else>
         <h4>Dados enviados com sucesso !</h4>
-        <b-button class="btn btn-success" @click="newTiposProduto">Novo</b-button>
+        <button class="btn btn-success" @click="newTiposProduto">Novo</button>
         <router-link to="/tiposprodutos" class="btn btn-success">Voltar</router-link>
       </div>
     </div>

@@ -84,7 +84,7 @@ export default {
         },
         updatePerfil() {
             alert(this.currentPerfil.funcinalidades);
-            FuncionalidadeDataService.update(this.currentPerfil)
+            PerfilDataService.update(this.currentPerfil)
                 .then(response => {
                     console.log('PerfilDataService.update');
                     this.message = 'Perfil alterado com sucesso !';

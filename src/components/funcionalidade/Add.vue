@@ -38,7 +38,6 @@ export default {
         return {
             funcionalidade: {
                 indice: '',
-
                 id: '',
                 descricao: ''
             },

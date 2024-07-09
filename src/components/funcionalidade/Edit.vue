@@ -60,7 +60,7 @@
                 })
             },
             updateFuncionalidade(){
-
+                alert(this.currentFuncionalidade)
                 FuncionalidadeDataService.update(this.currentFuncionalidade)
                 .then(response => {
                     console.log('FuncionalidadeDataService.update');

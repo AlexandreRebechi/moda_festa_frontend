@@ -43,10 +43,25 @@
                 <input type="number" v-model="currentLocacao.funcionario" class="form-control is-invalid" id="inputFuncionario" placeholder="Funcionario" required>
             </div>
             <div class="mb-3">
-                <label for="inputTiposPagamento">Tipos Pagamento:</label>
-                <input type="number" v-model="currentLocacao.tipos_pagamento" class="form-control is-invalid" id="inputTiposPagamento" placeholder="Tipos Pagamento" required>
-            </div>
-           
+                    <label for="selectFuncionario">Funcionario:</label>
+                    <select v-model="locacao.funcionario" class="form-control is-invalid" id="selectFuncionario"
+                        multiple>
+                        <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
+                            {{ f.nome }}
+                        </option>
+                    </select>
+
+                </div>
+            <div class="mb-3">
+                    <label for="selectTiposPagamento">Tipos Pagamento:</label>
+                    <select v-model="locacao.tipos_pagamento" class="form-control is-invalid" id="selectTiposPagamento"
+                        multiple>
+                            <option value="NA_RETIRADA">NA_RETIRADA</option>
+                            <option value="ENTREGA_DEVOLUCAO">ENTREGA_DEVOLUCAO</option>
+                            <option value="PARCELADO">PARCELADO</option>
+                    </select>
+
+                </div>
             <div class="mb-3">
                 <label for="selectReserva">Reserva:</label>
                 <select v-model="currentLocacao.reservas" class="form-control is-invalid" id="selectReserva" multiple required>
@@ -118,6 +133,22 @@ export default {
                 console.log(response);
             });
         },
+        listFuncionario() {
+            FuncionarioDataService.list().then(response => {
+
+                console.log("Retorno do seviço FuncionarioDataService.list", response.status);
+
+                for (let f of response.data) {
+
+                    this.funcionario.push(f);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço ProdutoDataService.list');
+                console.log(response);
+            });
+        },
         updatecurrentLocacao() {
             alert(this.currentcurrentLocacao.reservas);
             currentLocacaoDateService.update(this.currentcurrentLocacao)
@@ -149,6 +180,7 @@ export default {
         this.message = '';
         this.listReserva();
         this.getcurrentLocacao(this.$route.params.id);
+        this.listFuncionario();
     }
 }
 </script>

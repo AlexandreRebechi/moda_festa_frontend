@@ -37,14 +37,26 @@
                 <input type="text" v-model="locacao.observacoes" class="form-control is-invalid" id="inputValorObservacoes" placeholder="Observacoes" required>
             </div>
             <div class="mb-3">
-                <label for="inputFuncionario">Funcionario:</label>
-                <input type="number" v-model="locacao.funcionario" class="form-control is-invalid" id="inputFuncionario" placeholder="Funcionario" required>
-            </div>
+                    <label for="selectFuncionario">Funcionario:</label>
+                    <select v-model="locacao.funcionario" class="form-control is-invalid" id="selectFuncionario"
+                        multiple>
+                        <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
+                            {{ f.nome }}
+                        </option>
+                    </select>
+
+                </div>
+         
             <div class="mb-3">
-                <label for="inputTiposPagamento">Tipos Pagamento:</label>
-                <input type="number" v-model="locacao.tipos_pagamento" class="form-control is-invalid" id="inputTiposPagamento" placeholder="Tipos Pagamento" required>
-            </div>
-           
+                    <label for="selectTiposPagamento">Tipos Pagamento:</label>
+                    <select v-model="locacao.tipos_pagamento" class="form-control is-invalid" id="selectTiposPagamento"
+                        multiple>
+                            <option value="NA_RETIRADA">NA_RETIRADA</option>
+                            <option value="ENTREGA_DEVOLUCAO">ENTREGA_DEVOLUCAO</option>
+                            <option value="PARCELADO">PARCELADO</option>
+                    </select>
+
+                </div>
             <div class="mb-3">
                 <label for="selectReserva">Reserva:</label>
                 <select v-model="locacao.reservas" class="form-control is-invalid" id="selectReserva" multiple required>
@@ -70,6 +82,7 @@
 
 <script>
 
+import FuncionarioDataService from '../../services/FuncionarioDataService';
 import ReservaDataService from '../../services/ReservaDataService';
 
 
@@ -88,12 +101,13 @@ export default {
                     valor_total: 0,
                     valor_pago: 0,
                     observacoes: '',
-                    funcionario: '',
-                    tipos_pagamento: '',
+                    funcionario: [],
+                    tipos_pagamento: [],
                     reservas: []
             },
             submitted: false,
-            reservas: []
+            reservas: [],
+            funcionario: []
         }
     },
     methods: {
@@ -124,6 +138,22 @@ export default {
             this.submitted = false;
             this.locacao = {};
         },
+        listFuncionario() {
+            FuncionarioDataService.list().then(response => {
+
+                console.log("Retorno do seviço FuncionarioDataService.list", response.status);
+
+                for (let f of response.data) {
+
+                    this.funcionario.push(f);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço ProdutoDataService.list');
+                console.log(response);
+            });
+        },
         listReservas() {
 
             ReservaDataService.list().then(response => {
@@ -146,7 +176,7 @@ export default {
     },
     mounted() {
         this.listReservas();
-
+        this.listFuncionario();
     }
 
 }

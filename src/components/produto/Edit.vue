@@ -31,9 +31,15 @@
                 <input type="number" v-model="currentProduto.valor_venda" class="form-control is-invalid" id="inputValorVenda" placeholder="Valor Venda" required>
             </div>
             <div class="mb-3">
-                <label for="inputTiposProduto">Tipos Produto:</label>
-                <input type="number" v-model="currentProduto.tipo_produto" class="form-control is-invalid" id="inputTiposProduto" placeholder="Tipos Produto" required>
-            </div>
+                    <label for="selectTiposProduto">Tipos Produto:</label>
+                    <select v-model="currentProduto.tipo_produto" class="form-control is-invalid" id="selectTiposProduto"
+                        multiple>
+                        <option v-for="tp in tipo_produto" :key="tp.tipo_produto" v-bind:value="tp">
+                            {{ tp.nome }}
+                        </option>
+                    </select>
+
+                </div>
             </form>
             <b-button class="badge badge-success" @click="updateProduto">Salvar</b-button>
             <b-button class="badge badge-danger mr-2" @click="deleteProduto">Delete</b-button>
@@ -54,6 +60,7 @@
 <script>
 
 import ProdutoDataService from '../../services/ProdutoDataService';
+import TiposProdutoDataService from '../../services/TiposProdutoDataService';
 
 
 export default {
@@ -90,6 +97,22 @@ export default {
                     console.log(e);
                 })
         },
+        listTipoProtudo() {
+            TiposProdutoDataService.list().then(response => {
+
+                console.log("Retorno do seviço TiposProdutoDataService.list", response.status);
+
+                for (let tp of response.data) {
+
+                    this.cliente.push(tp);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço ProdutoDataService.list');
+                console.log(response);
+            });
+        },
         deleteProduto() {
 
             ProdutoDataService.delete(this.currentProduto.id)
@@ -109,6 +132,7 @@ export default {
 
         this.message = '';
         this.getProduto(this.$route.params.id);
+        this.TiposProdutoDataService();
     }
 }
 </script>
