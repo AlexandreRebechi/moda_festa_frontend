@@ -36,7 +36,7 @@
             <router-link class="dropdown-item" to="/perfis" v-show="showMenu() && statusShowMenu()">Perfil</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="dropdown-item" to="/funcionalidades"
+            <router-link class="dropdown-item" to="/funcinalidades"
               v-show="showMenu() && statusShowMenu()">Funcionalidade</router-link>
           </li>
           <li class="nav-item">
@@ -62,7 +62,7 @@
               v-show="showMenu() && statusShowMenu()">Acompanhamento</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="dropdown-item" to="/sitacoes"
+            <router-link class="dropdown-item" to="/situacoes"
               v-show="showMenu() && statusShowMenu()">Sitacao</router-link>
           </li>
           <li class="nav-item">
@@ -80,12 +80,12 @@
       </li>
       </ul>
     </template>
-      <ui v-show="showMenu()">
+      <ul v-show="showMenu()">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-      </ui>
+      </ul>
 
   </div>
   </nav>
@@ -158,8 +158,7 @@ export default {
 
   },
   mounted() {
-    this.listarCliente();
-    this.listarFuncinario();
+ 
   }
 
 }

@@ -5,35 +5,34 @@
        <form class="was-validated">
         <div class="mb-3">
             <label for="inputID">ID:</label>
-            <input type="text" v-model="sitacao.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
+            <input type="text" v-model="situacao.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
         </div>            
         <div class="mb-3">
                 <label for="inputDescricao">Descricao:</label>
-                <input type="text" v-model="sitacao.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
+                <input type="text" v-model="situacao.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
         </div>    
     </form>
-        <b-button @click="saveSitacao" class="btn btn-success">Salvar</b-button>
-        <router-link to="/sitacoes" class="btn btn-success">Voltar</router-link>                
+        <button @click="saveSituacao" class="btn btn-success">Salvar</button>
+        <router-link to="/situacoes" class="btn btn-success">Voltar</router-link>                
 
       </div>
   
       <div v-else>
         <h4>Dados enviados com sucesso !</h4>
-        <b-button class="btn btn-success" @click="newSitacao">Novo</b-button>
-        <router-link to="/sitacoes" class="btn btn-success">Voltar</router-link>
+        <button class="btn btn-success" @click="newSituacao">Novo</button>
+        <router-link to="/situacoes" class="btn btn-success">Voltar</router-link>
       </div>
     </div>
   </template>
 
 <script>
 
-import SitacaoDataService from '../../services/SitacaoDataService';
-
+import SituacaoDataService from '../../services/SituacaoDataService';
     export default {
-        name: "addSitacao",
+        name: "addsituacao",
         data(){
             return {
-                sitacao: {indice: '', 
+                situacao: {indice: '', 
                                   
                                     id: '',
                                     descricao: ''},
@@ -42,13 +41,13 @@ import SitacaoDataService from '../../services/SitacaoDataService';
         },
         methods: {
 
-            saveSitacao(){
+            saveSituacao(){
 
-                var st = jQuery.extend({}, this.sitacao);//clona o this.sitacao e armazena na variavel sitacao. dessa forma alteracoes em this.novo_sitacao nao irao refletir em sitacao.
+                var st = jQuery.extend({}, this.sitacao);//clona o this.situacao e armazena na variavel sitacao. dessa forma alteracoes em this.novo_sitacao nao irao refletir em sitacao.
                 delete st.id
                 if (st.id.trim().length > 0 && st.descricao.trim().length > 0) {
                 
-                    SitacaoDataService.create(st)
+                    SituacaoDataService.create(st)
                     .then(response => {
                         
                         this.submitted = true;
@@ -63,10 +62,10 @@ import SitacaoDataService from '../../services/SitacaoDataService';
                 }
 
             },
-            newSitacao(){
+            newSituacao(){
 
                 this.submitted = false;
-                this.sitacao = {};
+                this.situacao = {};
             },
             
 

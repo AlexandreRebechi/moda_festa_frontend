@@ -122,15 +122,15 @@
         </div>
 
       </form>
-      <b-button @click="savecliente" class="btn btn-success">Salvar</b-button>
-      <router-link to="/pessoas" class="btn btn-success">Voltar</router-link>
+      <button @click="savecliente" class="btn btn-success">Salvar</button>
+      <router-link to="/clientes" class="btn btn-success">Voltar</router-link>
 
     </div>
 
     <div v-else>
       <h4>Dados enviados com sucesso !</h4>
-      <b-button class="btn btn-success" @click="newcliente">Novo</b-button>
-      <router-link to="/pessoas" class="btn btn-success">Voltar</router-link>
+      <button class="btn btn-success" @click="newcliente">Novo</button>
+      <router-link to="/clientes" class="btn btn-success">Voltar</router-link>
     </div>
   </div>
 

@@ -51,9 +51,9 @@
                         <td>{{ p.cnpj }}</td>
                         <td>{{ p.ie }}</td>
                         <td>{{ p.tipo }}</td>
-                        <td><b-button v-on:click="setCurrentCliente(p, indice)" class="btn"
-                                type="button">Alterar</b-button></td>
-                        <td><b-button v-on:click="remCliente(p, indice)" class="btn" type="button">Remover</b-button>
+                        <td><button v-on:click="setCurrentCliente(p, indice)" class="btn"
+                                type="button">Alterar</button></td>
+                        <td><button v-on:click="remCliente(p, indice)" class="btn" type="button">Remover</button>
                         </td>
                     </tr>
                 </tbody>
@@ -92,7 +92,7 @@ import ClienteDataService from '../../services/ClienteDataService';
 
 
 export default {
-    name: 'listClientes',
+    name: 'listclientes',
     data() {
         return {
             pessoas: [],

@@ -25,23 +25,29 @@
                     
                 </div>
                 <div class="mb-3">
-                    <label for="inputLocacaoID">Locacao ID:</label>
-                    <input type="number" v-model="currentAcompanhamento.locacao_id" class="form-control is-invalid" id="inputLocacaoID" placeholder="Locacao ID"
-                        disabled required>
-                      
-                </div>
+                    <label for="selectLocacaoID">Locacao ID:</label>
+                    <select v-model="acompanhamento.locacao_id" class="form-control is-invalid" id="selectLocacaoID"
+                        multiple>
+                        <option v-for="l in locacao_id" :key="l.id" v-bind:value="l">
+                            {{ l.observacoes }}
+                        </option>
+                    </select>
 
+                </div>
                 <div class="mb-3">
-                    <label for="inputSitacaoID">Sitacao ID:</label>
-                    <input type="number" v-model="currentAcompanhamento.sitacao_id" class="form-control is-invalid" id="inputSitacaoID" placeholder="Sitacao ID"
-                        disabled required>
-                       
+                    <label for="selectLocacaoID">Situacao ID:</label>
+                    <select v-model="acompanhamento.situacao_id" class="form-control is-invalid" id="selectLocacaoID"
+                        multiple>
+                        <option v-for="s in locacao_id" :key="s.id" v-bind:value="s">
+                            {{ s.descricao }}
+                        </option>
+                    </select>
 
                 </div>
             </form>
-            <b-button class="badge badge-success" @click="updateAcompanhamento">Salvar</b-button>
-            <b-button class="badge badge-danger mr-2" @click="deleteAcompanhamento">Delete</b-button>
-            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
+            <button class="badge badge-success" @click="updateAcompanhamento">Salvar</button>
+            <button class="badge badge-danger mr-2" @click="deleteAcompanhamento">Delete</button>
+            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
 
 
             <p>{{ message }}</p>
@@ -61,12 +67,13 @@ import AcompanhamentoDataService from '../../services/AcompanhamentoDataService'
 
 
 export default {
-    name: 'editAcompanhamento',
+    name: 'editacompanhamento',
     data() {
         return {
             currentAcompanhamento: null,
             message: '',
-            
+            locacao_id: [],
+            situacao_id: []
         }
     },
     methods: {
@@ -94,6 +101,39 @@ export default {
                     console.log(e);
                 })
         },
+        listLocacao() {
+            LocacaoDateService.list().then(response => {
+
+                console.log("Retorno do seviço LocacaoDateService.list", response.status);
+
+                for (let l of response.data) {
+
+                    this.locacao_id.push(l);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço LocacaoDateService.list');
+                console.log(response);
+            });
+
+        },
+        listSituacao() {
+            SituacaoDataService.list().then(response => {
+
+                console.log("Retorno do seviço SituacaoDataService.list", response.status);
+
+                for (let s of response.data) {
+
+                    this.situacao_id.push(s);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço SituacaoDataService.list');
+                console.log(response);
+            });
+        },
         deleteAcompanhamento() {
 
             AcompanhamentoDataService.delete(this.currentAcompanhamento.id)
@@ -113,6 +153,8 @@ export default {
 
         this.message = '';
         this.getAcompanhamento(this.$route.params.id);
+        this.listLocacao();
+        this.listSituacao();
     }
 }
 </script>

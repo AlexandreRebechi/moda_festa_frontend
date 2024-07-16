@@ -101,9 +101,9 @@
 
 
       </form>
-      <b-button class="badge badge-success" @click="updateCliente">Salvar</b-button>
-      <b-button class="badge badge-danger mr-2" @click="deleteCliente">Delete</b-button>
-      <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
+      <button class="badge badge-success" @click="updateCliente">Salvar</button>
+      <button class="badge badge-danger mr-2" @click="deleteCliente">Delete</button>
+      <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
 
 
       <p>{{ message }}</p>
@@ -123,7 +123,7 @@ import ClienteDataService from '../../services/ClienteDataService';
 
 
 export default {
-  name: 'editCliente',
+  name: 'editcliente',
   data() {
     return {
       currentCliente: null,

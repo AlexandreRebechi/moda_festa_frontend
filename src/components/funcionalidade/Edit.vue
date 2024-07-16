@@ -16,9 +16,9 @@
                 </div>
                            
             </form>
-            <b-button class="badge badge-success" @click="updateFuncionalidade">Salvar</b-button>
-            <b-button class="badge badge-danger mr-2" @click="deleteFuncionalidade">Delete</b-button>
-            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
+            <button class="badge badge-success" @click="updateFuncionalidade">Salvar</button>
+            <button class="badge badge-danger mr-2" @click="deleteFuncionalidade">Delete</button>
+            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
 
             
             <p>{{ message }}</p>
@@ -38,7 +38,7 @@
 
  
      export default{
-      name:'editFuncionalidades',
+      name:'editfuncionalidade',
       data() {
              return {                
                  currentFuncionalidade: null,

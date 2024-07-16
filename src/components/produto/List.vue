@@ -25,8 +25,8 @@
                             <td>{{p.valor_aluguel}}</td>
                             <td>{{p.valor_venda}}</td>
                             <td>{{p.tipo_produto}}</td>
-                            <td><b-button v-on:click="setCurrentProduto(p, indice)" class="btn" type="button">Alterar</b-button></td>
-                            <td><b-button v-on:click="remProduto(p, indice)" class="btn" type="button">Remover</b-button></td>
+                            <td><button v-on:click="setCurrentProduto(p, indice)" class="btn" type="button">Alterar</button></td>
+                            <td><button v-on:click="remProduto(p, indice)" class="btn" type="button">Remover</button></td>
                     </tr>
                     </tbody>
             </table>

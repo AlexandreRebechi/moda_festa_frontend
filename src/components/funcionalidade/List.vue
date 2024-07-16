@@ -36,14 +36,14 @@
                     <label><strong>Descricao:</strong></label> {{ currentFuncionalidade.descricao }}
                 </div>
 
-                <a class="badge badge-warning" :href="'/funcionalidade/' + currentFuncionalidade.id">
+                <a class="badge badge-warning" :href="'/funcinalidade/' + currentFuncionalidade.id">
                     Edit
                 </a>
             </div>
             <div v-else>
                 <br />
                 <p>Please click on a Player...</p>
-                <router-link to="/addfuncionalidade" class="badge badge-success">Novo</router-link>
+                <router-link to="/addfuncinalidade" class="badge badge-success">Novo</router-link>
 
             </div>
         </div>
@@ -54,9 +54,9 @@
 
 <script>
 
-
+import FuncionalidadeDataService from '../../services/FuncionalidadeDataService';
 export default {
-    name: 'listFuncionalidades',
+    name: 'listfuncionalidades',
     data() {
         return {
             funcinalidades: [],

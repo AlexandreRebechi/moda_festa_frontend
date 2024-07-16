@@ -24,9 +24,9 @@
         </div>  
 
             </form>
-            <b-button class="badge badge-success" @click="updateFoto">Salvar</b-button>
-            <b-button class="badge badge-danger mr-2" @click="deleteFoto">Delete</b-button>
-            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
+            <button class="badge badge-success" @click="updateFoto">Salvar</button>
+            <button class="badge badge-danger mr-2" @click="deleteFoto">Delete</button>
+            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
 
 
             <p>{{ message }}</p>
@@ -46,7 +46,7 @@ import FotoDataService from '../../services/FotoDataService';
 
 
 export default {
-    name: 'editFotos',
+    name: 'editfotos',
     data() {
         return {
             currentFoto: null,

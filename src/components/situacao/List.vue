@@ -3,7 +3,7 @@ x<template>
 
 
         <div class="col-md-6">
-            <h4>Listagem de Sitacao</h4>
+            <h4>Listagem de Situacao</h4>
             <table class="table table-striped table-inverse table-responsive-sm table-danger text-align">
                 <thead class="thead-inverse">
                     <tr>
@@ -12,12 +12,12 @@ x<template>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(s, indice) in sitacoes" :key="s.id" :class="{ active: indice == currentIndex }">
+                    <tr v-for="(s, indice) in situacoes" :key="s.id" :class="{ active: indice == currentIndex }">
                         <td>{{ s.id }}</td>
                         <td>{{ s.descricao }}</td>
-                        <td><b-button v-on:click="setCurrentSitacao(s, indice)" class="btn"
-                                type="button">Alterar</b-button></td>
-                        <td><b-button v-on:click="remSitacao(s, indice)" class="btn" type="button">Remover</b-button>
+                        <td><button v-on:click="setCurrentSituacao(s, indice)" class="btn"
+                                type="button">Alterar</button></td>
+                        <td><button v-on:click="remSituacao(s, indice)" class="btn" type="button">Remover</button>
                         </td>
                     </tr>
 
@@ -42,7 +42,7 @@ x<template>
             <div v-else>
                 <br />
                 <p>Please click on a Player...</p>
-                <router-link to="/addsitacao" class="badge badge-success">Novo</router-link>
+                <router-link to="/addsituacao" class="badge badge-success">Novo</router-link>
 
             </div>
         </div>
@@ -53,40 +53,40 @@ x<template>
 <script>
 
 
-import SitacaoDataService from '../../services/SitacaoDataService';
+import SituacaoDataService from '../../services/SituacaoDataService';
 export default {
     name: 'listSitacoes',
     data() {
         return {
-            sitacoes: [],
+            situacoes: [],
             currentSitacao: null,
             currentIndex: -1
         }
     },
     methods: {
-        listarSitacao() {
+        listarSituacao() {
 
-            SitacaoDataService.list().then(response => {
+            SituacaoDataService.list().then(response => {
 
-                console.log("Retorno do seviço authenticateSitacao", response.status);
+                console.log("Retorno do seviço authenticateSiutacao", response.status);
 
-                this.sitacoes = response.data;
+                this.situacoes = response.data;
 
             }).catch(response => {
 
                 // error callback
-                alert('Não conectou no serviço listarSitacao');
+                alert('Não conectou no serviço listarSituacao');
                 console.log(response);
             });
         },
-        setCurrentSitacao(sitacao, index) {
+        setCurrentSituacao(situacoes, index) {
 
-            this.currentSitacao = sitacao;
+            this.currentSitacao = situacoes;
             this.currentIndex = index;
         },
-        remSitacao(sitacao, index) {
+        remSituacao(situacoes, index) {
 
-            SitacaoDataService.delete(sitacao.id)
+            SituacaoDataService.delete(situacoes.id)
                 .then(response => {
                     console.log(response.data);
                     this.refreshList();
@@ -97,14 +97,14 @@ export default {
 
         },
         refreshList() {
-            this.listarSitacao();
+            this.listarSituacao();
             this.currentTutorial = null;
             this.currentIndex = -1;
         }
 
     },
     mounted() {
-        this.listarSitacao();
+        this.listarSituacao();
     }
 
 }

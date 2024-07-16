@@ -26,8 +26,8 @@
                             <td>{{p.valor_total}}</td>
                             <th >{{p.valor_pago}}</th>
                             <td>{{p.id_locacao}}</td>
-                            <td><b-button v-on:click="setCurrentParcelamento(a, indice)" class="btn" type="button">Alterar</b-button></td>
-                            <td><b-button v-on:click="remParcelamento(a, indice)" class="btn" type="button">Remover</b-button></td>
+                            <td><button v-on:click="setCurrentParcelamento(a, indice)" class="btn" type="button">Alterar</button></td>
+                            <td><button v-on:click="remParcelamento(a, indice)" class="btn" type="button">Remover</button></td>
                     
                         </tr>
                         

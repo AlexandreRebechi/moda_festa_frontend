@@ -38,13 +38,10 @@
                 <label for="inputValorObservacoes">Observações:</label>
                 <input type="text" v-model="currentLocacao.observacoes" class="form-control is-invalid" id="inputValorObservacoes" placeholder="Observacoes" required>
             </div>
-            <div class="mb-3">
-                <label for="inputFuncionario">Funcionario:</label>
-                <input type="number" v-model="currentLocacao.funcionario" class="form-control is-invalid" id="inputFuncionario" placeholder="Funcionario" required>
-            </div>
+            
             <div class="mb-3">
                     <label for="selectFuncionario">Funcionario:</label>
-                    <select v-model="locacao.funcionario" class="form-control is-invalid" id="selectFuncionario"
+                    <select v-model="currentLocacao.funcionario" class="form-control is-invalid" id="selectFuncionario"
                         multiple>
                         <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
                             {{ f.nome }}
@@ -54,7 +51,7 @@
                 </div>
             <div class="mb-3">
                     <label for="selectTiposPagamento">Tipos Pagamento:</label>
-                    <select v-model="locacao.tipos_pagamento" class="form-control is-invalid" id="selectTiposPagamento"
+                    <select v-model="currentLocacao.tipos_pagamento" class="form-control is-invalid" id="selectTiposPagamento"
                         multiple>
                             <option value="NA_RETIRADA">NA_RETIRADA</option>
                             <option value="ENTREGA_DEVOLUCAO">ENTREGA_DEVOLUCAO</option>

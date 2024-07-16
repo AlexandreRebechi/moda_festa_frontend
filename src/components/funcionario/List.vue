@@ -49,10 +49,10 @@
                         <td>{{ p.dataContratacao }}</td>
                         <td>{{ p.dataDemissao }}</td>
                         <td>{{ p.perfil }}</td>
-                        <td><b-button v-on:click="setCurrentFuncionario(p, indice)" class="btn"
-                                type="button">Alterar</b-button></td>
-                        <td><b-button v-on:click="remFuncionario(p, indice)" class="btn"
-                                type="button">Remover</b-button></td>
+                        <td><button v-on:click="setCurrentFuncionario(p, indice)" class="btn"
+                                type="button">Alterar</button></td>
+                        <td><button v-on:click="remFuncionario(p, indice)" class="btn"
+                                type="button">Remover</button></td>
                     </tr>
 
                 </tbody>

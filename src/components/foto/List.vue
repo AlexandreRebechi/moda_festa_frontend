@@ -16,8 +16,8 @@ x<template>
                             <td>{{f.id}}</td>
                             <td>{{f.descricao}}</td>
                             <td>{{f.b64}}</td>
-                            <td><b-button v-on:click="setCurrentFoto(f, indice)" class="btn" type="button">Alterar</b-button></td>
-                            <td><b-button v-on:click="remFoto(f, indice)" class="btn" type="button">Remover</b-button></td>
+                            <td><button v-on:click="setCurrentFoto(f, indice)" class="btn" type="button">Alterar</button></td>
+                            <td><button v-on:click="remFoto(f, indice)" class="btn" type="button">Remover</button></td>
                         </tr>
                     </tbody>
             </table>
@@ -58,7 +58,7 @@ x<template>
     import FotoDataService from '../../services/FotoDataService';
 
      export default{
-      name:'listFotos',
+      name:'listfotos',
       data() {
              return {
                  fotos: [],

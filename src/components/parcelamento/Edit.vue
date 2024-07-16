@@ -33,9 +33,9 @@
                 <input type="number" v-model="currentParcelamento.locacao_id" class="form-control is-invalid" id="inputLocacaoID" placeholder="Locacao ID" required>
             </div>
         </form>
-            <b-button class="badge badge-success" @click="updateParcelamento">Salvar</b-button>
-            <b-button class="badge badge-danger mr-2" @click="deleteParcelamento">Delete</b-button>
-            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
+            <button class="badge badge-success" @click="updateParcelamento">Salvar</button>
+            <button class="badge badge-danger mr-2" @click="deleteParcelamento">Delete</button>
+            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
 
 
             <p>{{ message }}</p>

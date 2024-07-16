@@ -93,13 +93,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputDataContratacao">Data Contratacao:</label>
-                    <input type="text" v-model="pessoa.funcionario.data_contratacao" class="form-control is-invalid"
+                    <input type="date" v-model="pessoa.funcionario.data_contratacao" class="form-control is-invalid"
                         id="inputDataContratacao" placeholder="Data Contratacao" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="inputDataDemissao">Data Demissao:</label>
-                    <input type="text" v-model="pessoa.funcionario.data_demissao" class="form-control is-invalid"
+                    <input type="date" v-model="pessoa.funcionario.data_demissao" class="form-control is-invalid"
                         id="inputDataDemissao" placeholder="Data Demissao" required>
                 </div>
 
@@ -108,19 +108,29 @@
                     <input type="text" v-model="pessoa.funcionario.perfil" class="form-control is-invalid"
                         id="inputPerfil" placeholder="Perfil" required>
                 </div>
+                <div class="mb-3">
+                    <label for="selectPerfil">Perfil:</label>
+                    <select v-model="pessoa.funcionario.perfil" class="form-control is-invalid" id="selectPerfil"
+                        multiple required>
+                        <option v-for="p in perfil" :key="p.id" v-bind:value="p">
+                            {{ p.descricao }}
+                        </option>
+                    </select>
 
+
+                </div>
             </form>
 
 
 
-            <b-button @click="savefuncionario" class="btn btn-success">Salvar</b-button>
+            <button @click="savefuncionario" class="btn btn-success">Salvar</button>
             <router-link to="/funcionarios" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
-            <b-button class="btn btn-success" @click="newfuncionario">Novo</b-button>
+            <button class="btn btn-success" @click="newfuncionario">Novo</button>
             <router-link to="/funcionarios" class="btn btn-success">Voltar</router-link>
         </div>
     </div>
@@ -129,6 +139,7 @@
 <script>
 
 import FuncionarioDataService from '../../services/FuncionarioDataService';
+import PerfilDataService from '../../services/PerfilDataService';
 //import PatenteDataService from '../../services/PatenteDataService'
 
 export default {
@@ -152,9 +163,10 @@ export default {
                 password: '',
                 data_ultimo_login: '',
                 tipo: false,
-                funcionario: { numero_ctps: '', data_contratacao: '', data_demissao: '', perfil: '' },
+                funcionario: { numero_ctps: '', data_contratacao: '', data_demissao: '', perfil: [] },
             },
             submitted: false,
+            perfil: []
 
         }
     },
@@ -183,6 +195,22 @@ export default {
             }
 
         },
+        listPerfil() {
+            PerfilDataService.list().then(response => {
+
+                console.log("Retorno do seviço PerfilDataService.list", response.status);
+
+                for (let p of response.data) {
+
+                    this.perfil.push(p);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço PerfilDataService.list');
+                console.log(response);
+            });
+        },
         newfuncionario() {
 
             this.submitted = false;
@@ -192,7 +220,7 @@ export default {
 
     },
     mounted() {
-
+       this.listPerfil();
     }
 
 }

@@ -31,9 +31,9 @@
                         <td>{{ l.observacoes }}</td>
                         <td>{{ l.funcionario }}</td>
                         <td>{{ l.tipos_pagamento }}</td>
-                        <td><b-button v-on:click="setCurrentLocacao(l, indice)" class="btn"
-                                type="button">Alterar</b-button></td>
-                        <td><b-button v-on:click="remLocacao(l, indice)" class="btn" type="button">Remover</b-button>
+                        <td><button v-on:click="setCurrentLocacao(l, indice)" class="btn"
+                                type="button">Alterar</button></td>
+                        <td><button v-on:click="remLocacao(l, indice)" class="btn" type="button">Remover</button>
                         </td>
                     </tr>
 

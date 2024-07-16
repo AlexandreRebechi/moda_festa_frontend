@@ -112,9 +112,9 @@
                 </div>
 
             </form>
-            <b-button class="badge badge-success" @click="updateFuncionario">Salvar</b-button>
-            <b-button class="badge badge-danger mr-2" @click="deleteFuncionario">Delete</b-button>
-            <b-button class="badge badge-danger mr-2" @click="voltar">Voltar</b-button>
+            <button class="badge badge-success" @click="updateFuncionario">Salvar</button>
+            <button class="badge badge-danger mr-2" @click="deleteFuncionario">Delete</button>
+            <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
 
 
             <p>{{ message }}</p>

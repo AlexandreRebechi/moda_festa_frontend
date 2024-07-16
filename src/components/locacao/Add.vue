@@ -67,14 +67,14 @@
 
             </div>
         </form>
-            <b-button @click="saveLocacao" class="btn btn-success">Salvar</b-button>
+            <button @click="saveLocacao" class="btn btn-success">Salvar</button>
             <router-link to="/locacaos" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
-            <b-button class="btn btn-success" @click="newLocacao">Novo</b-button>
+            <button class="btn btn-success" @click="newLocacao">Novo</button>
             <router-link to="/locacaos" class="btn btn-success">Voltar</router-link>
         </div>
     </div>

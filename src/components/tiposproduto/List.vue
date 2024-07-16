@@ -42,7 +42,7 @@ x<template>
             <div v-else>
                 <br />
                 <p>Please click on a Player...</p>
-                <router-link to="/addtiposprotudo" class="badge badge-success">Novo</router-link>
+                <router-link to="/addtiposproduto" class="badge badge-success">Novo</router-link>
 
             </div>
         </div>
@@ -55,7 +55,7 @@ x<template>
 
 import TiposProdutoDataService from '../../services/TiposProdutoDataService';
 export default {
-    name: 'listTiposProdutos',
+    name: 'listtiposprodutos',
     data() {
         return {
             tiposprodutos: [],

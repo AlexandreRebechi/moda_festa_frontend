@@ -12,7 +12,7 @@ import novoFuncionario from '@/components/funcionario/Add'
 import listperfil from '@/components/perfil/List'
 import editPerfil from '@/components/perfil/Edit'
 import novoPerfil from '@/components/perfil/Add'
-import listPerfil from '@/components/funcionalidade/List'
+import listFuncionalidades from '@/components/funcionalidade/List'
 import editFuncionalidade from '@/components/funcionalidade/Edit'
 import novoFuncionalidade from '@/components/funcionalidade/Add'
 import listReservas from '@/components/reserva/List'
@@ -33,9 +33,9 @@ import novoLocacao from '@/components/locacao/Add'
 import listAcompanhamentos from '@/components/acompanhamento/List'
 import editAcompanhamento from '@/components/acompanhamento/Edit'
 import novoAcompanhamento from '@/components/acompanhamento/Add'
-import listSitacoes from '@/components/sitacao/List'
-import editSitacao from '@/components/sitacao/Edit'
-import novoSitacao from '@/components/sitacao/Add'
+import listSituacoes from '@/components/situacao/List'
+import editSituacao from '@/components/situacao/Edit'
+import novoSituacao from '@/components/situacao/Add'
 import listParcelamentos from '@/components/parcelamento/List'
 import editParcelamento from '@/components/parcelamento/Edit'
 import novoParcelamento from '@/components/parcelamento/Add'
@@ -105,7 +105,7 @@ const router = new Router({
     {
       path: '/funcinalidades',
       name: 'funcionalidades-list',
-      component: listPerfil
+      component: listFuncionalidades
     },
     {
       path: '/funcinalidade/:id',
@@ -194,7 +194,7 @@ const router = new Router({
       component: novoLocacao
     },
     {
-      path: '/acompanhamento',
+      path: '/acompanhamentos',
       name: 'acompanhamento-list',
       component: listAcompanhamentos
     },
@@ -209,19 +209,19 @@ const router = new Router({
       component: novoAcompanhamento
     },
     {
-      path: '/sitacao',
-      name: 'sitacao-list',
-      component: listSitacoes
+      path: '/situacoes',
+      name: 'situacao-list',
+      component: listSituacoes
     },
     {
-      path: '/sitacao/:id',
-      name: 'sitacao-edit',
-      component: editSitacao
+      path: '/situacao/:id',
+      name: 'situacao-edit',
+      component: editSituacao
     },
     {
-      path: '/addsitacao',
-      name: 'sitacao-add',
-      component: novoSitacao
+      path: '/addsituacao',
+      name: 'situacao-add',
+      component: novoSituacao
     },
     {
       path: '/parcelamentos',
@@ -234,7 +234,7 @@ const router = new Router({
       component: editParcelamento
     },
     {
-      path: '/addparcelamentos',
+      path: '/addparcelamento',
       name: 'parcelamento-add',
       component: novoParcelamento
     }

@@ -4,7 +4,7 @@
 
         <div class="col-md-6">
             <h4>Listagem de Acompanhamento</h4>
-            <table class="table table-striped table-inverse table-responsive-sm table-dark">
+            <table class="table table-striped table-inverse table-responsive table-danger">
                 <thead class="thead-inverse">
                     <tr>
                         <th scope="col">ID</th>
@@ -23,10 +23,10 @@
                         <td>{{ a.observacoes }}</td>
                         <td>{{ a.id_locacao }}</td>
                         <td>{{ a.id_sitacao }}</td>
-                        <td><b-button v-on:click="setCurrentAcompanhamento(a, indice)" class="btn"
-                                type="button">Alterar</b-button></td>
-                        <td><b-button v-on:click="remAcompanhamento(a, indice)" class="btn"
-                                type="button">Remover</b-button></td>
+                        <td><button v-on:click="setCurrentAcompanhamento(a, indice)" class="btn"
+                                type="button">Alterar</button></td>
+                        <td><button v-on:click="remAcompanhamento(a, indice)" class="btn"
+                                type="button">Remover</button></td>
 
                     </tr>
                 </tbody>
@@ -65,7 +65,7 @@
 import AcompanhamentoDataService from '../../services/AcompanhamentoDataService';
 
 export default {
-    name: 'listAcompanhamento',
+    name: 'listacompanhamento',
     data() {
         return {
             acompanhamento: [],

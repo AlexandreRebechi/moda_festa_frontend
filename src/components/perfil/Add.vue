@@ -22,14 +22,14 @@
 
             </div>
         </form>
-            <b-button @click="savePerfil" class="btn btn-success">Salvar</b-button>
+            <button @click="savePerfil" class="btn btn-success">Salvar</button>
             <router-link to="/perfis" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
-            <b-button class="btn btn-success" @click="newPerfil">Novo</b-button>
+            <button class="btn btn-success" @click="newPerfil">Novo</button>
             <router-link to="/perfis" class="btn btn-success">Voltar</router-link>
         </div>
     </div>

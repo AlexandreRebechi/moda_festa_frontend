@@ -15,9 +15,9 @@
                     <tr v-for="(p, indice) in perfis" :key="p.id" :class="{ active: indice == currentIndex }">
                         <td>{{ p.id }}</td>
                         <td>{{ p.descricao }}</td>
-                        <td><b-button v-on:click="setCurrentPerfil(p, indice)" class="btn"
-                                type="button">Alterar</b-button></td>
-                        <td><b-button v-on:click="remPerfil(p, indice)" class="btn" type="button">Remover</b-button>
+                        <td><button v-on:click="setCurrentPerfil(p, indice)" class="btn"
+                                type="button">Alterar</button></td>
+                        <td><button v-on:click="remPerfil(p, indice)" class="btn" type="button">Remover</button>
                         </td>
                     </tr>
                 </tbody>

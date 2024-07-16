@@ -35,17 +35,33 @@
                 <input type="text" v-model="currentReserva.observacoes" class="form-control is-invalid" id="inputValorObservacoes" placeholder="Observações" required>
             </div>
             <div class="mb-3">
-                <label for="inputCliente">Cliente:</label>
-                <input type="text" v-model="currentReserva.cliente" class="form-control is-invalid" id="inputCliente" placeholder="Cliente" required>
-            </div>
-            <div class="mb-3">
-                <label for="inputFuncionario">Funcionario:</label>
-                <input type="text" v-model="currentReserva.funcionario" class="form-control is-invalid" id="inputFuncionario" placeholder="Funcionario" required>
-            </div>
-            <div class="mb-3">
-                <label for="inputStatusReserva">Status Reserva:</label>
-                <input type="text" v-model="currentReserva.status_reserva" class="form-control is-invalid" id="inputStatusReserva" placeholder="Status Reserva" required>
-            </div>
+                    <label for="selectCliente">Cliente:</label>
+                    <select v-model="currentReserva.cliente" class="form-control is-invalid" id="selectCliente" multiple>
+                        <option v-for="c in cliente" :key="c.cpf_pessoa" v-bind:value="c">
+                            {{ c.nome }}
+                        </option>
+                    </select>
+
+                </div>
+                <div class="mb-3">
+                    <label for="selectFuncionario">Funcionario:</label>
+                    <select v-model="currentReserva.funcionario" class="form-control is-invalid" id="selectFuncionario"
+                        multiple>
+                        <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
+                            {{ f.nome }}
+                        </option>
+                    </select>
+
+                </div>
+                <div class="mb-3">
+                    <label for="selectStatusReserva">Status Reserva:</label>
+                    <select v-model="currentReserva.status_reserva" class="form-control is-invalid" id="selectStatusReserva"
+                        multiple>
+                        <option value="EM_ANALISE">EM_ANALISE</option>
+                         <option value="APROVADA">APROVADA</option>
+                          <option value="NEGADA">NEGADA</option>
+                    </select>
+                </div>
            
             <div class="mb-3">
                 <label for="selectProduto">Produto:</label>
@@ -84,7 +100,10 @@ export default {
         return {
             currentReserva: null,
             message: '',
-            produtos: []
+            produtos: [],
+            cliente: [],
+            funcionario: [],
+            status_reserva: []
         }
     },
     methods: {
@@ -109,6 +128,38 @@ export default {
 
                 this.produtos = response.data;
 
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço ProdutoDataService.list');
+                console.log(response);
+            });
+        },
+        listCliente() {
+            ClienteDataService.list().then(response => {
+
+                console.log("Retorno do seviço ClienteDataService.list", response.status);
+
+                for (let c of response.data) {
+
+                    this.cliente.push(c);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço ProdutoDataService.list');
+                console.log(response);
+            });
+        },
+        listFuncionario() {
+            FuncionarioDataService.list().then(response => {
+
+                console.log("Retorno do seviço FuncionarioDataService.list", response.status);
+
+                for (let f of response.data) {
+
+                    this.funcionario.push(f);
+                }
             }).catch(response => {
 
                 // error callback
@@ -146,6 +197,8 @@ export default {
 
         this.message = '';
         this.listProduto();
+        this.listCliente();
+        this.listFuncionario();
         this.getReserva(this.$route.params.id);
     }
 }

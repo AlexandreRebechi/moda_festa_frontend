@@ -31,7 +31,7 @@ import TiposProdutoDataService from '../../services/TiposProdutoDataService';
 
 
     export default {
-        name: "addTiposProduto",
+        name: "addtiposproduto",
         data(){
             return {
                 tiposproduto: {indice: '', 
