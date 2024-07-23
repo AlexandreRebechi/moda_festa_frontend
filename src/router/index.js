@@ -180,7 +180,7 @@ const router = new Router({
     },
     {
       path: '/locacoes',
-      name: 'locacao-list',
+      name: 'locacoes-list',
       component: listLocacoes
     },
     {
@@ -189,7 +189,7 @@ const router = new Router({
       component: editLocacao
     },
     {
-      path: '/addLocacao',
+      path: '/addlocacao',
       name: 'locacao-add',
       component: novoLocacao
     },

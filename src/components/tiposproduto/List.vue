@@ -35,7 +35,7 @@ x<template>
                     <label><strong>Nome:</strong></label> {{ currentTiposProduto.nome }}
                 </div>
 
-                <a class="badge badge-warning" :href="'/tiposprotudo/' + currentTiposProduto.id">
+                <a class="badge badge-warning" :href="'/tiposproduto/' + currentTiposProduto.id">
                     Edit
                 </a>
             </div>

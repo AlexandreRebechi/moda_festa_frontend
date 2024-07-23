@@ -5,23 +5,31 @@
             <h3>Foto</h3>
             <form class="was-validated">
                 <div class="md-3">
-            <label for="inputID">ID:</label>
-            <input type="text" v-model="currentFoto.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
-        </div>            
-        <div class="md-3">
-                <label for="inputDescricao">Descricao:</label>
-                <input type="text" v-model="currentFoto.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
-        </div>    
+                    <label for="inputID">ID:</label>
+                    <input type="text" v-model="currentFoto.id" class="form-control is-invalid" id="inputID"
+                        placeholder="ID" disabled required>
+                </div>
+                <div class="md-3">
+                    <label for="inputDescricao">Descricao:</label>
+                    <input type="text" v-model="currentFoto.descricao" class="form-control is-invalid"
+                        id="inputDescricao" placeholder="Descricao" required>
+                </div>
 
-        <div class="md-3">
-                <label for="inputB64">B64:</label>
-                <input type="text" v-model="currentFoto.b64" class="form-control is-invalid"  id="inputB64" placeholder="B64" required>
-        </div>
+                <div class="md-3">
+                    <label for="inputB64">B64:</label>
+                    <input type="text" v-model="currentFoto.b64" class="form-control is-invalid" id="inputB64"
+                        placeholder="B64" required>
+                </div>
 
-        <div class="md-3">
-            <label for="inputProdutoID">Produto ID:</label>
-            <input type="text" v-model="currentFoto.produto_id" class="form-control is-invalid" id="inputProdutoID" placeholder="Produto ID"  required>
-        </div>  
+                <div class="mb-3">
+                    <label for="selectProduto">Produto:</label>
+                    <select v-model="currentFoto.produto_id" class="form-control is-invalid" id="selectProduto">
+                        <option v-for="p in produto_id" :key="p.id" v-bind:value="p">
+                            {{ p.descricao }}
+                        </option>
+                    </select>
+
+                </div>
 
             </form>
             <button class="badge badge-success" @click="updateFoto">Salvar</button>
@@ -43,6 +51,7 @@
 <script>
 
 import FotoDataService from '../../services/FotoDataService';
+import ProdutoDataService from '../../services/ProdutoDataService';
 
 
 export default {
@@ -50,7 +59,8 @@ export default {
     data() {
         return {
             currentFoto: null,
-            message: ''
+            message: '',
+            produto_id: []
         }
     },
     methods: {
@@ -78,6 +88,24 @@ export default {
                     console.log(e);
                 })
         },
+        listProdutos() {
+
+            ProdutoDataService.list().then(response => {
+
+                console.log("Retorno do seviço ProdutoDataService.list", response.status);
+
+                for (let p of response.data) {
+
+                    this.produto_id.push(p);
+                }
+
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço ProdutoDataService.list');
+                console.log(response);
+            });
+        },
         deleteFoto() {
 
             FotoDataService.delete(this.currentFoto.id)
@@ -97,6 +125,7 @@ export default {
 
         this.message = '';
         this.getFoto(this.$route.params.id);
+        this.listProdutos();
     }
 }
 </script>

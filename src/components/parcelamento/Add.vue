@@ -35,7 +35,7 @@
                 <div class="mb-3">
                     <label for="selectLocacaoID">Locacao ID:</label>
                     <select v-model="parcelamento.locacao_id" class="form-control is-invalid" id="selectLocacaoID"
-                        multiple>
+                        >
                         <option v-for="l in locacao_id" :key="l.id" v-bind:value="l">
                             {{ l.observacoes }}
                         </option>

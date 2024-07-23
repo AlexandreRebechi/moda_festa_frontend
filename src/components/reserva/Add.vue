@@ -32,7 +32,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputValorTotal">Valor Total:</label>
-                    <input type="number" v-model="reserva.total" class="form-control is-invalid" id="inputValorTotal"
+                    <input type="number" v-model="reserva.valor_total" class="form-control is-invalid" id="inputValorTotal"
                         placeholder="Valor Total" required>
                 </div>
                 <div class="mb-3">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="selectCliente">Cliente:</label>
-                    <select v-model="reserva.cliente" class="form-control is-invalid" id="selectCliente" multiple>
+                    <select v-model="reserva.cliente" class="form-control is-invalid" id="selectCliente" >
                         <option v-for="c in cliente" :key="c.cpf_pessoa" v-bind:value="c">
                             {{ c.nome }}
                         </option>
@@ -52,7 +52,7 @@
                 <div class="mb-3">
                     <label for="selectFuncionario">Funcionario:</label>
                     <select v-model="reserva.funcionario" class="form-control is-invalid" id="selectFuncionario"
-                        multiple>
+                        >
                         <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
                             {{ f.nome }}
                         </option>
@@ -62,7 +62,7 @@
                 <div class="mb-3">
                     <label for="selectStatusReserva">Status Reserva:</label>
                     <select v-model="reserva.status_reserva" class="form-control is-invalid" id="selectStatusReserva"
-                        multiple>
+                        >
                         <option value="EM_ANALISE">EM_ANALISE</option>
                          <option value="APROVADA">APROVADA</option>
                           <option value="NEGADA">NEGADA</option>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="selectProduto">Produto:</label>
-                    <select v-model="reserva.produtos" class="form-control is-invalid" id="selectProduto" multiple>
+                    <select v-model="reserva.produtos" class="form-control is-invalid" id="selectProduto" >
                         <option v-for="p in produtos" :key="p.id" v-bind:value="p">
                             {{ p.descricao }}
                         </option>

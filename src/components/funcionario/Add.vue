@@ -103,15 +103,11 @@
                         id="inputDataDemissao" placeholder="Data Demissao" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="inputPerfil">Perfil:</label>
-                    <input type="text" v-model="pessoa.funcionario.perfil" class="form-control is-invalid"
-                        id="inputPerfil" placeholder="Perfil" required>
-                </div>
+              
                 <div class="mb-3">
                     <label for="selectPerfil">Perfil:</label>
                     <select v-model="pessoa.funcionario.perfil" class="form-control is-invalid" id="selectPerfil"
-                        multiple required>
+                         required>
                         <option v-for="p in perfil" :key="p.id" v-bind:value="p">
                             {{ p.descricao }}
                         </option>
@@ -143,7 +139,7 @@ import PerfilDataService from '../../services/PerfilDataService';
 //import PatenteDataService from '../../services/PatenteDataService'
 
 export default {
-    name: "addFuncionario",
+    name: "addfuncionario",
     data() {
         return {
             pessoa: {

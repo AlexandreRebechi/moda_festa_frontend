@@ -36,8 +36,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="selectTiposProduto">Tipos Produto:</label>
-                    <select v-model="produto.tipo_produto" class="form-control is-invalid" id="selectTiposProduto"
-                        multiple>
+                    <select v-model="produto.tipo_produto" class="form-control is-invalid" id="selectTiposProduto">
                         <option v-for="tp in tipo_produto" :key="tp.tipo_produto" v-bind:value="tp">
                             {{ tp.nome }}
                         </option>
@@ -67,7 +66,7 @@ import TiposProdutoDataService from '../../services/TiposProdutoDataService';
 
 
 export default {
-    name: "addProduto",
+    name: "addproduto",
     data() {
         return {
             produto: {
@@ -89,11 +88,11 @@ export default {
 
         saveProduto() {
 
-            var p = jQuery.extend({}, this.p);//clona o this.novo_produto e armazena na variavel produto. dessa forma alteracoes em this.produto nao irao refletir em produto.                                                              
+            var p = jQuery.extend({}, this.produto);//clona o this.novo_produto e armazena na variavel produto. dessa forma alteracoes em this.produto nao irao refletir em produto.                                                              
+           
+            if (p.descricao.trim().length > 0) {
 
-            if (p.id.trim().length > 0) {
-
-                ProdutoDataService.create(rgd)
+                ProdutoDataService.create(p)
                     .then(response => {
 
                         this.submitted = true;
@@ -115,12 +114,12 @@ export default {
 
                 for (let tp of response.data) {
 
-                    this.cliente.push(tp);
+                    this.tipo_produto.push(tp);
                 }
             }).catch(response => {
 
                 // error callback
-                alert('Não conectou no serviço ProdutoDataService.list');
+                alert('Não conectou no serviço TiposProdutoDataService.list');
                 console.log(response);
             });
         },

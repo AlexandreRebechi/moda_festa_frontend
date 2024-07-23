@@ -46,8 +46,8 @@
                         <td>{{ p.data_ultimo_login }}</td>
                         <td>{{ p.tipo }}</td>
                         <td>{{ p.numero_ctps }}</td>
-                        <td>{{ p.dataContratacao }}</td>
-                        <td>{{ p.dataDemissao }}</td>
+                        <td>{{ p.data_contratacao }}</td>
+                        <td>{{ p.data_demissao }}</td>
                         <td>{{ p.perfil }}</td>
                         <td><button v-on:click="setCurrentFuncionario(p, indice)" class="btn"
                                 type="button">Alterar</button></td>

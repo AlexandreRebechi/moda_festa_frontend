@@ -39,7 +39,7 @@
             <div class="mb-3">
                     <label for="selectFuncionario">Funcionario:</label>
                     <select v-model="locacao.funcionario" class="form-control is-invalid" id="selectFuncionario"
-                        multiple>
+                        >
                         <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
                             {{ f.nome }}
                         </option>
@@ -50,7 +50,7 @@
             <div class="mb-3">
                     <label for="selectTiposPagamento">Tipos Pagamento:</label>
                     <select v-model="locacao.tipos_pagamento" class="form-control is-invalid" id="selectTiposPagamento"
-                        multiple>
+                        >
                             <option value="NA_RETIRADA">NA_RETIRADA</option>
                             <option value="ENTREGA_DEVOLUCAO">ENTREGA_DEVOLUCAO</option>
                             <option value="PARCELADO">PARCELADO</option>
@@ -59,7 +59,7 @@
                 </div>
             <div class="mb-3">
                 <label for="selectReserva">Reserva:</label>
-                <select v-model="locacao.reservas" class="form-control is-invalid" id="selectReserva" multiple required>
+                <select v-model="locacao.reservas" class="form-control is-invalid" id="selectReserva"  required>
                     <option v-for="r in reservas" :key="r.id" v-bind:value="r">
                         {{ r.observacoes }}
                     </option>
@@ -68,14 +68,14 @@
             </div>
         </form>
             <button @click="saveLocacao" class="btn btn-success">Salvar</button>
-            <router-link to="/locacaos" class="btn btn-success">Voltar</router-link>
+            <router-link to="/locacoes" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
             <button class="btn btn-success" @click="newLocacao">Novo</button>
-            <router-link to="/locacaos" class="btn btn-success">Voltar</router-link>
+            <router-link to="/locacoes" class="btn btn-success">Voltar</router-link>
         </div>
     </div>
 </template>

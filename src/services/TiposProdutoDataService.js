@@ -17,19 +17,19 @@ class TiposProdutoDataService {
     async delete(id){
 
         console.log('TipoProdutoDataService.delete: ', id);
-        return await http.get(`/deletetiposproduto/`+id);
+        return await http.get(`/deletetipoproduto/`+id);
     }
 
     async update(data){
 
         console.log('TipoProdutoDataService.update: ', data);
-        return await http.post(`/updatetiposproduto/`, data);
+        return await http.post(`/updatetipoproduto/`, data);
     }
     
     async create(data){
 
         console.log('TipoProdutoDataService.create: ', data);
-        return await http.post(`/inserttiposproduto/`, data);
+        return await http.post(`/inserttipoproduto/`, data);
 
     }  
 

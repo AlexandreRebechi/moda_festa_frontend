@@ -28,7 +28,7 @@
                 <div class="mb-3">
                     <label for="selectLocacaoID">Locacao ID:</label>
                     <select v-model="acompanhamento.locacao_id" class="form-control is-invalid" id="selectLocacaoID"
-                        multiple>
+                        >
                         <option v-for="l in locacao_id" :key="l.id" v-bind:value="l">
                             {{ l.observacoes }}
                         </option>
@@ -38,7 +38,7 @@
                 <div class="mb-3">
                     <label for="selectLocacaoID">Situacao ID:</label>
                     <select v-model="acompanhamento.situacao_id" class="form-control is-invalid" id="selectLocacaoID"
-                        multiple>
+                        >
                         <option v-for="s in locacao_id" :key="s.id" v-bind:value="s">
                             {{ s.descricao }}
                         </option>

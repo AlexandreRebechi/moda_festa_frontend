@@ -42,7 +42,7 @@
             <div class="mb-3">
                     <label for="selectFuncionario">Funcionario:</label>
                     <select v-model="currentLocacao.funcionario" class="form-control is-invalid" id="selectFuncionario"
-                        multiple>
+                        >
                         <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
                             {{ f.nome }}
                         </option>
@@ -52,7 +52,7 @@
             <div class="mb-3">
                     <label for="selectTiposPagamento">Tipos Pagamento:</label>
                     <select v-model="currentLocacao.tipos_pagamento" class="form-control is-invalid" id="selectTiposPagamento"
-                        multiple>
+                        >
                             <option value="NA_RETIRADA">NA_RETIRADA</option>
                             <option value="ENTREGA_DEVOLUCAO">ENTREGA_DEVOLUCAO</option>
                             <option value="PARCELADO">PARCELADO</option>
@@ -89,23 +89,23 @@
 <script>
 
 
-import currentLocacaoDateService from '../../services/LocacaoDateService';
 import ReservaDataService from '../../services/ReservaDataService'
-
+import LocacaoDateService from '../../services/LocacaoDateService'
 export default {
     name: 'editLoacacao',
     data() {
         return {
             currentcurrentLocacao: null,
             message: '',
-            reservas: []
+            reservas: [],
+            funcionario: []
         }
     },
     methods: {
 
         getcurrentLocacao(id) {
 
-            currentLocacaoDateServiceeService.get(id)
+            LocacaoDateService.get(id)
                 .then(response => {
                     console.log(response.data);
                     this.currentcurrentLocacao = response.data;
@@ -148,7 +148,7 @@ export default {
         },
         updatecurrentLocacao() {
             alert(this.currentcurrentLocacao.reservas);
-            currentLocacaoDateService.update(this.currentcurrentLocacao)
+            LocacaoDateService.update(this.currentcurrentLocacao)
                 .then(response => {
                     console.log('currentLocacaoDateService.update');
                     this.message = 'Locacão alterado com sucesso !';
@@ -159,7 +159,7 @@ export default {
         },
         deletecurrentLocacao() {
 
-            currentLocacaoDateService.delete(this.currentcurrentLocacao.id)
+            LocacaoDateService.delete(this.currentcurrentLocacao.id)
                 .then(response => {
                     console.log(response.data);
                     this.$router.push({ name: "locacoes-list" });

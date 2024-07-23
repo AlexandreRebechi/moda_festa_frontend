@@ -61,7 +61,7 @@ export default {
                 })
         },
         updateTiposProduto() {
-
+            alert(this.currentTiposProduto.id)
             TiposProdutoDataService.update(this.currentTiposProduto)
                 .then(response => {
                     console.log('TiposProdutoDataService.update');

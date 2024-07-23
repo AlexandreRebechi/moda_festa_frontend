@@ -47,7 +47,7 @@ import TiposProdutoDataService from '../../services/TiposProdutoDataService';
 
                 var tp = jQuery.extend({}, this.tiposproduto);//clona o this.tiposproduto e armazena na variavel funcionalidade. dessa forma alteracoes em this.novo_tiposproduto nao irao refletir em tiposproduto.
                 delete tp.id
-                if (tp.id.trim().length > 0 && tp.nome.trim().length > 0) {
+                if (tp.nome.trim().length > 0) {
                 
                     TiposProdutoDataService.create(tp)
                     .then(response => {

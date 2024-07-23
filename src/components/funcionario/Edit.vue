@@ -105,10 +105,16 @@
                         id="inputDataDemissao" placeholder="Data Demissao" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="inputPerfil">Perfil:</label>
-                    <input type="text" v-model="currentFuncionario.funcionario.perfil" class="form-control is-invalid"
-                        id="inputPerfil" placeholder="Perfil" required>
+                <div class="mb-3">
+                    <label for="selectPerfil">Perfil:</label>
+                    <select v-model="currentFuncionario.funcionario.perfil" class="form-control is-invalid" id="selectPerfil"
+                         required>
+                        <option v-for="p in perfil" :key="p.id" v-bind:value="p">
+                            {{ p.descricao }}
+                        </option>
+                    </select>
+
+
                 </div>
 
             </form>
@@ -139,8 +145,8 @@ export default {
     data() {
         return {
             currentFuncionario: null,
-            message: ''
-
+            message: '',
+            perfil: []
         }
     },
     methods: {
@@ -168,6 +174,22 @@ export default {
                     console.log(e);
                 })
         },
+        listPerfil() {
+            PerfilDataService.list().then(response => {
+
+                console.log("Retorno do seviço PerfilDataService.list", response.status);
+
+                for (let p of response.data) {
+
+                    this.perfil.push(p);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço PerfilDataService.list');
+                console.log(response);
+            });
+        },
         deleteFuncionario() {
 
             FuncionarioDataService.delete(this.currentFuncionario.cpf)
@@ -187,6 +209,7 @@ export default {
 
         this.message = '';
         this.getFuncionario(this.$route.params.cpf);
+        this.listPerfil();
     }
 }
 </script>

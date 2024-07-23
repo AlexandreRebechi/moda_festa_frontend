@@ -33,7 +33,7 @@
             <div class="mb-3">
                     <label for="selectTiposProduto">Tipos Produto:</label>
                     <select v-model="currentProduto.tipo_produto" class="form-control is-invalid" id="selectTiposProduto"
-                        multiple>
+                        >
                         <option v-for="tp in tipo_produto" :key="tp.tipo_produto" v-bind:value="tp">
                             {{ tp.nome }}
                         </option>
@@ -69,6 +69,7 @@ export default {
         return {
             currentProduto: null,
             message: '',
+            tipo_produto: []
             
         }
     },
@@ -87,7 +88,7 @@ export default {
                 })
         },
         updateProduto() {
-            alert(this.currentProduto.produtos);
+            alert(this.currentProduto.id);
             ProdutoDataService.update(this.currentProduto)
                 .then(response => {
                     console.log('ProdutoDataService.update');
@@ -104,7 +105,7 @@ export default {
 
                 for (let tp of response.data) {
 
-                    this.cliente.push(tp);
+                    this.tipo_produto.push(tp);
                 }
             }).catch(response => {
 
@@ -132,7 +133,7 @@ export default {
 
         this.message = '';
         this.getProduto(this.$route.params.id);
-        this.TiposProdutoDataService();
+        this.listTipoProtudo();
     }
 }
 </script>
