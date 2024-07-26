@@ -21,8 +21,8 @@
                         <td>{{ a.sequencia_passo }}</td>
                         <td>{{ a.data }}</td>
                         <td>{{ a.observacoes }}</td>
-                        <td>{{ a.id_locacao }}</td>
-                        <td>{{ a.id_sitacao }}</td>
+                        <td>{{ a.locacao }}</td>
+                        <td>{{ a.sitacao }}</td>
                         <td><button v-on:click="setCurrentAcompanhamento(a, indice)" class="btn"
                                 type="button">Alterar</button></td>
                         <td><button v-on:click="remAcompanhamento(a, indice)" class="btn"
@@ -48,6 +48,7 @@
                 <a class="badge badge-warning" :href="'/acompanhamento/' + currentAcompanhamento.id">
                     Edit
                 </a>
+                
             </div>
             <div v-else>
                 <br />
@@ -75,19 +76,19 @@ export default {
     },
     methods: {
         listarAcompanhamento() {
-            console.log('oi')
+        
             AcompanhamentoDataService.list().then(response => {
 
                 console.log("Retorno do seviço authenticateAcompanhamento", response.status);
 
-                this.acompanhamentos = response.data;
+                this.acompanhamento = response.data;
 
             }).catch(response => {
 
                 // error callback
                 alert('Não conectou no serviço listarAcompanhamento');
                 console.log(response);
-                console.log('oi')
+              
             });
         },
         setCurrentAcompanhamento(acompanhamento, index) {

@@ -88,25 +88,25 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputNumeroCtps">Numero CTPS:</label>
-                    <input type="text" v-model="pessoa.funcionario.numero_ctps" class="form-control is-invalid"
+                    <input type="text" v-model="pessoa.numero_ctps" class="form-control is-invalid"
                         id="inputNumeroCtps" placeholder="Numero CTPS" required>
                 </div>
                 <div class="mb-3">
                     <label for="inputDataContratacao">Data Contratacao:</label>
-                    <input type="date" v-model="pessoa.funcionario.data_contratacao" class="form-control is-invalid"
+                    <input type="date" v-model="pessoa.data_contratacao" class="form-control is-invalid"
                         id="inputDataContratacao" placeholder="Data Contratacao" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="inputDataDemissao">Data Demissao:</label>
-                    <input type="date" v-model="pessoa.funcionario.data_demissao" class="form-control is-invalid"
+                    <input type="date" v-model="pessoa.data_demissao" class="form-control is-invalid"
                         id="inputDataDemissao" placeholder="Data Demissao" required>
                 </div>
 
               
                 <div class="mb-3">
                     <label for="selectPerfil">Perfil:</label>
-                    <select v-model="pessoa.funcionario.perfil" class="form-control is-invalid" id="selectPerfil"
+                    <select v-model="pessoa.perfil" class="form-control is-invalid" id="selectPerfil"
                          required>
                         <option v-for="p in perfil" :key="p.id" v-bind:value="p">
                             {{ p.descricao }}

@@ -22,10 +22,10 @@
                 <tbody>
                     <tr v-for="(l, indice) in locacao" :key="l.id" :class="{ active: indice == currentIndex }">
                         <td>{{ l.id }}</td>
-                        <td>{{ l.data_retirada | formataData }}</td>
-                        <td>{{ l.data_previsao_entrega | formataData }}</td>
-                        <td>{{ l.data_entrega | formataData }}</td>
-                        <td>{{ l.data_previsao_pagamento | formataData }}</td>
+                        <td>{{ l.data_retirada  }}</td>
+                        <td>{{ l.data_previsao_entrega }}</td>
+                        <td>{{ l.data_entrega }}</td>
+                        <td>{{ l.data_previsao_pagamento }}</td>
                         <td>{{ l.valor_total }}</td>
                         <td>{{ l.valor_pago }}</td>
                         <td>{{ l.observacoes }}</td>
@@ -70,8 +70,8 @@
 </template>
 <script>
 
-
 import LocacaoDateService from '../../services/LocacaoDateService';
+
 
 
 
@@ -105,7 +105,7 @@ export default {
             this.currentLocacao = locacao;
             this.currentIndex = index;
         },
-        remLocacao(reserva, index) {
+        remLocacao(locacao, index) {
 
             LocacaoDateService.delete(locacao.id)
                 .then(response => {

@@ -27,29 +27,29 @@
                 </div>
                 <div class="mb-3">
                     <label for="selectLocacaoID">Locacao ID:</label>
-                    <select v-model="acompanhamento.locacao_id" class="form-control is-invalid" id="selectLocacaoID"
+                    <select v-model="acompanhamento.locacao" class="form-control is-invalid" id="selectLocacaoID"
                         >
-                        <option v-for="l in locacao_id" :key="l.id" v-bind:value="l">
+                        <option v-for="l in locacao" :key="l.id" v-bind:value="l">
                             {{ l.observacoes }}
                         </option>
                     </select>
 
                 </div>
                 <div class="mb-3">
-                    <label for="selectLocacaoID">Situacao ID:</label>
-                    <select v-model="acompanhamento.situacao_id" class="form-control is-invalid" id="selectLocacaoID"
+                    <label for="selectSituacaoID">Situacao ID:</label>
+                    <select v-model="acompanhamento.situacao" class="form-control is-invalid" id="selectSituacaoID"
                         >
-                        <option v-for="s in locacao_id" :key="s.id" v-bind:value="s">
+                        <option v-for="s in situacao" :key="s.id" v-bind:value="s">
                             {{ s.descricao }}
                         </option>
                     </select>
 
                 </div>
-
+            </form>
                 <button @click="saveAcompanhamento" class="btn btn-success">Salvar</button>
                 <router-link to="/acompanhamentos" class="btn btn-success">Voltar</router-link>
 
-            </form>
+            
         </div>
 
         <div v-else>
@@ -77,13 +77,13 @@ export default {
                 sequencia_passo: '',
                 data: '',
                 observacoes: '',
-                locacao_id: [],
-                situacao_id: [],
+                locacao: [],
+                situacao: [],
 
             },
             submitted: false,
-            locacao_id: [],
-            situacao_id: [],
+            locacao: [],
+            situacao: [],
 
         }
     },
@@ -93,7 +93,7 @@ export default {
 
             var agd = jQuery.extend({}, this.acompanhamento);//clona o this.novo_cliente e armazena na variavel cliente. dessa forma alteracoes em this.novo_cliente nao irao refletir em cliente.
 
-            if (agd.username.trim().length > 0 && agd.password.trim().length > 0) {
+            if (agd.observacoes.trim().length > 0) {
                 AcompanhamentoDataService.create(agd)
                     .then(response => {
 
@@ -116,7 +116,7 @@ export default {
 
                 for (let l of response.data) {
 
-                    this.locacao_id.push(l);
+                    this.locacao.push(l);
                 }
             }).catch(response => {
 
@@ -133,7 +133,7 @@ export default {
 
                 for (let s of response.data) {
 
-                    this.situacao_id.push(s);
+                    this.situacao.push(s);
                 }
             }).catch(response => {
 

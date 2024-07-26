@@ -43,9 +43,10 @@ import SituacaoDataService from '../../services/SituacaoDataService';
 
             saveSituacao(){
 
-                var st = jQuery.extend({}, this.sitacao);//clona o this.situacao e armazena na variavel sitacao. dessa forma alteracoes em this.novo_sitacao nao irao refletir em sitacao.
-                delete st.id
-                if (st.id.trim().length > 0 && st.descricao.trim().length > 0) {
+                var st = jQuery.extend({}, this.situacao);//clona o this.situacao e armazena na variavel sitacao. dessa forma alteracoes em this.novo_sitacao nao irao refletir em sitacao.
+              
+             
+                if (st.descricao.trim().length > 0) {
                 
                     SituacaoDataService.create(st)
                     .then(response => {

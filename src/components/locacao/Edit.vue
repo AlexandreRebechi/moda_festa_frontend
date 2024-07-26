@@ -1,7 +1,7 @@
 <template>
     <div id="tab_aut">
 
-        <div v-if="currentcurrentLocacao" class="edit-form">
+        <div v-if="currentLocacao" class="edit-form">
             <h3>Locação</h3>
             <form class="was-validated">
                 <div class="mb-3">
@@ -61,7 +61,7 @@
                 </div>
             <div class="mb-3">
                 <label for="selectReserva">Reserva:</label>
-                <select v-model="currentLocacao.reservas" class="form-control is-invalid" id="selectReserva" multiple required>
+                <select v-model="currentLocacao.reservas" class="form-control is-invalid" id="selectReserva"  required>
                     <option v-for="r in reservas" :key="r.id" v-bind:value="r">
                         {{ r.observacoes }}
                     </option>
@@ -70,8 +70,8 @@
             </div>
 
             </form>
-            <button class="badge badge-success" @click="updateReserva">Salvar</button>
-            <button class="badge badge-danger mr-2" @click="deleteReserva">Delete</button>
+            <button class="badge badge-success" @click="updateLocacao">Salvar</button>
+            <button class="badge badge-danger mr-2" @click="deleteLocacao">Delete</button>
             <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
 
 
@@ -91,11 +91,12 @@
 
 import ReservaDataService from '../../services/ReservaDataService'
 import LocacaoDateService from '../../services/LocacaoDateService'
+import FuncionarioDataService from '../../services/FuncionarioDataService'
 export default {
-    name: 'editLoacacao',
+    name: 'editloacacao',
     data() {
         return {
-            currentcurrentLocacao: null,
+            currentLocacao: null,
             message: '',
             reservas: [],
             funcionario: []
@@ -103,12 +104,12 @@ export default {
     },
     methods: {
 
-        getcurrentLocacao(id) {
+        getLocacao(id) {
 
             LocacaoDateService.get(id)
                 .then(response => {
                     console.log(response.data);
-                    this.currentcurrentLocacao = response.data;
+                    this.currentLocacao = response.data;
 
                 })
                 .catch(e => {
@@ -142,24 +143,24 @@ export default {
             }).catch(response => {
 
                 // error callback
-                alert('Não conectou no serviço ProdutoDataService.list');
+                alert('Não conectou no serviço FuncionarioDataService.list');
                 console.log(response);
             });
         },
-        updatecurrentLocacao() {
-            alert(this.currentcurrentLocacao.reservas);
-            LocacaoDateService.update(this.currentcurrentLocacao)
+        updateLocacao() {
+            alert(this.currentLocacao.id);
+            LocacaoDateService.update(this.currentLocacao)
                 .then(response => {
-                    console.log('currentLocacaoDateService.update');
+                    console.log('LocacaoDateService.update');
                     this.message = 'Locacão alterado com sucesso !';
                 })
                 .catch(e => {
                     console.log(e);
                 })
         },
-        deletecurrentLocacao() {
+        deleteLocacao() {
 
-            LocacaoDateService.delete(this.currentcurrentLocacao.id)
+            LocacaoDateService.delete(this.currentLocacao.id)
                 .then(response => {
                     console.log(response.data);
                     this.$router.push({ name: "locacoes-list" });
@@ -176,8 +177,9 @@ export default {
 
         this.message = '';
         this.listReserva();
-        this.getcurrentLocacao(this.$route.params.id);
         this.listFuncionario();
+        this.getLocacao(this.$route.params.id);
+       
     }
 }
 </script>

@@ -66,7 +66,7 @@ export default {
     methods: {
 
         getFoto(id) {
-
+            console.log('FotoDataService.get(id): '+ FotoDataService.get(id))
             FotoDataService.get(id)
                 .then(response => {
                     console.log(response.data);

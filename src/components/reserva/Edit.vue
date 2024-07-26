@@ -6,7 +6,7 @@
             <form class="was-validated">
            <div class="mb-3">
                 <label for="inputID">ID:</label>
-                <input type="number" v-model="reserva.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
+                <input type="number" v-model="currentReserva.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
             </div>
 
             <div class="mb-3">
@@ -36,7 +36,7 @@
             </div>
             <div class="mb-3">
                     <label for="selectCliente">Cliente:</label>
-                    <select v-model="currentReserva.cliente" class="form-control is-invalid" id="selectCliente" multiple>
+                    <select v-model="currentReserva.cliente" class="form-control is-invalid" id="selectCliente" >
                         <option v-for="c in cliente" :key="c.cpf_pessoa" v-bind:value="c">
                             {{ c.nome }}
                         </option>
@@ -46,7 +46,7 @@
                 <div class="mb-3">
                     <label for="selectFuncionario">Funcionario:</label>
                     <select v-model="currentReserva.funcionario" class="form-control is-invalid" id="selectFuncionario"
-                        multiple>
+                        >
                         <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
                             {{ f.nome }}
                         </option>
@@ -56,7 +56,7 @@
                 <div class="mb-3">
                     <label for="selectStatusReserva">Status Reserva:</label>
                     <select v-model="currentReserva.status_reserva" class="form-control is-invalid" id="selectStatusReserva"
-                        multiple>
+                        >
                         <option value="EM_ANALISE">EM_ANALISE</option>
                          <option value="APROVADA">APROVADA</option>
                           <option value="NEGADA">NEGADA</option>
@@ -65,7 +65,7 @@
            
             <div class="mb-3">
                 <label for="selectProduto">Produto:</label>
-                <select v-model="currentReserva.produtos" class="form-control is-invalid" id="selectProduto" multiple required>
+                <select v-model="currentReserva.produtos" class="form-control is-invalid" id="selectProduto"  required>
                     <option v-for="p in produtos" :key="p.id" v-bind:value="p">
                         {{ p.descricao }}
                     </option>
@@ -91,6 +91,8 @@
 </template>
 <script>
 
+import ClienteDataService from '../../services/ClienteDataService';
+import FuncionarioDataService from '../../services/FuncionarioDataService';
 import ProdutoDataService from '../../services/ProdutoDataService';
 import ReservaDataService from '../../services/ReservaDataService'
 
@@ -147,7 +149,7 @@ export default {
             }).catch(response => {
 
                 // error callback
-                alert('Não conectou no serviço ProdutoDataService.list');
+                alert('Não conectou no serviço ClienteDataService.list');
                 console.log(response);
             });
         },
@@ -163,7 +165,7 @@ export default {
             }).catch(response => {
 
                 // error callback
-                alert('Não conectou no serviço ProdutoDataService.list');
+                alert('Não conectou no serviço FuncionarioDataService.list');
                 console.log(response);
             });
         },

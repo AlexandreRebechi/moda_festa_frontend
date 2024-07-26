@@ -13,9 +13,9 @@
             </div>
 
             <div class="mb-3">
-                <label for="selectFuncinalidade">Funcinalidade:</label>
-                <select v-model="perfil.funcinalidades" class="form-control is-invalid" id="selectFuncinalidade" multiple required>
-                    <option v-for="f in funcinalidades" :key="f.id" v-bind:value="f">
+                <label for="selectFuncionalidades">Funcionalidades:</label>
+                <select v-model="perfil.funcionalidades" class="form-control is-invalid" id="selectFuncionalidades" multiple required>
+                    <option v-for="f in funcionalidades" :key="f.id" v-bind:value="f">
                         {{ f.descricao }}
                     </option>
                 </select>
@@ -48,10 +48,10 @@ export default {
                 indice: '',
                 id: '',
                 descricao: '',
-                funcinalidades: []
+                funcionalidades: []
             },
             submitted: false,
-            funcinalidades: []
+            funcionalidades: []
         }
     },
     methods: {
@@ -82,7 +82,7 @@ export default {
             this.submitted = false;
             this.perfil = {};
         },
-        listFuncinalidades() {
+        listFuncionalidades() {
 
             FuncionalidadeDataService.list().then(response => {
 
@@ -90,7 +90,7 @@ export default {
 
                 for (let p of response.data) {
 
-                    this.funcinalidades.push(p);
+                    this.funcionalidades.push(p);
                 }
 
             }).catch(response => {
@@ -103,7 +103,7 @@ export default {
 
     },
     mounted() {
-        this.listFuncinalidades();
+        this.listFuncionalidades();
 
     }
 

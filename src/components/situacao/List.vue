@@ -26,16 +26,16 @@ x<template>
         </div>
 
         <div class="col-md-6">
-            <div v-if="currentSitacao">
-                <h4>Sitacao</h4>
+            <div v-if="currentSituacao">
+                <h4>Situacao</h4>
                 <div>
-                    <label><strong>ID:</strong></label> {{ currentSitacao.id }}
+                    <label><strong>ID:</strong></label> {{ currentSituacao.id }}
                 </div>
                 <div>
-                    <label><strong>Descricao:</strong></label> {{ currentSitacao.descricao }}
+                    <label><strong>Descricao:</strong></label> {{ currentSituacao.descricao }}
                 </div>
 
-                <a class="badge badge-warning" :href="'/sitacao/' + currentSitacao.id">
+                <a class="badge badge-warning" :href="'/situacao/' + currentSituacao.id">
                     Edit
                 </a>
             </div>
@@ -55,11 +55,11 @@ x<template>
 
 import SituacaoDataService from '../../services/SituacaoDataService';
 export default {
-    name: 'listSitacoes',
+    name: 'listSituacoes',
     data() {
         return {
             situacoes: [],
-            currentSitacao: null,
+            currentSituacao: null,
             currentIndex: -1
         }
     },
@@ -81,7 +81,7 @@ export default {
         },
         setCurrentSituacao(situacoes, index) {
 
-            this.currentSitacao = situacoes;
+            this.currentSituacao = situacoes;
             this.currentIndex = index;
         },
         remSituacao(situacoes, index) {

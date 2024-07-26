@@ -16,8 +16,8 @@
 
             <div class="mb-3">
                 <label for="selectFuncinalidade">Funcinalidade:</label>
-                <select v-model="currentPerfil.funcinalidades" class="form-control is-invalid" id="selectFuncinalidade" multiple required>
-                    <option v-for="f in funcinalidades" :key="f.id" v-bind:value="f">
+                <select v-model="currentPerfil.funcionalidades" class="form-control is-invalid" id="selectFuncinalidade"  required>
+                    <option v-for="f in funcionalidades" :key="f.id" v-bind:value="f">
                         {{ f.descricao }}
                     </option>
                 </select>
@@ -50,7 +50,7 @@ export default {
         return {
             currentPerfil: null,
             message: '',
-            funcinalidades: []
+            funcionalidades: []
         }
     },
     methods: {
@@ -67,13 +67,13 @@ export default {
                     console.log(e);
                 })
         },
-        listFuncionalidade() {
+        listFuncionalidades() {
 
             FuncionalidadeDataService.list().then(response => {
 
                 console.log("Retorno do seviço FuncionalidadeDataService.list", response.status);
 
-                this.funcinalidades = response.data;
+                this.funcionalidades = response.data;
 
             }).catch(response => {
 
@@ -83,7 +83,7 @@ export default {
             });
         },
         updatePerfil() {
-            alert(this.currentPerfil.funcinalidades);
+            alert(this.currentPerfil.id);
             PerfilDataService.update(this.currentPerfil)
                 .then(response => {
                     console.log('PerfilDataService.update');
@@ -111,7 +111,7 @@ export default {
     mounted() {
 
         this.message = '';
-        this.listFuncionalidade();
+        this.listFuncionalidades();
         this.getPerfil(this.$route.params.id);
     }
 }

@@ -1,14 +1,13 @@
 <template>
     <div id="tab_aut">
-
-        <div v-if="currentJogador" class="edit-form">
-            <h3>Cliente</h3>
+            
+        <div v-if="currentFuncionario" class="edit-form">
             <form class="was-validated">
+                <h3>Cliente</h3>
                 <div class="mb-3">
                     <label for="inputCPF">CPF:</label>
                     <input type="text" v-model="currentFuncionario.cpf" class="form-control is-invalid" id="inputCPF"
                         placeholder="CPF" required>
-
                 </div>
                 <div class="mb-3">
                     <label for="inputNome">Nome:</label>
@@ -18,14 +17,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputEmail">Email:</label>
-                    <input type="text" v-model="currentFuncionario.email" class="form-control is-invalid" id="inputEmail"
-                        placeholder="Email" required>
+                    <input type="text" v-model="currentFuncionario.email" class="form-control is-invalid"
+                        id="inputEmail" placeholder="Email" required>
 
                 </div>
                 <div class="mb-3">
                     <label for="inputTelefone">Telefone:</label>
-                    <input type="text" v-model="currentFuncionario.telefone" class="form-control is-invalid" id="inputTelefone"
-                        placeholder="Telefone" required>
+                    <input type="text" v-model="currentFuncionario.telefone" class="form-control is-invalid"
+                        id="inputTelefone" placeholder="Telefone" required>
 
                 </div>
                 <div class="mb-3">
@@ -36,20 +35,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputLogradouro">Logradouro:</label>
-                    <input type="text" v-model="currentFuncionario.logradouro" class="form-control is-invalid" id="inputLogradouro"
-                        placeholder="Logradouro" required>
+                    <input type="text" v-model="currentFuncionario.logradouro" class="form-control is-invalid"
+                        id="inputLogradouro" placeholder="Logradouro" required>
 
                 </div>
                 <div class="mb-3">
                     <label for="inputBairro">Bairro:</label>
-                    <input type="text" v-model="currentFuncionario.bairro" class="form-control is-invalid" id="inputBairro"
-                        placeholder="Bairro" required>
-
-                </div>
-                <div class="mb-3">
-                    <label for="inputNumero">Numero:</label>
-                    <input type="text" v-model="currentFuncionario.numero" class="form-control is-invalid" id="inputNumero"
-                        placeholder="Numero" required>
+                    <input type="text" v-model="currentFuncionario.bairro" class="form-control is-invalid"
+                        id="inputBairro" placeholder="Bairro" required>
 
                 </div>
                 <div class="mb-3">
@@ -72,14 +65,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputUsername">Username:</label>
-                    <input type="text" v-model="currentFuncionario.username" class="form-control is-invalid" id="inputUsername"
-                        placeholder="Username" required>
+                    <input type="text" v-model="currentFuncionario.username" class="form-control is-invalid"
+                        id="inputUsername" placeholder="Username" required>
 
                 </div>
                 <div class="mb-3">
                     <label for="inputPassword">Password:</label>
-                    <input type="password" v-model="currentFuncionario.password" class="form-control is-invalid" id="inputPassword"
-                        placeholder="Password" required>
+                    <input type="password" v-model="currentFuncionario.password" class="form-control is-invalid"
+                        id="inputPassword" placeholder="Password" required>
 
                 </div>
                 <div class="mb-3">
@@ -90,25 +83,25 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputNumeroCtps">Numero CTPS:</label>
-                    <input type="text" v-model="currentFuncionario.funcionario.numero_ctps" class="form-control is-invalid"
-                        id="inputNumeroCtps" placeholder="Numero CTPS" required>
+                    <input type="text" v-model="currentFuncionario.numero_ctps" class="form-control is-invalid" id="inputNumeroCtps"
+                        placeholder="Numero CTPS" required>
                 </div>
                 <div class="mb-3">
                     <label for="inputDataContratacao">Data Contratacao:</label>
-                    <input type="text" v-model="currentFuncionario.funcionario.data_contratacao" class="form-control is-invalid"
+                    <input type="date" v-model="currentFuncionario.data_contratacao" class="form-control is-invalid"
                         id="inputDataContratacao" placeholder="Data Contratacao" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="inputDataDemissao">Data Demissao:</label>
-                    <input type="text" v-model="currentFuncionario.funcionario.data_demissao" class="form-control is-invalid"
+                    <input type="date" v-model="currentFuncionario.data_demissao" class="form-control is-invalid"
                         id="inputDataDemissao" placeholder="Data Demissao" required>
                 </div>
 
+
                 <div class="mb-3">
                     <label for="selectPerfil">Perfil:</label>
-                    <select v-model="currentFuncionario.funcionario.perfil" class="form-control is-invalid" id="selectPerfil"
-                         required>
+                    <select v-model="currentFuncionario.perfil" class="form-control is-invalid" id="selectPerfil" required>
                         <option v-for="p in perfil" :key="p.id" v-bind:value="p">
                             {{ p.descricao }}
                         </option>
@@ -116,6 +109,7 @@
 
 
                 </div>
+
 
             </form>
             <button class="badge badge-success" @click="updateFuncionario">Salvar</button>
@@ -139,14 +133,13 @@
 
 import FuncionarioDataService from '../../services/FuncionarioDataService';
 
-
 export default {
-    name: 'editFuncionario',
+    name: 'editcliente',
     data() {
         return {
             currentFuncionario: null,
-            message: '',
-            perfil: []
+            message: ''
+
         }
     },
     methods: {
@@ -174,49 +167,33 @@ export default {
                     console.log(e);
                 })
         },
-        listPerfil() {
-            PerfilDataService.list().then(response => {
-
-                console.log("Retorno do seviço PerfilDataService.list", response.status);
-
-                for (let p of response.data) {
-
-                    this.perfil.push(p);
-                }
-            }).catch(response => {
-
-                // error callback
-                alert('Não conectou no serviço PerfilDataService.list');
-                console.log(response);
-            });
-        },
         deleteFuncionario() {
 
             FuncionarioDataService.delete(this.currentFuncionario.cpf)
                 .then(response => {
                     console.log(response.data);
-                    this.$router.push({ name: "funcionarios-list" });
+                    this.$router.push({ name: "clientes-list" });
                 })
                 .catch(e => {
                     console.log(e);
                 });
         },
         voltar() {
-            this.$router.push({ name: "funcionarios-list" });
+            this.$router.push({ name: "clientes-list" });
         }
     },
     mounted() {
 
         this.message = '';
-        this.getFuncionario(this.$route.params.cpf);
-        this.listPerfil();
+        this.getFuncionario(this.$route.params.id);
     }
 }
 </script>
-    
+
 <style scoped>
 .edit-form {
     max-width: 300px;
     margin: auto;
+
 }
 </style>

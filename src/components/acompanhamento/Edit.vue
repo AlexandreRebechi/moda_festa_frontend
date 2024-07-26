@@ -6,39 +6,43 @@
             <form class="was-validated">
                 <div class="mb-3">
                     <label for="inputID">ID:</label>
-                    <input type="number" v-model="currentAcompanhamento.id" class="form-control is-invalid" id="inputID" placeholder="ID"
-                        disabled required>
+                    <input type="number" v-model="currentAcompanhamento.id" class="form-control is-invalid" id="inputID"
+                        placeholder="ID" disabled  required>
+                    
                 </div>
                 <div class="mb-3">
                     <label for="inputSequenciaPasso">Sequencia Passo:</label>
-                    <input type="number" v-model="currentAcompanhamento.sequencia_passo" class="form-control is-invalid" id="inputSequenciaPasso" placeholder="Sequencia Passo" required>
-                          
+                    <input type="number" v-model="currentAcompanhamento.sequencia_passo" class="form-control is-invalid"
+                        id="inputSequenciaPasso" placeholder="Sequencia Passo" required>
+
                 </div>
                 <div class="mb-3">
                     <label for="inputData">Data:</label>
-                    <input type="date" v-model="currentAcompanhamento.data" class="form-control is-invalid" id="inputData" placeholder="Data" required>
-                    
+                    <input type="date" v-model="currentAcompanhamento.data" class="form-control is-invalid" id="inputData"
+                        placeholder="Data" required>
+
                 </div>
                 <div class="mb-3">
                     <label for="inputObservacoes">Observacoes:</label>
-                    <input type="text" v-model="currentAcompanhamento.observacoes" class="form-control is-invalid" id="inputObservacoes" placeholder="Observacoes" required>
-                    
+                    <input type="text" v-model="currentAcompanhamento.observacoes" class="form-control is-invalid"
+                        id="inputObservacoes" placeholder="Observacoes" required>
+
                 </div>
                 <div class="mb-3">
                     <label for="selectLocacaoID">Locacao ID:</label>
-                    <select v-model="acompanhamento.locacao_id" class="form-control is-invalid" id="selectLocacaoID"
+                    <select v-model="currentAcompanhamento.id_locacao" class="form-control is-invalid" id="selectLocacaoID"
                         >
-                        <option v-for="l in locacao_id" :key="l.id" v-bind:value="l">
+                        <option v-for="l in id_locacao" :key="l.id" v-bind:value="l">
                             {{ l.observacoes }}
                         </option>
                     </select>
 
                 </div>
                 <div class="mb-3">
-                    <label for="selectLocacaoID">Situacao ID:</label>
-                    <select v-model="acompanhamento.situacao_id" class="form-control is-invalid" id="selectLocacaoID"
-                        multiple>
-                        <option v-for="s in locacao_id" :key="s.id" v-bind:value="s">
+                    <label for="selectSituacaoID">Situacao ID:</label>
+                    <select v-model="currentAcompanhamento.id_situacao" class="form-control is-invalid" id="selectSituacaoID"
+                        >
+                        <option v-for="s in id_situacao" :key="s.id" v-bind:value="s">
                             {{ s.descricao }}
                         </option>
                     </select>
@@ -64,34 +68,39 @@
 <script>
 
 import AcompanhamentoDataService from '../../services/AcompanhamentoDataService';
+import LocacaoDateService from '../../services/LocacaoDateService';
+import SituacaoDataService from '../../services/SituacaoDataService';
 
 
 export default {
-    name: 'editacompanhamento',
+    name: 'editAcompanhamento',
     data() {
         return {
             currentAcompanhamento: null,
             message: '',
-            locacao_id: [],
-            situacao_id: []
+            id_locacao: [],
+            id_situacao: []
         }
     },
     methods: {
 
         getAcompanhamento(id) {
-
+      
             AcompanhamentoDataService.get(id)
                 .then(response => {
-                    console.log(response.data);
+                    console.log('response.data: '+ response.data);
                     this.currentAcompanhamento = response.data;
-
+                    
                 })
                 .catch(e => {
                     console.log(e);
                 })
         },
         updateAcompanhamento() {
-            alert(this.currentAcompanhamento.acompanhamento);
+            alert(this.currentAcompanhamento.id);
+            this.currentAcompanhamento.sequencia_passo = 1
+            this.currentAcompanhamento.id = 8
+            
             AcompanhamentoDataService.update(this.currentAcompanhamento)
                 .then(response => {
                     console.log('AcompanhamentoDataService.update');
@@ -108,7 +117,7 @@ export default {
 
                 for (let l of response.data) {
 
-                    this.locacao_id.push(l);
+                    this.id_locacao.push(l);
                 }
             }).catch(response => {
 
@@ -125,7 +134,7 @@ export default {
 
                 for (let s of response.data) {
 
-                    this.situacao_id.push(s);
+                    this.id_situacao.push(s);
                 }
             }).catch(response => {
 
@@ -139,19 +148,20 @@ export default {
             AcompanhamentoDataService.delete(this.currentAcompanhamento.id)
                 .then(response => {
                     console.log(response.data);
-                    this.$router.push({ name: "acompanhamentos-list" });
+                    this.$router.push({ name: "acompanhamento-list" });
                 })
                 .catch(e => {
                     console.log(e);
                 });
         },
         voltar() {
-            this.$router.push({ name: "acompanhamentos-list" });
+            this.$router.push({ name: "acompanhamento-list" });
         }
     },
     mounted() {
 
         this.message = '';
+        
         this.getAcompanhamento(this.$route.params.id);
         this.listLocacao();
         this.listSituacao();

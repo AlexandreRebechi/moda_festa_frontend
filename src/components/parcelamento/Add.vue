@@ -87,7 +87,7 @@ export default {
 
             var par = jQuery.extend({}, this.parcelamento);//clona o this.novo_cliente e armazena na variavel cliente. dessa forma alteracoes em this.novo_cliente nao irao refletir em cliente.
 
-            if (par.id.trim().length > 0) {
+            if (par.data_previsao_pagamento.trim().length > 0) {
                 ParcelamentoDataService.create(par)
                     .then(response => {
 

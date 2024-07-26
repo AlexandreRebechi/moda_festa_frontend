@@ -51,6 +51,8 @@
 
                 FuncionalidadeDataService.get(id)
                 .then(response => {
+                    console.log("response data: "+response.data);
+
                     console.log(response.data);
                     this.currentFuncionalidade = response.data;
                     

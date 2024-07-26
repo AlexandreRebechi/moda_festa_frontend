@@ -1,100 +1,101 @@
 <template>
     <div id="tab_aut">
-     
-       <div v-if="currentSitacao" class="edit-form">
+
+        <div v-if="currentSituacao" class="edit-form">
             <h3>Situacao</h3>
             <form class="was-validated">
-        <div class="mb-3">
-            <label for="inputID">ID:</label>
-            <input type="text" v-model="currentSituacao.id" class="form-control is-invalid" id="inputID" placeholder="ID" disabled required>
-        </div>            
-        <div class="mb-3">
-                <label for="inputDescricao">Descricao:</label>
-                <input type="text" v-model="currentSituacao.descricao" class="form-control is-invalid" id="inputDescricao" placeholder="Descricao" required>
-        </div>  
-                           
+                <div class="mb-3">
+                    <label for="inputID">ID:</label>
+                    <input type="text" v-model="currentSituacao.id" class="form-control is-invalid" id="inputID"
+                        placeholder="ID" disabled required>
+                </div>
+                <div class="mb-3">
+                    <label for="inputDescricao">Descricao:</label>
+                    <input type="text" v-model="currentSituacao.descricao" class="form-control is-invalid"
+                        id="inputDescricao" placeholder="Descricao" required>
+                </div>
+
             </form>
-            <button class="badge badge-success" @click="updateSitacao">Salvar</button>
-            <button class="badge badge-danger mr-2" @click="deleteSitacao">Delete</button>
+            <button class="badge badge-success" @click="updateSituacao">Salvar</button>
+            <button class="badge badge-danger mr-2" @click="deleteSituacao">Delete</button>
             <button class="badge badge-danger mr-2" @click="voltar">Voltar</button>
 
-            
+
             <p>{{ message }}</p>
 
-       </div>
-       <div v-else>
+        </div>
+        <div v-else>
             <br />
-            <p>Please click on a Sitacao...</p>
+            <p>Please click on a Situacao...</p>
         </div>
 
-                                          
+
     </div>
- </template>
- <script>
- 
+</template>
+<script>
+
 import SituacaoDataService from '../../services/SituacaoDataService';
- 
-     export default{
-      name:'editSituacao',
-      data() {
-             return {                
-                currentSituacao: null,
-                 message: ''
-             }
-         },
-         methods: {
 
-            getSitacao(id){
+export default {
+    name: 'editSituacao',
+    data() {
+        return {
+            currentSituacao: null,
+            message: ''
+        }
+    },
+    methods: {
 
-                SituacaoDataService.get(id)
+        getSituacao(id) {
+            console.log("id situacao edit: "+ id)
+            SituacaoDataService.get(id)
                 .then(response => {
-                    console.log(response.data);
+            
                     this.currentSituacao = response.data;
-                    
+
                 })
-                .catch(e=> {
+                .catch(e => {
                     console.log(e);
                 })
-            },
-            updateSitacao(){
-
-                SituacaoDataService.update(this.currentSituacao)
+        },
+        updateSituacao() {
+            console.log("currentSituacao edit: "+ this.currentSituacao.id)
+            alert(this.currentSituacao.id)
+            SituacaoDataService.update(this.currentSituacao)
                 .then(response => {
                     console.log('SituacaoDataService.update');
                     this.message = 'Situacao alterada com sucesso !';
                 })
-                .catch(e =>{
+                .catch(e => {
                     console.log(e);
                 })
-            },
-            deleteSitacao(){
+        },
+        deleteSituacao() {
 
-                SituacaoDataService.delete(this.currentSituacao.id)
+            SituacaoDataService.delete(this.currentSituacao.id)
                 .then(response => {
                     console.log(response.data);
                     this.$router.push({ name: "situacoes-list" });
                 })
                 .catch(e => {
-                console.log(e);
+                    console.log(e);
                 });
-            },
-            voltar(){
-                this.$router.push({ name: "situacoes-list" });
-            }
-         },
-         mounted() {
-            
-            this.message = '';
-            this.getSitacao(this.$route.params.id);
-         }
-     }
- </script>
-    
- <style scoped>
+        },
+        voltar() {
+            this.$router.push({ name: "situacoes-list" });
+        }
+    },
+    mounted() {
 
-    .edit-form {
+        this.message = '';
+        this.getSituacao(this.$route.params.id);
+    }
+}
+</script>
+
+<style scoped>
+.edit-form {
     max-width: 300px;
     margin: auto;
-    }
-     
- </style>
+}
+</style>

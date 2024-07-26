@@ -202,6 +202,7 @@ const router = new Router({
       path: '/acompanhamento/:id',
       name: 'acompanhamento-edit',
       component: editAcompanhamento
+      
     },
     {
       path: '/addacompanhamento',
@@ -210,7 +211,7 @@ const router = new Router({
     },
     {
       path: '/situacoes',
-      name: 'situacao-list',
+      name: 'situacoes-list',
       component: listSituacoes
     },
     {

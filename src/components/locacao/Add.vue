@@ -52,7 +52,7 @@
                     <select v-model="locacao.tipos_pagamento" class="form-control is-invalid" id="selectTiposPagamento"
                         >
                             <option value="NA_RETIRADA">NA_RETIRADA</option>
-                            <option value="ENTREGA_DEVOLUCAO">ENTREGA_DEVOLUCAO</option>
+                            <option value="ENTRADA_DEVOLUCAO">ENTRADA_DEVOLUCAO</option>
                             <option value="PARCELADO">PARCELADO</option>
                     </select>
 
@@ -84,7 +84,7 @@
 
 import FuncionarioDataService from '../../services/FuncionarioDataService';
 import ReservaDataService from '../../services/ReservaDataService';
-
+import LocacaoDateService from '../../services/LocacaoDateService';
 
 
 export default {
@@ -118,7 +118,7 @@ export default {
 
             if (L.observacoes.trim().length > 0) {
 
-                LocacaoDataService.create(L)
+                LocacaoDateService.create(L)
                     .then(response => {
 
                         this.submitted = true;
