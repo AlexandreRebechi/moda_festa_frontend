@@ -86,14 +86,14 @@
           <input type="date" v-model="pessoa.data_ultimo_login" class="form-control is-invalid"
             id="inputDataUltimoLogin" placeholder="Data Ultimo Login" required>
         </div>
-      
+       
         <div class="mb-3">
-              <label for="inputRG">RG:</label>
-              <input type="text" v-model="pessoa.cliente.rg" class="form-control is-invalid" id="inputRG"
-                placeholder="RG" required>
+              <label for="inputCNPJ">CNPJ:</label>
+              <input type="text" v-model="pessoa.cliente.cnpj" class="form-control is-invalid" id="inputCNPJ"
+                placeholder="CNPJ" required>
 
             </div>
-
+      
         <div class="mb-3">
           <label for="inputIE">IE:</label>
           <input type="text" v-model="pessoa.cliente.ie" class="form-control is-invalid" id="inputIE" placeholder="IE"
@@ -122,7 +122,7 @@ import ClienteDataService from '../../services/ClienteDataService';
 //import PatenteDataService from '../../services/PatenteDataService'
 
 export default {
-  name: "addcliente1",
+  name: "addcliente2",
   data() {
     return {
       pessoa: {
@@ -142,7 +142,7 @@ export default {
         password: '',
         data_ultimo_login: '',
         tipo: true,
-        cliente: { rg: '', cnpj: '', ie: '', tipo: true }
+        cliente: { rg: '', cnpj: '', ie: '', tipo: false }
       },
       submitted: false,
 
@@ -154,7 +154,7 @@ export default {
     }
   },
   methods: {
-/*pessoaFisica() {
+    /*pessoaFisica() {
       if (this.pessoa.cliente.tipo == 'F') {
         return true
       }else {

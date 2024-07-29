@@ -31,9 +31,9 @@
                         <td>{{ r.cliente }}</td>
                         <td>{{ r.funcionario }}</td>
                         <td>{{ r.status_reserva }}</td>
-                        <td><button v-on:click="setCurrentReserva(r, indice)" class="btn"
+                        <td><button v-on:click="setCurrentReserva(r, indice) && statusShowMenu()" class="btn"
                                 type="button">Alterar</button></td>
-                        <td><button v-on:click="remReserva(r, indice)" class="btn" type="button">Remover</button>
+                        <td><button v-on:click="remReserva(r, indice) && statusShowMenu()" class="btn" type="button">Remover</button>
                         </td>
                     </tr>
 
@@ -43,7 +43,7 @@
 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" v-show="statusShowMenu()">
             <div v-if="currentReserva">
                 <h4>Reserva</h4>
                 <div>
@@ -77,6 +77,7 @@ export default {
     data() {
         return {
             reservas: [],
+            pessoas: [],
             currentReserva: null,
             currentIndex: -1
         }
@@ -102,6 +103,24 @@ export default {
             this.currentReserva = reserva;
             this.currentIndex = index;
         },
+        statusShowMenu() {
+      let aux = localStorage.getItem('authUser', this.pessoas.tipo)
+      if (aux.includes('F')) {
+        return true
+      } else {
+        return false
+      }
+
+    },
+    status_cliente(){
+        let aux = localStorage.getItem('authUser', this.pessoas)
+        console.log('aux: '+aux)
+      if (aux == this.reservas.cliente) {
+        return true
+      } else {
+        return false
+      }
+    },
         remReserva(reserva, index) {
 
             ReservaDataService.delete(reserva.id)

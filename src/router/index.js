@@ -6,6 +6,7 @@ import home from  '@/components/Home'
 import listClientes from '../components/cliente/List.vue'
 import editCliente  from  '@/components/cliente/Edit'
 import novoCliente from  '@/components/cliente/Add'
+import novoCliente2 from '@/components/cliente/Add2'
 import listFuncionarios from '@/components/funcionario/List'
 import editFuncionario from '@/components/funcionario/Edit'
 import novoFuncionario from '@/components/funcionario/Add'
@@ -61,15 +62,21 @@ const router = new Router({
       name: 'clientes-list',
       component: listClientes    
     },
+    
     {
       path: '/cliente/:id',
       name: "cliente-edit",
       component: editCliente
     },
     {
-      path: '/addcliente',
+      path: '/addcliente1',
       name: "cliente-add",
       component: novoCliente
+    },
+    {
+      path: '/addcliente2',
+      name: "cliente-add",
+      component: novoCliente2
     },
     {
       path: '/funcionarios',

@@ -133,7 +133,7 @@ export default {
 
                 for (let s of response.data) {
 
-                    this.situacao.push(s);
+                    this.id_situacao.push(s);
                 }
             }).catch(response => {
 

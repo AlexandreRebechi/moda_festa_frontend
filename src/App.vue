@@ -20,7 +20,7 @@
             <a class="nav-link"  v-show="showMenu() && statusShowMenu()" href="#">Link</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"  v-show="showMenu() && statusShowMenu()" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+            <a class="nav-link dropdown-toggle"  v-show="showMenu()" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">Classes</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
           <li class="nav-item">

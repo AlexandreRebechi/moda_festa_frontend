@@ -51,9 +51,9 @@
                         <td>{{ p.cnpj }}</td>
                         <td>{{ p.ie }}</td>
                         <td>{{ p.tipo }}</td>
-                        <td><button v-on:click="setCurrentCliente(p, indice)" class="btn"
+                        <td><button v-on:click="setCurrentCliente(p, indice) && statusShowMenu()" class="btn"
                                 type="button">Alterar</button></td>
-                        <td><button v-on:click="remCliente(p, indice)" class="btn" type="button">Remover</button>
+                        <td><button v-on:click="remCliente(p, indice) && statusShowMenu()" class="btn" type="button">Remover</button>
                         </td>
                     </tr>
                 </tbody>
@@ -62,7 +62,8 @@
         </div>
 
         <div class="col-md-6">
-            <div v-if="currentCliente">
+            <div v-if="currentCliente && statusShowMenu()">
+
                 <h4>Cliente</h4>
                 <div>
                     <label><strong>Username:</strong></label> {{ currentCliente.username }}
@@ -70,16 +71,26 @@
                 <div>
                     <label><strong>Data de Cadastro:</strong></label> {{ currentCliente.data_cadastro }}
                 </div>
-
+                
+                <!--<div>
+                    <label><strong>Tipo Pessoa: </strong>{{ currentCliente.cliente.tipo}}</label>
+                </div>
+                <div v-if="currentCliente.cliente.tipo == F">
+                    <label><strong>Pessoa Fisica</strong>{{ currentCliente.cliente.tipo }}</label>
+                </div>
+                <div v-else>
+                    <label><strong>Pessoa Fisica</strong>{{ currentCliente.cliente.tipo }}</label>
+                </div>-->
                 <a class="badge badge-warning" :href="'/cliente/' + currentCliente.cpf">
                     Edit
                 </a>
             </div>
+
             <div v-else>
                 <br />
                 <p>Please click on a Player...</p>
-                <router-link to="/addcliente" class="badge badge-success">Novo</router-link>
-
+                <router-link to="/addcliente1" class="badge badge-success">Novo Cliente Fisico</router-link>
+                <router-Link to="/addcliente2" class="badge badge-success">Novo Cliente Juritico</router-Link>
             </div>
         </div>
 
@@ -88,6 +99,7 @@
 </template>
 <script>
 
+import { RouterLink } from 'vue-router';
 import ClienteDataService from '../../services/ClienteDataService';
 
 
@@ -122,6 +134,15 @@ export default {
             this.currentIndex = index;
 
         },
+        statusShowMenu() {
+      let aux = localStorage.getItem('authUser', this.pessoas.tipo)
+      if (aux.includes('F')) {
+        return true
+      } else {
+        return false
+      }
+
+    },
         remCliente(pessoa, index) {
 
             ClienteDataService.delete(pessoa.id)
