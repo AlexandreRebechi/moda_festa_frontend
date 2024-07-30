@@ -81,16 +81,16 @@
             id="inputDataUltimoLogin" placeholder="Data Ultimo Login" required>
 
         </div>
-        <div class="mb-3">
+        <div class="mb-3" v-if="tipoPessoa()">
           <label for="inputRG">RG:</label>
           <input type="text" v-model="currentCliente.cliente.rg" class="form-control is-invalid" id="inputRG"
             placeholder="RG" required>
 
         </div>
-        <div class="mb-3">
+        <div class="mb-3" v-else>
           <label for="inputCNPJ">CNPJ:</label>
           <input type="text" v-model="currentCliente.cliente.cnpj" class="form-control is-invalid" id="inputCNPJ"
-            placeholder="CNPJ" required>
+            placeholder="CNPJ" required >
 
         </div>
         <div class="mb-3">
@@ -155,6 +155,14 @@ export default {
         .catch(e => {
           console.log(e);
         })
+    },
+    tipoPessoa(){
+      console.log("tipo pessoa: "+this.currentCliente.tipo)
+      if (this.currentCliente.tipo == 'F') {
+         return true
+      } else {
+        return false        
+      }
     },
     deleteCliente() {
 

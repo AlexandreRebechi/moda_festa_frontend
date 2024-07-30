@@ -22,7 +22,6 @@
                         <th scope="col">username</th>
                         <th scope="col">password</th>
                         <th scope="col">data_ultimo_login</th>
-                        <th scope="col">tipo</th>
                         <th scope="col">rg</th>
                         <th scope="col">cnpj</th>
                         <th scope="col">ie</th>
@@ -46,7 +45,6 @@
                         <td>{{ p.username }}</td>
                         <td>{{ p.password }}</td>
                         <td>{{ p.data_ultimo_login }}</td>
-                        <td>{{ p.tipo }}</td>
                         <td>{{ p.rg }}</td>
                         <td>{{ p.cnpj }}</td>
                         <td>{{ p.ie }}</td>
