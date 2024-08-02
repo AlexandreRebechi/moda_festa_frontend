@@ -16,7 +16,6 @@
                         <th scope="col">bairro</th>
                         <th scope="col">numero</th>
                         <th scope="col">complemento</th>
-                        <th scope="col">observacoes</th>
                         <th scope="col">data_cadastro</th>
                         <th scope="col">username</th>
                         <th scope="col">password</th>
@@ -39,15 +38,14 @@
                         <td>{{ p.bairro }}</td>
                         <td>{{ p.numero }}</td>
                         <td>{{ p.complemento }}</td>
-                        <td>{{ p.observacoes }}</td>
-                        <td>{{ p.data_cadastro }}</td>
+                        <td>{{ p.data_cadastro | formataData}}</td>
                         <td>{{ p.username }}</td>
                         <td>{{ p.password }}</td>
-                        <td>{{ p.data_ultimo_login }}</td>
+                        <td>{{ p.data_ultimo_login | formataData}}</td>
                         <td>{{ p.tipo }}</td>
                         <td>{{ p.numero_ctps }}</td>
-                        <td>{{ p.data_contratacao }}</td>
-                        <td>{{ p.data_demissao }}</td>
+                        <td>{{ p.data_contratacao | formataData}}</td>
+                        <td>{{ p.data_demissao | formataData}}</td>
                         <td>{{ p.perfil }}</td>
                         <td><button v-on:click="setCurrentFuncionario(p, indice)" class="btn"
                                 type="button">Alterar</button></td>
@@ -67,11 +65,13 @@
                     <label><strong>Username:</strong></label> {{ currentFuncinario.username }}
                 </div>
                 <div>
-                    <label><strong>Data de Cadastro:</strong></label> {{ currentFuncinario.datacadastro }}
+                    <label><strong>Data de Cadastro:</strong></label> {{ currentFuncinario.data_cadastro | formataData }}
+                </div>
+                <div>
+                    <label><strong>Observacoes:</strong></label> {{ currentFuncinario.observacoes }}
                 </div>
 
-
-                <a class="badge badge-warning" :href="'/fucionario/' + currentFuncinario.cpf">
+                <a class="badge badge-warning" :href="'/funcionario/' + currentFuncinario.cpf">
                     Edit
                 </a>
             </div>

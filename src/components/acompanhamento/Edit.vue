@@ -32,7 +32,7 @@
                     <label for="selectLocacaoID">Locacao ID:</label>
                     <select v-model="currentAcompanhamento.id_locacao" class="form-control is-invalid" id="selectLocacaoID"
                         >
-                        <option v-for="l in id_locacao" :key="l.id" v-bind:value="l">
+                        <option v-for="l in id_locacao" v-bind:key="l.id" v-bind:value="l.id">
                             {{ l.observacoes }}
                         </option>
                     </select>
@@ -42,7 +42,7 @@
                     <label for="selectSituacaoID">Situacao ID:</label>
                     <select v-model="currentAcompanhamento.id_situacao" class="form-control is-invalid" id="selectSituacaoID"
                         >
-                        <option v-for="s in id_situacao" :key="s.id" v-bind:value="s">
+                        <option v-for="s in id_situacao" v-bind:key="s.id" v-bind:value="s.id">
                             {{ s.descricao }}
                         </option>
                     </select>
@@ -98,8 +98,7 @@ export default {
         },
         updateAcompanhamento() {
             alert(this.currentAcompanhamento.id);
-            this.currentAcompanhamento.sequencia_passo = 1
-            this.currentAcompanhamento.id = 8
+      
             
             AcompanhamentoDataService.update(this.currentAcompanhamento)
                 .then(response => {

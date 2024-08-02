@@ -13,7 +13,6 @@
                         <th scope="col">Valor</th>
                         <th scope="col">Valor Entrega</th>
                         <th scope="col">Valor Total</th>
-                        <th scope="col">Observacoes</th>
                         <th scope="col">Cliente</th>
                         <th scope="col">Funcionario</th>
                         <th scope="col">Status Reserva</th>
@@ -22,12 +21,11 @@
                 <tbody>
                     <tr v-for="(r, indice) in reservas" :key="r.id" :class="{ active: indice == currentIndex }">
                         <td>{{ r.id }}</td>
-                        <td>{{ r.data_inicio }}</td>
-                        <td>{{ r.data_fim}}</td>
+                        <td>{{ r.data_inicio | formataData}}</td>
+                        <td>{{ r.data_fim | formataData}}</td>
                         <td>{{ r.valor }}</td>
                         <td>{{ r.valor_entrega }}</td>
                         <td>{{ r.valor_total }}</td>
-                        <td>{{ r.observacoes }}</td>
                         <td>{{ r.cliente }}</td>
                         <td>{{ r.funcionario }}</td>
                         <td>{{ r.status_reserva }}</td>
@@ -50,7 +48,7 @@
                     <label><strong>ID:</strong></label> {{ currentReserva.id }}
                 </div>
                 <div>
-                    <label><strong>Observacoes:</strong></label> {{ currentReserva.descricao }}
+                    <label><strong>Observacoes:</strong></label> {{ currentReserva.observacoes }}
                 </div>
 
                 <a class="badge badge-warning" :href="'/reserva/' + currentReserva.id">

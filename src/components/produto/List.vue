@@ -8,8 +8,7 @@
                 <thead class="thead-inverse">
                     <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Descricao</th>
-                    <th scope="col">Observacoes</th>
+                    <th scope="col">Descricao</th>    
                     <th scope="col">Valor Custo</th>
                     <th scope="col">Valor Aluguel</th>
                     <th scope="col">Valor Venda</th>
@@ -20,7 +19,6 @@
                         <tr v-for="(p, indice) in produtos" :key ="p.id" :class="{ active: indice == currentIndex }">      
                             <td>{{p.id}}</td>
                             <td>{{p.descricao}}</td>
-                            <td>{{p.observacoes}}</td>
                             <td>{{p.valor_custo}}</td>
                             <td>{{p.valor_aluguel}}</td>
                             <td>{{p.valor_venda}}</td>
@@ -41,7 +39,7 @@
                     <label><strong>ID:</strong></label> {{ currentProduto.id }}
                     </div>
                     <div>
-                    <label><strong>Descricao:</strong></label> {{ currentProduto.descricao }}
+                    <label><strong>Observacoes:</strong></label> {{ currentProduto.observacoes }}
                     </div>
 
                     <a class="badge badge-warning"

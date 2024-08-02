@@ -41,10 +41,10 @@
                         <td>{{ p.numero }}</td>
                         <td>{{ p.complemento }}</td>
                         <td>{{ p.observacoes }}</td>
-                        <td>{{ p.data_cadastro }}</td>
+                        <td>{{ p.data_cadastro | formataData}}</td>
                         <td>{{ p.username }}</td>
                         <td>{{ p.password }}</td>
-                        <td>{{ p.data_ultimo_login }}</td>
+                        <td>{{ p.data_ultimo_login | formataData}}</td>
                         <td>{{ p.rg }}</td>
                         <td>{{ p.cnpj }}</td>
                         <td>{{ p.ie }}</td>

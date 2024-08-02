@@ -185,7 +185,7 @@ export default {
     mounted() {
 
         this.message = '';
-        this.getFuncionario(this.$route.params.id);
+        this.getFuncionario(this.$route.params.cpf);
     }
 }
 </script>

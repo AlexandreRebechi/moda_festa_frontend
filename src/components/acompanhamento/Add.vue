@@ -27,9 +27,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="selectLocacaoID">Locacao ID:</label>
-                    <select v-model="acompanhamento.locacao" class="form-control is-invalid" id="selectLocacaoID"
+                    <select v-model="acompanhamento.id_locacao" class="form-control is-invalid" id="selectLocacaoID"
                         >
-                        <option v-for="l in locacao" :key="l.id" v-bind:value="l">
+                        <option v-for="l in id_locacao" :key="l.id" v-bind:value="l">
                             {{ l.observacoes }}
                         </option>
                     </select>
@@ -37,9 +37,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="selectSituacaoID">Situacao ID:</label>
-                    <select v-model="acompanhamento.situacao" class="form-control is-invalid" id="selectSituacaoID"
+                    <select v-model="acompanhamento.id_situacao" class="form-control is-invalid" id="selectSituacaoID"
                         >
-                        <option v-for="s in situacao" :key="s.id" v-bind:value="s">
+                        <option v-for="s in id_situacao" :key="s.id" v-bind:value="s">
                             {{ s.descricao }}
                         </option>
                     </select>
@@ -82,8 +82,8 @@ export default {
 
             },
             submitted: false,
-            locacao: [],
-            situacao: [],
+            id_locacao: [],
+            id_situacao: [],
 
         }
     },
@@ -116,7 +116,7 @@ export default {
 
                 for (let l of response.data) {
 
-                    this.locacao.push(l);
+                    this.id_locacao.push(l);
                 }
             }).catch(response => {
 

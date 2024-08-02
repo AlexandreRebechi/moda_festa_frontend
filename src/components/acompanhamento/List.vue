@@ -19,7 +19,7 @@
                     <tr v-for="(a, indice) in acompanhamento" :key="a.id" :class="{ active: indice == currentIndex }">
                         <td>{{ a.id }}</td>
                         <td>{{ a.sequencia_passo }}</td>
-                        <td>{{ a.data }}</td>
+                        <td>{{ a.data | formataData}}</td>
                         <td>{{ a.observacoes }}</td>
                         <td>{{ a.locacao }}</td>
                         <td>{{ a.sitacao }}</td>

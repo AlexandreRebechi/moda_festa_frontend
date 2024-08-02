@@ -21,7 +21,7 @@
                             <tr v-for="(p, indice) in parcelamentos" :key ="p.id" :class="{ active: indice == currentIndex }">
                             <td>{{p.id}}</td>
                             <td>{{p.numero_parcela}}</td>
-                            <td>{{p.data_previsao_pagamento}}</td>
+                            <td>{{p.data_previsao_pagamento | formataData}}</td>
                             <td>{{p.data_pagamento}}</td>
                             <td>{{p.valor_total}}</td>
                             <th >{{p.valor_pago}}</th>

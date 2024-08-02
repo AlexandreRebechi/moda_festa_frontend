@@ -14,7 +14,6 @@
                         <th scope="col">Data Previsao Pagamento</th>
                         <th scope="col">Valor Total</th>
                         <th scope="col">Valor Pago</th>
-                        <th scope="col">Observacoes</th>
                         <th scope="col">Funcionario</th>
                         <th scope="col">tipos_pagamento</th>
                     </tr>
@@ -23,12 +22,11 @@
                     <tr v-for="(l, indice) in locacao" :key="l.id" :class="{ active: indice == currentIndex }">
                         <td>{{ l.id }}</td>
                         <td>{{ l.data_retirada  }}</td>
-                        <td>{{ l.data_previsao_entrega }}</td>
-                        <td>{{ l.data_entrega }}</td>
-                        <td>{{ l.data_previsao_pagamento }}</td>
+                        <td>{{ l.data_previsao_entrega | formataData}}</td>
+                        <td>{{ l.data_entrega | formataData}}</td>
+                        <td>{{ l.data_previsao_pagamento | formataData}}</td>
                         <td>{{ l.valor_total }}</td>
                         <td>{{ l.valor_pago }}</td>
-                        <td>{{ l.observacoes }}</td>
                         <td>{{ l.funcionario }}</td>
                         <td>{{ l.tipos_pagamento }}</td>
                         <td><button v-on:click="setCurrentLocacao(l, indice)" class="btn"
@@ -50,7 +48,7 @@
                     <label><strong>ID:</strong></label> {{ currentLocacao.id }}
                 </div>
                 <div>
-                    <label><strong>Observacoes:</strong></label> {{ currentLocacao.descricao }}
+                    <label><strong>Observacoes:</strong></label> {{ currentLocacao.observacoes }}
                 </div>
 
                 <a class="badge badge-warning" :href="'/locacao/' + currentLocacao.id">

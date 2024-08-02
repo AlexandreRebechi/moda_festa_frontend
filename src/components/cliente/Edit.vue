@@ -46,6 +46,12 @@
 
         </div>
         <div class="mb-3">
+          <label for="inputNumero">Numero:</label>
+          <input type="text" v-model="currentCliente.numero" class="form-control is-invalid" id="inputNumero"
+            placeholder="Numero" required>
+
+        </div>
+        <div class="mb-3">
           <label for="inputComplemento">Complemento:</label>
           <input type="text" v-model="currentCliente.complemento" class="form-control is-invalid" id="inputComplemento"
             placeholder="Complemento" required>
@@ -182,7 +188,7 @@ export default {
   mounted() {
 
     this.message = '';
-    this.getCliente(this.$route.params.id);
+    this.getCliente(this.$route.params.cpf);
   }
 }
 </script>

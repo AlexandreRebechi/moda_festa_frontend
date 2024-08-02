@@ -237,7 +237,7 @@ const router = new Router({
       component: listParcelamentos
     },
     {
-      path: '/parcelamentos/:id',
+      path: '/parcelamento/:id',
       name: 'parcelamento-edit',
       component: editParcelamento
     },
