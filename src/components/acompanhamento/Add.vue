@@ -29,7 +29,7 @@
                     <label for="selectLocacaoID">Locacao ID:</label>
                     <select v-model="acompanhamento.id_locacao" class="form-control is-invalid" id="selectLocacaoID"
                         >
-                        <option v-for="l in id_locacao" :key="l.id" v-bind:value="l">
+                        <option v-for="l in id_locacao" v-bind:key="l.id" v-bind:value="l">
                             {{ l.observacoes }}
                         </option>
                     </select>
@@ -39,7 +39,7 @@
                     <label for="selectSituacaoID">Situacao ID:</label>
                     <select v-model="acompanhamento.id_situacao" class="form-control is-invalid" id="selectSituacaoID"
                         >
-                        <option v-for="s in id_situacao" :key="s.id" v-bind:value="s">
+                        <option v-for="s in id_situacao" v-bind:key="s.id" v-bind:value="s">
                             {{ s.descricao }}
                         </option>
                     </select>
@@ -77,8 +77,8 @@ export default {
                 sequencia_passo: '',
                 data: '',
                 observacoes: '',
-                locacao: [],
-                situacao: [],
+                id_locacao: [],
+                id_situacao: [],
 
             },
             submitted: false,

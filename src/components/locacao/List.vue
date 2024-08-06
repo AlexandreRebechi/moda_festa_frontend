@@ -13,7 +13,7 @@
                         <th scope="col">Data Entrega</th>
                         <th scope="col">Data Previsao Pagamento</th>
                         <th scope="col">Valor Total</th>
-                        <th scope="col">Valor Pago</th>
+                        <th scope="col">Valor Pago</th>  
                         <th scope="col">Funcionario</th>
                         <th scope="col">tipos_pagamento</th>
                     </tr>
@@ -23,7 +23,7 @@
                         <td>{{ l.id }}</td>
                         <td>{{ l.data_retirada  }}</td>
                         <td>{{ l.data_previsao_entrega | formataData}}</td>
-                        <td>{{ l.data_entrega | formataData}}</td>
+                        <td>{{ l.data_entrega | formataData }}</td>
                         <td>{{ l.data_previsao_pagamento | formataData}}</td>
                         <td>{{ l.valor_total }}</td>
                         <td>{{ l.valor_pago }}</td>

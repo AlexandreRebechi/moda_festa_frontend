@@ -16,6 +16,7 @@
                         <th scope="col">bairro</th>
                         <th scope="col">numero</th>
                         <th scope="col">complemento</th>
+                        <th scope="col">observacoes</th>
                         <th scope="col">data_cadastro</th>
                         <th scope="col">username</th>
                         <th scope="col">password</th>
@@ -38,7 +39,8 @@
                         <td>{{ p.bairro }}</td>
                         <td>{{ p.numero }}</td>
                         <td>{{ p.complemento }}</td>
-                        <td>{{ p.data_cadastro | formataData}}</td>
+                        <td>{{ p.observacoes }}</td>
+                        <td>{{ p.data_cadastro | formataData }}</td>
                         <td>{{ p.username }}</td>
                         <td>{{ p.password }}</td>
                         <td>{{ p.data_ultimo_login | formataData}}</td>
@@ -65,11 +67,9 @@
                     <label><strong>Username:</strong></label> {{ currentFuncinario.username }}
                 </div>
                 <div>
-                    <label><strong>Data de Cadastro:</strong></label> {{ currentFuncinario.data_cadastro | formataData }}
+                    <label><strong>Data de Cadastro:</strong></label> {{ currentFuncinario.data_cadastro | formataData}}
                 </div>
-                <div>
-                    <label><strong>Observacoes:</strong></label> {{ currentFuncinario.observacoes }}
-                </div>
+
 
                 <a class="badge badge-warning" :href="'/funcionario/' + currentFuncinario.cpf">
                     Edit

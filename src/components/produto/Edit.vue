@@ -34,7 +34,7 @@
                     <label for="selectTiposProduto">Tipos Produto:</label>
                     <select v-model="currentProduto.tipo_produto" class="form-control is-invalid" id="selectTiposProduto"
                         >
-                        <option v-for="tp in tipo_produto" :key="tp.tipo_produto" v-bind:value="tp">
+                        <option v-for="tp in tipo_produto" v-bind:key="tp.id" v-bind:value="tp.id">
                             {{ tp.nome }}
                         </option>
                     </select>

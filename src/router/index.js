@@ -64,7 +64,7 @@ const router = new Router({
     },
     
     {
-      path: '/cliente/:id',
+      path: '/cliente/:cpf',
       name: "cliente-edit",
       component: editCliente
     },
@@ -75,17 +75,17 @@ const router = new Router({
     },
     {
       path: '/addcliente2',
-      name: "cliente-add",
+      name: "cliente2-add",
       component: novoCliente2
     },
     {
       path: '/funcionarios',
-      name: 'funcionario-list',
+      name: 'funcionarios-list',
       component: listFuncionarios  
     },
   
     {
-      path: '/funcionario/:id',
+      path: '/funcionario/:cpf',
       name: 'funcionario-edit',
       component: editFuncionario  
     },
@@ -110,12 +110,12 @@ const router = new Router({
       component: novoPerfil
     },
     {
-      path: '/funcinalidades',
+      path: '/funcionalidades',
       name: 'funcionalidades-list',
       component: listFuncionalidades
     },
     {
-      path: '/funcinalidade/:id',
+      path: '/funcionalidade/:id',
       name: 'funcinalidade-edit',
       component: editFuncionalidade
     },
@@ -233,7 +233,7 @@ const router = new Router({
     },
     {
       path: '/parcelamentos',
-      name: 'parcelamento-list',
+      name: 'parcelamentos-list',
       component: listParcelamentos
     },
     {

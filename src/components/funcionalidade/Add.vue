@@ -15,14 +15,14 @@
                 </div>
             </form>
             <button @click="saveFuncionalidade" class="btn btn-success">Salvar</button>
-            <router-link to="/funcinalidades" class="btn btn-success">Voltar</router-link>
+            <router-link to="/funcionalidades" class="btn btn-success">Voltar</router-link>
 
         </div>
 
         <div v-else>
             <h4>Dados enviados com sucesso !</h4>
             <button class="btn btn-success" @click="newFuncionalidade">Novo</button>
-            <router-link to="/funcinalidades" class="btn btn-success">Voltar</router-link>
+            <router-link to="/funcionalidades" class="btn btn-success">Voltar</router-link>
         </div>
     </div>
 </template>

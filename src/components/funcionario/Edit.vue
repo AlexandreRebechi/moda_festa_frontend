@@ -1,9 +1,9 @@
 <template>
     <div id="tab_aut">
-            
+
         <div v-if="currentFuncionario" class="edit-form">
             <form class="was-validated">
-                <h3>Cliente</h3>
+                <h3>Funci</h3>
                 <div class="mb-3">
                     <label for="inputCPF">CPF:</label>
                     <input type="text" v-model="currentFuncionario.cpf" class="form-control is-invalid" id="inputCPF"
@@ -17,8 +17,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputEmail">Email:</label>
-                    <input type="text" v-model="currentFuncionario.email" class="form-control is-invalid"
-                        id="inputEmail" placeholder="Email" required>
+                    <input type="text" v-model="currentFuncionario.email" class="form-control is-invalid" id="inputEmail"
+                        placeholder="Email" required>
 
                 </div>
                 <div class="mb-3">
@@ -41,10 +41,19 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputBairro">Bairro:</label>
-                    <input type="text" v-model="currentFuncionario.bairro" class="form-control is-invalid"
-                        id="inputBairro" placeholder="Bairro" required>
+                    <input type="text" v-model="currentFuncionario.bairro" class="form-control is-invalid" id="inputBairro"
+                        placeholder="Bairro" required>
 
                 </div>
+            
+
+                <div class="mb-3">
+          <label for="inputNumero">Numero:</label>
+          <input type="text" v-model="currentFuncionario.numero" class="form-control is-invalid" id="inputNumero"
+            placeholder="Numero" required>
+
+        </div>
+
                 <div class="mb-3">
                     <label for="inputComplemento">Complemento:</label>
                     <input type="text" v-model="currentFuncionario.complemento" class="form-control is-invalid"
@@ -83,26 +92,26 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputNumeroCtps">Numero CTPS:</label>
-                    <input type="text" v-model="currentFuncionario.numero_ctps" class="form-control is-invalid" id="inputNumeroCtps"
-                        placeholder="Numero CTPS" required>
+                    <input type="text" v-model="currentFuncionario.funcionario.numero_ctps" class="form-control is-invalid"
+                        id="inputNumeroCtps" placeholder="Numero CTPS" required>
                 </div>
                 <div class="mb-3">
                     <label for="inputDataContratacao">Data Contratacao:</label>
-                    <input type="date" v-model="currentFuncionario.data_contratacao" class="form-control is-invalid"
+                    <input type="date" v-model="currentFuncionario.funcionario.data_contratacao" class="form-control is-invalid"
                         id="inputDataContratacao" placeholder="Data Contratacao" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="inputDataDemissao">Data Demissao:</label>
-                    <input type="date" v-model="currentFuncionario.data_demissao" class="form-control is-invalid"
+                    <input type="date" v-model="currentFuncionario.funcionario.data_demissao" class="form-control is-invalid"
                         id="inputDataDemissao" placeholder="Data Demissao" required>
                 </div>
 
 
                 <div class="mb-3">
                     <label for="selectPerfil">Perfil:</label>
-                    <select v-model="currentFuncionario.perfil" class="form-control is-invalid" id="selectPerfil" required>
-                        <option v-for="p in perfil" :key="p.id" v-bind:value="p">
+                    <select v-model="currentFuncionario.funcionario.perfil" class="form-control is-invalid" id="selectPerfil" required>
+                        <option v-for="p in perfil" v-bind:key="p.id" v-bind:value="p.id">
                             {{ p.descricao }}
                         </option>
                     </select>
@@ -132,13 +141,15 @@
 
 
 import FuncionarioDataService from '../../services/FuncionarioDataService';
+import PerfilDataService from '../../services/PerfilDataService';
 
 export default {
-    name: 'editcliente',
+    name: 'editFuncionario',
     data() {
         return {
             currentFuncionario: null,
-            message: ''
+            message: '',
+            perfil: []
 
         }
     },
@@ -167,25 +178,43 @@ export default {
                     console.log(e);
                 })
         },
+        listPerfil() {
+            console.log('teste: '+this.perfil)
+            PerfilDataService.list().then(response => {
+
+                console.log("Retorno do seviço PerfilDataService.list", response.status);
+                for (let p of response.data) {
+
+                    this.perfil.push(p);
+                }
+
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço PerfilDataService.list');
+                console.log(response);
+            });
+        },
         deleteFuncionario() {
 
             FuncionarioDataService.delete(this.currentFuncionario.cpf)
                 .then(response => {
                     console.log(response.data);
-                    this.$router.push({ name: "clientes-list" });
+                    this.$router.push({ name: "funcionarios-list" });
                 })
                 .catch(e => {
                     console.log(e);
                 });
         },
         voltar() {
-            this.$router.push({ name: "clientes-list" });
+            this.$router.push({ name: "funcionarios-list" });
         }
     },
     mounted() {
 
         this.message = '';
         this.getFuncionario(this.$route.params.cpf);
+        this.listPerfil();
     }
 }
 </script>

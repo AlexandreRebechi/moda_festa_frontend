@@ -36,7 +36,7 @@
                     <label><strong>Descricao:</strong></label> {{ currentFuncionalidade.descricao }}
                 </div>
 
-                <a class="badge badge-warning" :href="'/funcinalidade/' + currentFuncionalidade.id">
+                <a class="badge badge-warning" :href="'/funcionalidade/' + currentFuncionalidade.id">
                     Edit
                 </a>
             </div>

@@ -16,8 +16,7 @@
                         <th scope="col">logradouro</th>
                         <th scope="col">bairro</th>
                         <th scope="col">numero</th>
-                        <th scope="col">complemento</th>
-                        <th scope="col">observacoes</th>
+                        <th scope="col">complemento</th>      
                         <th scope="col">data_cadastro</th>
                         <th scope="col">username</th>
                         <th scope="col">password</th>
@@ -40,11 +39,10 @@
                         <td>{{ p.bairro }}</td>
                         <td>{{ p.numero }}</td>
                         <td>{{ p.complemento }}</td>
-                        <td>{{ p.observacoes }}</td>
                         <td>{{ p.data_cadastro | formataData}}</td>
                         <td>{{ p.username }}</td>
                         <td>{{ p.password }}</td>
-                        <td>{{ p.data_ultimo_login | formataData}}</td>
+                        <td>{{ p.data_ultimo_login | formataData }}</td>
                         <td>{{ p.rg }}</td>
                         <td>{{ p.cnpj }}</td>
                         <td>{{ p.ie }}</td>
@@ -69,7 +67,9 @@
                 <div>
                     <label><strong>Data de Cadastro:</strong></label> {{ currentCliente.data_cadastro }}
                 </div>
-                
+                <div>
+                    <label><strong>Observacoes:</strong></label> {{ currentCliente.observacoes }}
+                </div>
                 <!--<div>
                     <label><strong>Tipo Pessoa: </strong>{{ currentCliente.cliente.tipo}}</label>
                 </div>

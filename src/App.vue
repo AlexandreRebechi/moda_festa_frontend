@@ -36,7 +36,7 @@
             <router-link class="dropdown-item" to="/perfis" v-show="showMenu() && statusShowMenu()">Perfil</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="dropdown-item" to="/funcinalidades"
+            <router-link class="dropdown-item" to="/funcionalidades"
               v-show="showMenu() && statusShowMenu()">Funcionalidade</router-link>
           </li>
           <li class="nav-item">

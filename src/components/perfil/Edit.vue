@@ -16,7 +16,7 @@
 
             <div class="mb-3">
                 <label for="selectFuncinalidade">Funcinalidade:</label>
-                <select v-model="currentPerfil.funcionalidades" class="form-control is-invalid" id="selectFuncinalidade"  required>
+                <select v-model="currentPerfil.funcionalidades" class="form-control is-invalid" id="selectFuncinalidade"  required multiple>
                     <option v-for="f in funcionalidades" :key="f.id" v-bind:value="f">
                         {{ f.descricao }}
                     </option>

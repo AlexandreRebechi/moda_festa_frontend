@@ -15,7 +15,7 @@
             <div class="mb-3">
                 <label for="selectFuncionalidades">Funcionalidades:</label>
                 <select v-model="perfil.funcionalidades" class="form-control is-invalid" id="selectFuncionalidades" multiple required>
-                    <option v-for="f in funcionalidades" :key="f.id" v-bind:value="f">
+                    <option v-for="f in funcionalidades" v-bind:key="f.id" v-bind:value="f.id">
                         {{ f.descricao }}
                     </option>
                 </select>
@@ -88,9 +88,9 @@ export default {
 
                 console.log("Retorno do seviço FuncionalidadeDataService.list", response.status);
 
-                for (let p of response.data) {
+                for (let f of response.data) {
 
-                    this.funcionalidades.push(p);
+                    this.funcionalidades.push(f);
                 }
 
             }).catch(response => {

@@ -29,9 +29,14 @@
                 <input type="number" v-model="currentParcelamento.valor_pago" class="form-control is-invalid" id="inputValorPago" placeholder="Valor Pago" required>
             </div>
             <div class="mb-3">
-                <label for="inputLocacaoID">Locacao ID:</label>
-                <input type="number" v-model="currentParcelamento.locacao_id" class="form-control is-invalid" id="inputLocacaoID" placeholder="Locacao ID" required>
-            </div>
+                    <label for="selectLocacaoID">Locacao ID:</label>
+                    <select v-model="currentParcelamento.id_locacao" class="form-control is-invalid" id="selectLocacaoID">
+                        <option v-for="l in id_locacao" v-bind:key="l.id" v-bind:value="l.id">
+                            {{ l.observacoes }}
+                        </option>
+                    </select>
+
+                </div>
         </form>
             <button class="badge badge-success" @click="updateParcelamento">Salvar</button>
             <button class="badge badge-danger mr-2" @click="deleteParcelamento">Delete</button>
@@ -51,6 +56,7 @@
 </template>
 <script>
 
+import LocacaoDateService from '../../services/LocacaoDateService';
 import ParcelamentoDataService from '../../services/ParcelamentoDataService'
 
 export default {
@@ -59,7 +65,7 @@ export default {
         return {
             currentParcelamento: null,
             message: '',
-            
+            id_locacao: []
         }
     },
     methods: {
@@ -87,12 +93,29 @@ export default {
                     console.log(e);
                 })
         },
+        listLocacao() {
+            LocacaoDateService.list().then(response => {
+
+                console.log("Retorno do seviço LocacaoDateService.list", response.status);
+
+                for (let l of response.data) {
+
+                    this.id_locacao.push(l);
+                }
+            }).catch(response => {
+
+                // error callback
+                alert('Não conectou no serviço ProdutoDataService.list');
+                console.log(response);
+            });
+
+        },
         deleteParcelamento() {
 
             ParcelamentoDataService.delete(this.currentParcelamento.id)
                 .then(response => {
                     console.log(response.data);
-                    this.$router.push({ name: "parcelamento-list" });
+                    this.$router.push({ name: "parcelamentos-list" });
                 })
                 .catch(e => {
                     console.log(e);
@@ -103,7 +126,7 @@ export default {
         }
     },
     mounted() {
-
+        this.listLocacao()
         this.message = '';
         this.getParcelamento(this.$route.params.id);
     }

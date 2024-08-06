@@ -24,7 +24,7 @@
                 <div class="mb-3">
                     <label for="selectProduto">Produto:</label>
                     <select v-model="currentFoto.produto_id" class="form-control is-invalid" id="selectProduto">
-                        <option v-for="p in produto_id" :key="p.id" v-bind:value="p">
+                        <option v-for="p in produto_id" v-bind:key="p.id" v-bind:value="p.id">
                             {{ p.descricao }}
                         </option>
                     </select>

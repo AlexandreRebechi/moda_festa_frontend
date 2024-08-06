@@ -10,7 +10,6 @@
                         <th scope="col">ID</th>
                         <th scope="col">Sequencias de Passos</th>
                         <th scope="col">Data</th>
-                        <th scope="col">Observacoes</th>
                         <th scope="col">Locacao ID</th>
                         <th scope="col">Solucao ID</th>
                     </tr>
@@ -19,10 +18,9 @@
                     <tr v-for="(a, indice) in acompanhamento" :key="a.id" :class="{ active: indice == currentIndex }">
                         <td>{{ a.id }}</td>
                         <td>{{ a.sequencia_passo }}</td>
-                        <td>{{ a.data | formataData}}</td>
-                        <td>{{ a.observacoes }}</td>
-                        <td>{{ a.locacao }}</td>
-                        <td>{{ a.sitacao }}</td>
+                        <td>{{ a.data }}</td>      
+                        <td>{{ a.id_locacao }}</td>
+                        <td>{{ a.id_situacao }}</td>
                         <td><button v-on:click="setCurrentAcompanhamento(a, indice)" class="btn"
                                 type="button">Alterar</button></td>
                         <td><button v-on:click="remAcompanhamento(a, indice)" class="btn"

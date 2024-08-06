@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="inputValorTotal">Valor Total:</label>
-                <input type="number" v-model="currentReserva.total" class="form-control is-invalid" id="inputValorTotal" placeholder="Valor Total" required>
+                <input type="number" v-model="currentReserva.valor_total" class="form-control is-invalid" id="inputValorTotal" placeholder="Valor Total" required>
             </div>
             <div class="mb-3">
                 <label for="inputValorObservacoes">Observações:</label>
@@ -37,7 +37,7 @@
             <div class="mb-3">
                     <label for="selectCliente">Cliente:</label>
                     <select v-model="currentReserva.cliente" class="form-control is-invalid" id="selectCliente" >
-                        <option v-for="c in cliente" :key="c.cpf_pessoa" v-bind:value="c">
+                        <option v-for="c in cliente" v-bind:key="c.cpf" v-bind:value="c.cpf">
                             {{ c.nome }}
                         </option>
                     </select>
@@ -45,9 +45,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="selectFuncionario">Funcionario:</label>
-                    <select v-model="currentReserva.funcionario" class="form-control is-invalid" id="selectFuncionario"
-                        >
-                        <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
+                    <select v-model="currentReserva.funcionario" class="form-control is-invalid" id="selectFuncionario">
+                        <option v-for="f in funcionario" v-bind:key="f.cpf" v-bind:value="f.cpf">
                             {{ f.nome }}
                         </option>
                     </select>
@@ -65,8 +64,8 @@
            
             <div class="mb-3">
                 <label for="selectProduto">Produto:</label>
-                <select v-model="currentReserva.produtos" class="form-control is-invalid" id="selectProduto"  required>
-                    <option v-for="p in produtos" :key="p.id" v-bind:value="p">
+                <select v-model="currentReserva.produtos" class="form-control is-invalid" id="selectProduto"  required multiple>
+                    <option v-for="p in produtos"  v-bind:key="p.id" v-bind:value="p.id">
                         {{ p.descricao }}
                     </option>
                 </select>
@@ -170,8 +169,9 @@ export default {
             });
         },
         updateReserva() {
-            alert(this.currentReserva.produtos);
-            ProdutoDataService.update(this.currentReserva)
+            alert(this.currentReserva.cliente);
+            
+            ReservaDataService.update(this.currentReserva)
                 .then(response => {
                     console.log('ReservaDataService.update');
                     this.message = 'Reserva alterado com sucesso !';

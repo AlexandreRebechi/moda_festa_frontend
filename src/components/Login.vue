@@ -63,9 +63,9 @@ export default {
 
                     this.$router.push({ name: "home" });
 
-                } else if (response.status == 400) {
+                } else if (response.status == 204) {
 
-                    alert('cpf ou password invalidos!')
+                    alert('cpf ou password ou tipo invalidos!')
 
                 }
 

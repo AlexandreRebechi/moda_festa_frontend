@@ -8,7 +8,7 @@
                 <thead class="thead-inverse">
                     <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Descricao</th>    
+                    <th scope="col">Descricao</th>
                     <th scope="col">Valor Custo</th>
                     <th scope="col">Valor Aluguel</th>
                     <th scope="col">Valor Venda</th>
@@ -41,7 +41,9 @@
                     <div>
                     <label><strong>Observacoes:</strong></label> {{ currentProduto.observacoes }}
                     </div>
-
+                    <div>
+                    <label><strong>tipo_produto:</strong></label> {{ currentProduto.tipo_produto }}
+                    </div>
                     <a class="badge badge-warning"
                     :href="'/produto/' + currentProduto.id"
                     >

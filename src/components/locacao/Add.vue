@@ -59,7 +59,7 @@
                 </div>
             <div class="mb-3">
                 <label for="selectReserva">Reserva:</label>
-                <select v-model="locacao.reservas" class="form-control is-invalid" id="selectReserva"  required>
+                <select v-model="locacao.reservas" class="form-control is-invalid" id="selectReserva"  required multiple>
                     <option v-for="r in reservas" :key="r.id" v-bind:value="r">
                         {{ r.observacoes }}
                     </option>

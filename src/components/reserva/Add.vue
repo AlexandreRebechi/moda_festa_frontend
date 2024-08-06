@@ -53,7 +53,7 @@
                     <label for="selectFuncionario">Funcionario:</label>
                     <select v-model="reserva.funcionario" class="form-control is-invalid" id="selectFuncionario"
                         >
-                        <option v-for="f in funcionario" :key="f.cpf_pessoa" v-bind:value="f">
+                        <option v-for="f in funcionario" v-bind:key="f.cpf_pessoa" v-bind:value="f.cpf_pessoa">
                             {{ f.nome }}
                         </option>
                     </select>
@@ -70,8 +70,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="selectProduto">Produto:</label>
-                    <select v-model="reserva.produtos" class="form-control is-invalid" id="selectProduto" >
-                        <option v-for="p in produtos" :key="p.id" v-bind:value="p">
+                    <select v-model="reserva.produtos" class="form-control is-invalid" id="selectProduto" multiple>
+                        <option v-for="p in produtos" v-bind:key="p.id" v-bind:value="p.id">
                             {{ p.descricao }}
                         </option>
                     </select>

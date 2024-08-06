@@ -17,7 +17,7 @@ const config = {
     user: 'postgres',
     database: 'moda_festa_BD',
     password: 'postgres',
-    port: 5435 //5432 5435
+    port: 5432 //5432 5435
 };
 
 //definia conexao com o banco de dados.
@@ -1804,7 +1804,7 @@ sw.get('/locacao/:id', function(req, res) {
                     res.status(400).send(`{${err}}`)
                 } else {
                     console.log('retornou 201 no locacao');
-                    res.status(200).send(result.rows);
+                    res.status(200).send(result.rows[0]);
                 }
             });
         }
@@ -1972,7 +1972,7 @@ sw.put('/updatelocacao', (req, res) => {
                     req.body.valor_total,
                     req.body.valor_pago,
                     req.body.observacoes,
-                    req.body.funcionario,
+                    req.body.funcionario.cpf,
                     req.body.tipos_pagamento]
             }
             console.log(q);
